@@ -1,0 +1,5 @@
+*.dylib filter=lfs diff=lfs merge=lfs -text
+FailedExamsUnity/Library/PackageCache/com.unity.burst@1.8.12/.Runtime/libburst-llvm-16.dylib filter=lfs diff=lfs merge=lfs -text
+FailedExam/Library/PackageCache/com.unity.burst@1.8.12/.Runtime/libburst-llvm-16.so filter=lfs diff=lfs merge=lfs -text
+FailedExam/Library/PackageCache/com.unity.burst@1.8.12/.Runtime/hostmac/dsymutil filter=lfs diff=lfs merge=lfs -text
+FailedExam/Library/PackageCache/com.unity.burst@1.8.12/.Runtime/burst-llvm-16.dll filter=lfs diff=lfs merge=lfs -text

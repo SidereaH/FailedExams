@@ -1,0 +1,4 @@
+repository "FailedExam@FDGroup@cloud"
+  path "/"
+    br "/main"
+    co "/main"
