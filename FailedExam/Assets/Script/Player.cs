@@ -6,18 +6,29 @@ using UnityEngine.InputSystem;
 // Takes and handles input and movement for a player character
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 1f;
+    bool IsRunning
+    {
+        set
+        {
+            isRunning = value;
+            animator.SetBool("isRunning", isRunning);
+        }
+    }
+
+    bool isRunning = false;
+    
+
+    public float moveSpeed = 15f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public SwordAttack swordAttack;
-
-    Vector2 movementInput;
+    public float maxSpeed = 8f;
+    public float idleFriction = 0.9f;
+    Vector2 movementInput = Vector2.zero;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
     Animator animator;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-
-    bool canMove = true;
     Animator gunAnimator;
     SpriteRenderer gunRenderer;
 
@@ -33,46 +44,38 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (canMove)
-        {
+       
             // If movement input is not 0, try to move
+           //ускоряем игрока в его направлении
             if (movementInput != Vector2.zero)
             {
-
-                bool success = TryMove(movementInput);
-
-                if (!success)
+                rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
+                //контрол направление право, лево
+                if (movementInput.x < 0)
                 {
-                    success = TryMove(new Vector2(movementInput.x, 0));
+                    spriteRenderer.flipX = true;
+                    gunRenderer.flipX = true;
                 }
-
-                if (!success)
+                else if (movementInput.x > 0)
                 {
-                    success = TryMove(new Vector2(0, movementInput.y));
+                    spriteRenderer.flipX = false;
+                    gunRenderer.flipX = false;
                 }
-
-                animator.SetBool("isRunning", success);
+                IsRunning = true;   
+                       
             }
             else
             {
-                animator.SetBool("isRunning", false);
+            //если нет движения -> интерполяция скорости приближается к нулю
+                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, idleFriction);
+                IsRunning = false;
             }
 
-            // Set direction of sprite to movement direction
-            if (movementInput.x < 0)
-            {
-                spriteRenderer.flipX = true;
-                gunRenderer.flipX = true;
-            }
-            else if (movementInput.x > 0)
-            {
-                spriteRenderer.flipX = false;
-                gunRenderer.flipX = false;
-            }
-        }
+            
+        
     }
 
-    private bool TryMove(Vector2 direction)
+    /*private bool TryMove(Vector2 direction)
     {
         if (direction != Vector2.zero)
         {
@@ -99,12 +102,14 @@ public class Player : MonoBehaviour
             return false;
         }
 
-    }
+    }*/
 
+    //получаем значения из инпут система для движения
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
     }
+ 
 
     void OnAttack()
     {

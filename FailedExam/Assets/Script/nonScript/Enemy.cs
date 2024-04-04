@@ -8,12 +8,12 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     public float moveSpeed = 500f;
     public float knockForce = 100f;
-    public DetectionZone detectionZone;
+    //public DetectionZone detectionZone;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        damagebleCharacter = GetComponent(<DamageableCharacter>());
+        //damagebleCharacter = GetComponent(<DamageableCharacter>());
     }
     public float Health {
         set {
@@ -42,11 +42,11 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (damagebleCharacter.Targetable && detectionZone.detectionObjs.Count > 0)
-        {
-            Vector2 direction = (detectionZone.detectionObjs[0].transform.position - transform.position).normalized;
-            rb.AddForce(direction * moveSpeed * Time.deltaTime);
-        }
+       // if (damagebleCharacter.Targetable && detectionZone.detectionObjs.Count > 0)
+        //{
+        //    Vector2 direction = (detectionZone.detectionObjs[0].transform.position - transform.position).normalized;
+        //    rb.AddForce(direction * moveSpeed * Time.deltaTime);
+       // }
         
         
         
@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
             Vector2 direction = (collider.transform.position - transform.position).normalized;
 
             Vector2 knockback = direction * knockForce;
-            damageable.OnHit(damage, knockback);
+            //damageable.OnHit(damage, knockback);
         }
     }
 }
