@@ -169,6 +169,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   swordAttack: {fileID: 4013233854625795444}
+  maxSpeed: 8
+  idleFriction: 0.9
 --- !u!95 &8328397278370962219
 Animator:
   serializedVersion: 5
@@ -271,8 +273,8 @@ Transform:
   m_GameObject: {fileID: 3771827999326962935}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00016694862, y: -0.0012983996, z: -0.12753026, w: 0.99183387}
-  m_LocalPosition: {x: -0.137, y: -0.095, z: -0}
-  m_LocalScale: {x: 0.025, y: 0.025, z: 0.025}
+  m_LocalPosition: {x: -0.108, y: -0.068, z: -0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4189895214738025730}
@@ -382,7 +384,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.37691545, y: 1.175453}
+  m_Offset: {x: -0.37691545, y: 0.20143399}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -393,7 +395,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.753831, y: 7.1740556}
+  m_Size: {x: 5.753831, y: 1.8618162}
   m_EdgeRadius: 0
 --- !u!114 &4013233854625795444
 MonoBehaviour:
@@ -409,3 +411,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordCollider: {fileID: 2048679301366756589}
   damage: 3
+  gunRight: {x: -6.13, y: -0.96, z: 0}

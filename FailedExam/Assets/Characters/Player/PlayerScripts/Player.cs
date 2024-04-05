@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     Animator gunAnimator;
     SpriteRenderer gunRenderer;
+    
+    Transform gunObject;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         gunAnimator = transform.GetChild(0).GetComponent<Animator>();
         gunRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+       
     }
 
     private void FixedUpdate()
@@ -60,6 +63,7 @@ public class Player : MonoBehaviour
                 {
                     spriteRenderer.flipX = false;
                     gunRenderer.flipX = false;
+                   
                 }
                 IsRunning = true;   
                        

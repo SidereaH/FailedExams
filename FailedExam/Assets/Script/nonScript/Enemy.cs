@@ -19,8 +19,14 @@ public class Enemy : MonoBehaviour
         set {
             health = value;
             print(health);
+            OnHit();
+            
             if(health <= 0) {
                 Defeated();
+            }
+            else
+            {
+                animator.SetBool("isAlive", true);
             }
         }
         get {
@@ -28,12 +34,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public float health = 1;
+    public float health = 10;
 
-    
 
+    public void OnHit()
+    {
+        animator.SetTrigger("hit");
+    }
     public void Defeated(){
-        animator.SetTrigger("Defeated");
+     
+        print("suceess");
+        animator.SetBool("isAlive", false);
     }
 
     public void RemoveEnemy() {
