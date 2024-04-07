@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class  Slime: MonoBehaviour, IDamageable
 {
     Animator animator;
     Rigidbody2D rb;
     public float moveSpeed = 500f;
     public float knockForce = 100f;
     //public DetectionZone detectionZone;
+
+    public float _health = 10;
+    public bool _targetable = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,12 +21,13 @@ public class Enemy : MonoBehaviour
     }
     public float Health {
         set {
-            health = value;
-            print(health);
-            OnHit();
+            _health = value;
             
-            if(health <= 0) {
-                Defeated();
+            animator.SetTrigger("hit");
+
+            if (_health <= 0) {
+                animator.SetBool("isAlive", false);
+                Targetable = false;
             }
             else
             {
@@ -30,23 +35,40 @@ public class Enemy : MonoBehaviour
             }
         }
         get {
-            return health;
+            return _health;
         }
     }
-
-    public float health = 10;
-
-
-    public void OnHit()
+    public bool Targetable
     {
-        animator.SetTrigger("hit");
+        get {
+            return _targetable;
+        }
+
+        set{
+            _targetable = value;
+            rb.simulated = value;
+        }
+        
+    }
+
+    public void OnHit(float damage)
+    {
+        Health -= damage;
+    }
+    public void OnHit(float damage, Vector2 knockback)
+    {
+        Health -= damage;
+        //apply force to the bat
+        rb.AddForce(knockback);
+        Debug.Log("Force" + knockback);
     }
     public void Defeated(){
      
-        print("suceess");
-        animator.SetBool("isAlive", false);
+        
+        
     }
-
+   
+    
     public void RemoveEnemy() {
         Destroy(gameObject);
     }
