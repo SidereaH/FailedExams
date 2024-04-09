@@ -3425,12 +3425,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 209236754024572899, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
+      propertyPath: m_Mass
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 209236754024572899, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 209236754024572899, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
       propertyPath: m_LinearDrag
-      value: 50
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 209236754024572899, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209236754024572899, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 209236754024572899, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
       propertyPath: m_GravityScale
@@ -3480,6 +3492,26 @@ PrefabInstance:
       propertyPath: health
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5128353929340621095, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
+      propertyPath: _health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128353929340621095, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
+      propertyPath: moveSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128353929340621095, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
+      propertyPath: knockForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128353929340621095, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
+      propertyPath: _targetable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8070476675008330550, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8425651322366886671, guid: 885dc84696348a3489cbf61826e7e6d9, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -3509,9 +3541,25 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2048679301366756589, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048679301366756589, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3028702493528169866, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486867339085762648, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
+      propertyPath: _health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486867339085762648, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
+      propertyPath: knockForce
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3512526202882926508, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
       propertyPath: m_Camera
@@ -3558,12 +3606,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6527318037142310334, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6527318037142310334, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
       propertyPath: m_AngularDrag
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6574916062084727143, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
       propertyPath: moveSpeed
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8831920871788839632, guid: 917c958ad0b44c14fb22d06adab20d71, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

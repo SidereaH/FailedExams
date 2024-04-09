@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
         gunRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
        
     }
-
     private void FixedUpdate()
     {
        

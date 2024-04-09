@@ -1,45 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Timers;
 public class DamageableCharacter : MonoBehaviour, IDamageable
 {
-      
-    public GameObject healthText;
-    public bool disableSimulation = false;
-    public bool canTurnInvincable = false;
-    public float invincibilityTime = 0.25f;
+    
     Animator animator;
     Rigidbody2D rb;
-    Collider2D physCollider;
-    bool isAlive = true;
-    private float invincibleTimeElapsed = 0f;
+    
+    public float knockForce = 100f;
+    Collider2D physicsCollider;
+    //public DetectionZone detectionZone;
+
     public float _health = 3;
     public bool _targetable = true;
-    public bool _invincible = false;
+    //public int timeForDestroy = 10;
+
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        physicsCollider = GetComponent<Collider2D>();
+        //damagebleCharacter = GetComponent(<DamageableCharacter>());
+    }
     public float Health
     {
         set
         {
-            if (value < _health)
-            {
-                animator.SetTrigger("hit");
-
-                RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
-
-                textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-
-                Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-
-                textTransform.SetParent(canvas.transform);
-            }
             _health = value;
 
-            if(_health <= 0)
+            animator.SetTrigger("hit");
+
+            if (_health <= 0)
             {
                 animator.SetBool("isAlive", false);
                 Targetable = false;
-
+            }
+            else
+            {
+                animator.SetBool("isAlive", true);
             }
         }
         get
@@ -47,95 +47,68 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             return _health;
         }
     }
-
     public bool Targetable
     {
         get
         {
-
             return _targetable;
         }
+
         set
         {
             _targetable = value;
-            if ((disableSimulation))
-            {
-                rb.simulated = false;   
-            }
-            
-            physCollider.enabled = value;
+            rb.simulated = value;
+            physicsCollider.enabled = value;
         }
+
     }
-
-    public bool Invincible {
-        get
-        {
-            return _invincible;
-
-        }
-        set
-        {
-            _invincible = value;
-            if(_invincible == true)
-            {
-                invincibleTimeElapsed = 0f;
-            }
-        }
- 
-       
-    }
-
-    public void Start()
-    {
-        animator = GetComponent<Animator>();
-        animator.SetBool("isAlive",true);
-        rb = GetComponent<Rigidbody2D>(); 
-        physCollider = GetComponent<Collider2D>();
-    }
-    public void OnHit(float damage, Vector2 knockback) //with knockback
-    {
-        if (!Invincible)
-        {
-            Health-=damage;
-
-            //apply force for enemy
-            //impulse for forces
-            rb.AddForce(knockback, ForceMode2D.Impulse);
-            if (canTurnInvincable)
-            {
-                Invincible = true;
-            }
-
-        }
-    }
-    //without knockback
 
     public void OnHit(float damage)
     {
-        if (!Invincible)
-        {
-            Health -= damage;
-            if (canTurnInvincable)
-            {
-                Invincible = true;
-            }
-        }
+        Health -= damage;
+    }
+    public void OnHit(float damage, Vector2 knockback)
+    {
+        Health -= damage;
+        //apply force to the bat
+        rb.AddForce(knockback);
+        Debug.Log("Force" + knockback);
     }
     public void OnObjectDestroyed()
     {
+        /*Timer timer = new Timer(timeForDestroy);   
+        timer.Elapsed += OnTimerDeath;  
+        timer.AutoReset = false;
+        timer.Start();
+        Debug.Log("timer start");
+        */
         Destroy(gameObject);
+
     }
-    public void FixedUpdate()
+    private void OnTimerDeath(object sender, ElapsedEventArgs e)
     {
-            if(Invincible)
-        {
-            invincibleTimeElapsed += Time.deltaTime;
-            if(invincibleTimeElapsed > invincibilityTime)
-            {
-                Invincible = false;
 
-            }
-        }
+
+        /*Timer timer = (Timer)sender;
+        timer.Stop();*/
+
 
     }
+
+
+
+
+
+    void FixedUpdate()
+    {
+       
+
+
+
+    }
+
+
+   
+
+
 }
