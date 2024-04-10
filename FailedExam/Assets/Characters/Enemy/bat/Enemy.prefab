@@ -196,6 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   knockbackForce: 10
+  detectionZone: {fileID: 0}
+  moveSpeed: 500
 --- !u!114 &925062344876654195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70c61c63ce1aec4592272f403e59a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthText: {fileID: 6253719824281227341, guid: d6791d6560a9a8d428fa6cd6b45ed0aa, type: 3}
   disableSimulation: 0
+  unkillable: 0
   knockForce: 100
   _health: 10
   _targetable: 1

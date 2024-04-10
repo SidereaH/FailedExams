@@ -257,8 +257,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70c61c63ce1aec4592272f403e59a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthText: {fileID: 6253719824281227341, guid: d6791d6560a9a8d428fa6cd6b45ed0aa, type: 3}
   disableSimulation: 1
+  unkillable: 0
   knockForce: 0
+  detectionZone: {fileID: 0}
   _health: 10
   _targetable: 1
 --- !u!1 &3771827999326962935

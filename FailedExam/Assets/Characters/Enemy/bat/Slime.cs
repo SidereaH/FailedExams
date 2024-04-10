@@ -10,6 +10,7 @@ public class  Slime: MonoBehaviour
     public float moveSpeed = 500f;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
+    DamageableCharacter character;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,9 +19,9 @@ public class  Slime: MonoBehaviour
     private void FixedUpdate()
         
     {
-        
 
-        if (detectionZone.detectedObjs.Count > 0)
+
+        if (character.Targetable && detectionZone.detectedObjs.Count > 0)
         {
             
             //расчет направления между объектом и нами

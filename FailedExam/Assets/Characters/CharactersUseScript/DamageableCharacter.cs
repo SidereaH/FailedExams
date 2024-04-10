@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Timers;
+using TMPro;
 public class DamageableCharacter : MonoBehaviour, IDamageable
 {
+    public GameObject healthText;
     public bool disableSimulation = false;
     Animator animator;
     Rigidbody2D rb;
     public bool unkillable = false;
     public float knockForce = 100f;
     Collider2D physicsCollider;
-    //public DetectionZone detectionZone;
+    public DetectionZone detectionZone;
 
     public float _health = 3;
     public bool _targetable = true;
@@ -23,14 +25,24 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         physicsCollider = GetComponent<Collider2D>();
         //damagebleCharacter = GetComponent(<DamageableCharacter>());
+        
     }
     public float Health
     {
         set
         {
+            if(value < _health)
+            {
+                animator.SetTrigger("hit");
+                RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
+                textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+                Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+                textTransform.SetParent(canvas.transform);
+            }
             _health = value;
 
-            animator.SetTrigger("hit");
+            
+
 
             if (_health <= 0)
             {
