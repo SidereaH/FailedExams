@@ -58,10 +58,7 @@ public class SwordAttack : MonoBehaviour
             //other.SendMessage("OnHit", damage, knockback);
             damagableObject.OnHit(damage, knockback);
         }
-        else
-        {
-            Debug.LogWarning("Collider does not implement IDamageable");
-        }
+        
         
         
 

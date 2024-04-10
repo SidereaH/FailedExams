@@ -7,7 +7,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public bool disableSimulation = false;
     Animator animator;
     Rigidbody2D rb;
-    
+    public bool unkillable = false;
     public float knockForce = 100f;
     Collider2D physicsCollider;
     //public DetectionZone detectionZone;
@@ -69,14 +69,23 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
-        Health -= damage;
+        if(unkillable == false)
+        {
+            Health -= damage;
+        }
+        
+       
     }
     public void OnHit(float damage, Vector2 knockback)
     {
-        Health -= damage;
-        //apply force to the bat
-        rb.AddForce(knockback, ForceMode2D.Impulse);
-        Debug.Log("Force" + knockback);
+        if (unkillable == false)
+        {
+            Health -= damage;
+            //apply force to the bat
+            rb.AddForce(knockback, ForceMode2D.Impulse);
+            Debug.Log("Force" + knockback);
+        }
+       
     }
     public void OnObjectDestroyed()
     {
