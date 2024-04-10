@@ -8,7 +8,7 @@ public class SwordAttack : MonoBehaviour
     public float damage = 1f;
     Vector2 rightAttackOffset;
     public Vector3 gunRight = new Vector3(1, -0.9f, 0);
-    public float knockBackForce = 500f;
+    public float knockBackForce = 15f;
 
     private void Start() {
         rightAttackOffset = transform.position;
@@ -42,7 +42,7 @@ public class SwordAttack : MonoBehaviour
         {
             print("hit");
             Vector3 parentPosition = transform.parent.position;
-            Vector2 direction = (Vector2)(other.gameObject.transform.position - parentPosition ).normalized;
+            Vector2 direction = (other.transform.position - parentPosition ).normalized;
             Vector2 knockback = direction * knockBackForce;
 
             /*if (other.tag == "Enemy") {

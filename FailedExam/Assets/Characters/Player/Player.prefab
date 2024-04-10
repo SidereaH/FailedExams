@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ff2ec463cd0da4d8913092a6477c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 500
   collisionOffset: 0.1
   movementFilter:
     useTriggers: 0
@@ -257,11 +257,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a70c61c63ce1aec4592272f403e59a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 500
-  knockForce: 100
-  _health: 3
+  disableSimulation: 1
+  knockForce: 0
+  _health: 10
   _targetable: 1
-  timeForDestroy: 10
 --- !u!1 &3771827999326962935
 GameObject:
   m_ObjectHideFlags: 0

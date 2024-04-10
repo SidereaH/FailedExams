@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Timers;
 public class DamageableCharacter : MonoBehaviour, IDamageable
 {
-    
+    public bool disableSimulation = false;
     Animator animator;
     Rigidbody2D rb;
     
@@ -57,7 +57,11 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         set
         {
             _targetable = value;
-            rb.simulated = value;
+            if (disableSimulation)
+            {
+                rb.simulated = false;
+            }
+           
             physicsCollider.enabled = value;
         }
 
@@ -71,7 +75,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     {
         Health -= damage;
         //apply force to the bat
-        rb.AddForce(knockback);
+        rb.AddForce(knockback, ForceMode2D.Impulse);
         Debug.Log("Force" + knockback);
     }
     public void OnObjectDestroyed()

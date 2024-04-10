@@ -5,7 +5,7 @@ using System.Timers;
 public class  Slime: MonoBehaviour
 {
     public float damage = 1f;
-
+    public float knockbackForce = 100f;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;
@@ -13,10 +13,11 @@ public class  Slime: MonoBehaviour
 
         if (damageable != null)
         {
-            //Vector2 direction = (collider.transform.position - transform.position).normalized;
 
-            //Vector2 knockback = direction * knockForce;
-            damageable.OnHit(damage);
+            Vector2 direction = (collider.transform.position - transform.position).normalized;
+
+            Vector2 knockback = direction * knockbackForce;
+            damageable.OnHit(damage, knockback);
         }
         Debug.Log("onCollisionEnter");
     }

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     bool isRunning = false;
     
 
-    public float moveSpeed = 15f;
+    public float moveSpeed = 500f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     public SwordAttack swordAttack;
@@ -51,8 +51,15 @@ public class Player : MonoBehaviour
            //ускоряем игрока в его направлении
             if (movementInput != Vector2.zero)
             {
-                rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
-                //контрол направление право, лево
+            //rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
+             rb.AddForce(movementInput * moveSpeed * Time.deltaTime); 
+                if(rb.velocity.magnitude > maxSpeed)
+            {
+              
+                float limitedSpeed = Mathf.Lerp(rb.velocity.magnitude, maxSpeed, idleFriction);
+                rb.velocity = rb.velocity.normalized * limitedSpeed;
+            }
+            //контрол направление право, лево
                 if (movementInput.x < 0)
                 {
                     spriteRenderer.flipX = true;
