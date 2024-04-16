@@ -11,10 +11,12 @@ public class  Slime: MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     DamageableCharacter character;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
+        character = rb.GetComponent<DamageableCharacter>();
     }
     private void FixedUpdate()
         
@@ -23,6 +25,7 @@ public class  Slime: MonoBehaviour
 
         if (character.Targetable && detectionZone.detectedObjs.Count > 0)
         {
+
             
             //расчет направления между объектом и нами
             Vector2 direction = (detectionZone.detectedObjs[0].transform.position - transform.position).normalized;
@@ -54,7 +57,7 @@ public class  Slime: MonoBehaviour
             Vector2 knockback = direction * knockbackForce;
             damageable.OnHit(damage, knockback);
         }
-        Debug.Log("onCollisionEnter");
+        
     }
 
     

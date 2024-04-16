@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System.Timers;
 using TMPro;
+using UnityEngine;
 public class DamageableCharacter : MonoBehaviour, IDamageable
 {
     public GameObject healthText;
@@ -12,12 +10,16 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public bool unkillable = false;
     public float knockForce = 100f;
     Collider2D physicsCollider;
-    public DetectionZone detectionZone;
+    //public DetectionZone detectionZone;
 
     public float _health = 3;
-    public bool _targetable = true;
+    bool _targetable = true;
+    public float invincibilityTime = 1f;
+    public bool canTurnInvincible = false;
     //public int timeForDestroy = 10;
-
+    public bool _invincible = false;
+    private float invincibleTimeElapsed = 0;
+    TextMeshProUGUI textValue;
 
     void Start()
     {
@@ -25,8 +27,32 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         animator = GetComponent<Animator>();
         physicsCollider = GetComponent<Collider2D>();
         //damagebleCharacter = GetComponent(<DamageableCharacter>());
+        textValue = healthText.GetComponent<TextMeshProUGUI>();
         
     }
+    public bool Invincible
+    {
+        get
+        {
+            return _invincible;
+
+        }
+        set
+        {
+            _invincible = value;
+
+            if (_invincible == true)
+            {
+                invincibleTimeElapsed = 0f;
+
+            }
+
+            Debug.Log(Invincible);
+            
+        }
+    }
+
+
     public float Health
     {
         set
@@ -34,10 +60,12 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             if(value < _health)
             {
                 animator.SetTrigger("hit");
+                textValue.text = (_health - value).ToString();
                 RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
                 textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
                 Canvas canvas = GameObject.FindObjectOfType<Canvas>();
                 textTransform.SetParent(canvas.transform);
+
             }
             _health = value;
 
@@ -81,22 +109,42 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
 
     public void OnHit(float damage)
     {
-        if(unkillable == false)
+        if (!Invincible)
         {
-            Health -= damage;
+            if (unkillable == false)
+            {
+                Health -= damage;
+                if (canTurnInvincible == true)
+                {
+                    //включение задержки
+                    Invincible = true;
+                }
+            }
+
         }
+        
         
        
     }
     public void OnHit(float damage, Vector2 knockback)
     {
-        if (unkillable == false)
-        {
-            Health -= damage;
-            //apply force to the bat
-            rb.AddForce(knockback, ForceMode2D.Impulse);
-            Debug.Log("Force" + knockback);
+        if(!Invincible) {
+            if (unkillable == false)
+            {
+                Health -= damage;
+                //apply force to the bat
+                rb.AddForce(knockback, ForceMode2D.Impulse);
+                
+
+                if (canTurnInvincible == true)
+                {
+                    //включение задержки
+                    Invincible = true;
+                    Debug.Log(Invincible);
+                }
+            }
         }
+        
        
     }
     public void OnObjectDestroyed()
@@ -119,21 +167,27 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
 
 
     }
-
-
-
-
-
-    void FixedUpdate()
+    public void FixedUpdate()
     {
-       
+        if (Invincible == true)
+        {
+            invincibleTimeElapsed += Time.deltaTime;
 
-
-
+            if(invincibleTimeElapsed > invincibilityTime)
+            {
+                Invincible = false;
+            }
+        }
     }
 
 
-   
+
+
+
+
+
+
+
 
 
 }

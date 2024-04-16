@@ -40,7 +40,6 @@ public class SwordAttack : MonoBehaviour
         IDamageable damagableObject = (IDamageable) other.GetComponent<IDamageable>();
         if ( damagableObject != null)
         {
-            print("hit");
             Vector3 parentPosition = transform.parent.position;
             Vector2 direction = (other.transform.position - parentPosition ).normalized;
             Vector2 knockback = direction * knockBackForce;

@@ -258,12 +258,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 6253719824281227341, guid: d6791d6560a9a8d428fa6cd6b45ed0aa, type: 3}
-  disableSimulation: 1
+  disableSimulation: 0
   unkillable: 0
   knockForce: 0
-  detectionZone: {fileID: 0}
-  _health: 10
-  _targetable: 1
+  invincibilityTime: 1
+  canTurnInvincible: 1
+  _invincible: 0
 --- !u!1 &3771827999326962935
 GameObject:
   m_ObjectHideFlags: 0
