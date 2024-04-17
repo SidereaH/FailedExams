@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  knockbackForce: 5
+  knockbackForce: 100
   detectionZone: {fileID: 0}
   moveSpeed: 500
 --- !u!114 &925062344876654195
@@ -213,7 +213,7 @@ MonoBehaviour:
   healthText: {fileID: 6253719824281227341, guid: d6791d6560a9a8d428fa6cd6b45ed0aa, type: 3}
   disableSimulation: 0
   unkillable: 0
-  knockForce: 50
+  knockForce: 5
   _health: 10
   invincibilityTime: 1
   canTurnInvincible: 0
