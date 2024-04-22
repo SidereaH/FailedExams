@@ -1,6 +1,7 @@
 using System.Timers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 public class DamageableCharacter : MonoBehaviour, IDamageable
 {
     public GameObject healthText;
@@ -11,7 +12,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public float knockForce = 100f;
     Collider2D physicsCollider;
     //public DetectionZone detectionZone;
-
+    public float _maxHealth = 3;
     public float _health = 3;
     bool _targetable = true;
     public float invincibilityTime = 1f;
@@ -20,6 +21,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public bool _invincible = false;
     private float invincibleTimeElapsed = 0;
     TextMeshProUGUI textValue;
+    public Slider slider;
 
     void Start()
     {
@@ -28,7 +30,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         physicsCollider = GetComponent<Collider2D>();
         //damagebleCharacter = GetComponent(<DamageableCharacter>());
         textValue = healthText.GetComponent<TextMeshProUGUI>();
-        
+        slider.maxValue = _maxHealth;
     }
     public bool Invincible
     {
@@ -51,8 +53,6 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             
         }
     }
-
-
     public float Health
     {
         set
@@ -65,6 +65,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
                 Canvas canvas = GameObject.FindObjectOfType<Canvas>();
                 textTransform.SetParent(canvas.transform);
+               
 
             }
             _health = value;
@@ -76,6 +77,8 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             {
                 animator.SetBool("isAlive", false);
                 Targetable = false;
+                rb.simulated = false;
+                slider.value = 0;
             }
             else
             {
@@ -93,7 +96,6 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         {
             return _targetable;
         }
-
         set
         {
             _targetable = value;
@@ -106,7 +108,6 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         }
 
     }
-
     public void OnHit(float damage)
     {
         if (!Invincible)
@@ -118,13 +119,11 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 {
                     //включение задержки
                     Invincible = true;
+                    slider.value = _health;
                 }
             }
 
-        }
-        
-        
-       
+        }   
     }
     public void OnHit(float damage, Vector2 knockback)
     {
@@ -140,6 +139,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 {
                     //включение задержки
                     Invincible = true;
+                    slider.value = _health;
                     Debug.Log(Invincible);
                 }
             }

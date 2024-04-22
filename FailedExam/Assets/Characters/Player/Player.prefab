@@ -261,9 +261,12 @@ MonoBehaviour:
   disableSimulation: 0
   unkillable: 0
   knockForce: 0
+  _maxHealth: 5
+  _health: 5
   invincibilityTime: 1
   canTurnInvincible: 1
   _invincible: 0
+  slider: {fileID: 0}
 --- !u!1 &3771827999326962935
 GameObject:
   m_ObjectHideFlags: 0
