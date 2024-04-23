@@ -11,20 +11,20 @@ public class SwordAttack : MonoBehaviour
     public float knockBackForce = 15f;
 
     private void Start() {
-        rightAttackOffset = transform.position;
+        //rightAttackOffset = transform.position;
     }
 
     public void AttackRight() {
         
         swordCollider.enabled = true;
-        transform.localPosition = rightAttackOffset;
-        gameObject.transform.position = gunRight;
+       // transform.localPosition = rightAttackOffset;
+       // gameObject.transform.position = gunRight;
     }
 
     public void AttackLeft() {
         
         swordCollider.enabled = true;
-        transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+       // transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
 
     }
 

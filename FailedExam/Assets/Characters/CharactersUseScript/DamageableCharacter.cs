@@ -115,11 +115,12 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             if (unkillable == false)
             {
                 Health -= damage;
+                slider.value = _health;
                 if (canTurnInvincible == true)
                 {
                     //включение задержки
                     Invincible = true;
-                    slider.value = _health;
+                    
                 }
             }
 
@@ -133,14 +134,14 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 Health -= damage;
                 //apply force to the bat
                 rb.AddForce(knockback, ForceMode2D.Impulse);
-                
+                slider.value = Health;
 
                 if (canTurnInvincible == true)
                 {
                     //включение задержки
                     Invincible = true;
-                    slider.value = _health;
-                    Debug.Log(Invincible);
+                    
+                    
                 }
             }
         }

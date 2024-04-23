@@ -63,12 +63,12 @@ public class Player : MonoBehaviour
                 if (movementInput.x < 0)
                 {
                     spriteRenderer.flipX = true;
-                    gunRenderer.flipX = true;
+                    //gunRenderer.flipX = true;
                 }
                 else if (movementInput.x > 0)
                 {
                     spriteRenderer.flipX = false;
-                    gunRenderer.flipX = false;
+                    //gunRenderer.flipX = false;
                    
                 }
                 IsRunning = true;   
@@ -132,11 +132,11 @@ public class Player : MonoBehaviour
         
         if (spriteRenderer.flipX == true)
         {
-            swordAttack.AttackLeft();
+            //swordAttack.AttackLeft();
         }
         else
         {
-            swordAttack.AttackRight();
+            //swordAttack.AttackRight();
         }
     }
 
