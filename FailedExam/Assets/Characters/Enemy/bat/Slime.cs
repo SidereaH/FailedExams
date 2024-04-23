@@ -39,8 +39,6 @@ public class  Slime: MonoBehaviour
             else if (direction.x > 0)
             {
                 spriteRenderer.flipX = false;
-                
-
             }
         }
     }

@@ -6,18 +6,6 @@ using UnityEngine.InputSystem;
 // Takes and handles input and movement for a player character
 public class Player : MonoBehaviour
 {
-    bool IsRunning
-    {
-        set
-        {
-            isRunning = value;
-            animator.SetBool("isRunning", isRunning);
-        }
-    }
-
-    bool isRunning = false;
-    
-
     public float moveSpeed = 500f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
@@ -31,8 +19,21 @@ public class Player : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     Animator gunAnimator;
     SpriteRenderer gunRenderer;
-    
     Transform gunObject;
+
+    bool IsRunning
+    {
+        set
+        {
+            isRunning = value;
+            animator.SetBool("isRunning", isRunning);
+        }
+    }
+
+    bool isRunning = false;
+    
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -129,7 +130,6 @@ public class Player : MonoBehaviour
 
     public void SwordAttack()
     {
-        
         
         if (spriteRenderer.flipX == true)
         {

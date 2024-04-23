@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 7027525529293959271}
   - component: {fileID: 2048679301366756589}
   - component: {fileID: 4013233854625795444}
+  - component: {fileID: 3021248117110790558}
   m_Layer: 0
   m_Name: knife_blue
   m_TagString: Untagged
@@ -435,4 +436,17 @@ MonoBehaviour:
   swordCollider: {fileID: 2048679301366756589}
   damage: 3
   gunRight: {x: -6.13, y: -0.96, z: 0}
-  knockBackForce: 500
+  knockBackForce: 15
+--- !u!114 &3021248117110790558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3771827999326962935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a7d1ca67e37eeb4699f5c760954940b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0
