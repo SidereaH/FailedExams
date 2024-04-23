@@ -13,7 +13,7 @@ public class Gun : MonoBehaviour
     void Update()
 
     {
-        Debug.Log(Mouse.current.position.ReadValue());
+        
         Vector3 difference = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f,0f,rotZ);

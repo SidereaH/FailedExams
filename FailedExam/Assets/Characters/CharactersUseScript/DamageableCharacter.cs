@@ -116,6 +116,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             {
                 Health -= damage;
                 slider.value = _health;
+                
                 if (canTurnInvincible == true)
                 {
                     //включение задержки

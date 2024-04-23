@@ -130,13 +130,14 @@ public class Player : MonoBehaviour
     public void SwordAttack()
     {
         
+        
         if (spriteRenderer.flipX == true)
         {
-            //swordAttack.AttackLeft();
+            swordAttack.AttackLeft();
         }
         else
         {
-            //swordAttack.AttackRight();
+            swordAttack.AttackRight();
         }
     }
 

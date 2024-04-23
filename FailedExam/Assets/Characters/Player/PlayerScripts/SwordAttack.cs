@@ -21,6 +21,7 @@ public class SwordAttack : MonoBehaviour
        // gameObject.transform.position = gunRight;
     }
 
+    
     public void AttackLeft() {
         
         swordCollider.enabled = true;
@@ -56,6 +57,7 @@ public class SwordAttack : MonoBehaviour
             }*/
             //other.SendMessage("OnHit", damage, knockback);
             damagableObject.OnHit(damage, knockback);
+            StopAttack();
         }
         
         
