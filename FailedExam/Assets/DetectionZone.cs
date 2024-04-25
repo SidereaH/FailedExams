@@ -6,7 +6,7 @@ public class DetectionZone : MonoBehaviour
 {
     public string tagTarget = "Player";
     public List<Collider2D> detectedObjs = new List<Collider2D>();
-
+    public Animator playerAnimator;
     public Collider2D col;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,7 @@ public class DetectionZone : MonoBehaviour
         if(collider.gameObject.tag == tagTarget)
         {
             detectedObjs.Add(collider);
+            playerAnimator.SetBool("isSafety", false);
 
         }
     }

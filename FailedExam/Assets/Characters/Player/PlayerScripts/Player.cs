@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public float moveSpeed = 500f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
+
+    //◊“Œ¡€ SCRIPT SWORD ATTACK «¿–¿¡Œ“¿À œ≈–≈“¿Ÿ»“≈ Œ–”∆»≈ ¬ œŒÀ≈ SWORDATTACK
     public SwordAttack swordAttack;
     public float maxSpeed = 8f;
     public float idleFriction = 0.9f;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
     Animator gunAnimator;
     SpriteRenderer gunRenderer;
     Transform gunObject;
+    
 
     bool IsRunning
     {
@@ -43,6 +46,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         gunAnimator = transform.GetChild(0).GetComponent<Animator>();
         gunRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        animator.SetBool("isSafety", true);
        
     }
     private void FixedUpdate()
