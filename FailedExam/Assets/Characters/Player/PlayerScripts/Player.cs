@@ -135,16 +135,23 @@ public class Player : MonoBehaviour
     public void SwordAttack()
     {
         
-        if (spriteRenderer.flipX == true)
-        {
-            swordAttack.AttackLeft();
-        }
-        else
-        {
-            swordAttack.AttackRight();
-        }
+            swordAttack.Attack();
+     
+        
+    }
+    public void getSlowed()
+    {
+        maxSpeed = 1f;
+        moveSpeed = 100f;
+    }
+    public void getUnSlowed()
+    {
+        maxSpeed = 5f;
+        moveSpeed = 500f;
+
     }
 
+    
     
     
     

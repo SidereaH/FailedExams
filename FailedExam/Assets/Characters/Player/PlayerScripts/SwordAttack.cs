@@ -9,33 +9,38 @@ public class SwordAttack : MonoBehaviour
     Vector2 rightAttackOffset;
     public Vector3 gunRight = new Vector3(1, -0.9f, 0);
     public float knockBackForce = 15f;
+    SpriteRenderer spriteRenderer;
 
     private void Start() {
         //rightAttackOffset = transform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
-    public void AttackRight() {
-        
-        swordCollider.enabled = true;
-       // transform.localPosition = rightAttackOffset;
        // gameObject.transform.position = gunRight;
-    }
+    
 
     
-    public void AttackLeft() {
+    public void Attack() {
         
         swordCollider.enabled = true;
-       // transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
+        ExecuteAfterTime(1);
+
+        // transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
 
     }
 
     public void StopAttack() {
         swordCollider.enabled = false;
+
     }
-    public void EndSwordAttack()
+    IEnumerator ExecuteAfterTime(float timeInSec)
     {
-        StopAttack();
+        yield return new WaitForSeconds(timeInSec);
+        swordCollider.enabled = false;
     }
+
+   
 
     private void OnTriggerEnter2D(Collider2D other) {
         IDamageable damagableObject = (IDamageable) other.GetComponent<IDamageable>();

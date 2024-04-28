@@ -22,7 +22,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     private float invincibleTimeElapsed = 0;
     TextMeshProUGUI textValue;
     public Slider slider;
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,7 +30,11 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         physicsCollider = GetComponent<Collider2D>();
         //damagebleCharacter = GetComponent(<DamageableCharacter>());
         textValue = healthText.GetComponent<TextMeshProUGUI>();
-        slider.maxValue = _maxHealth;
+        if(gameObject.tag == "Player")
+        {
+            slider.maxValue = _maxHealth;
+        }
+        
     }
     public bool Invincible
     {
@@ -49,7 +53,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
 
             }
 
-            Debug.Log(Invincible);
+           
             
         }
     }
@@ -57,17 +61,30 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     {
         set
         {
-            if(value < _health)
+            if(value > _health)
             {
-                animator.SetTrigger("hit");
-                textValue.text = (_health - value).ToString();
-                RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
-                textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-                Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-                textTransform.SetParent(canvas.transform);
+                
+                    animator.SetTrigger("heal");
+                    slider.value = value;
+                    
+                    print("heal! now +" + (_health - value));
                
-
             }
+            else if(value < _health)
+            {
+                    animator.SetTrigger("hit");
+                    textValue.text = (_health - value).ToString();
+                    RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
+                    textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+                    Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+                    textTransform.SetParent(canvas.transform);
+                    if(slider != null )
+                    {
+                        slider.value = value;
+                    }
+                    
+            }
+            
             _health = value;
 
             
@@ -119,11 +136,25 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 {
                     //включение задержки
                     Invincible = true;
-                    slider.value = _health;
+                   
                 }
             }
 
         }   
+    }
+    public void OnHeal(float heal, GameObject healBot)
+    {
+        if(_health != _maxHealth)
+        {
+            
+            
+            _health += heal;
+            slider.value = _health;
+            Destroy(healBot);
+
+        }
+        
+        
     }
     public void OnHit(float damage, Vector2 knockback)
     {
@@ -139,7 +170,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 {
                     //включение задержки
                     Invincible = true;
-                    slider.value = _health;
+                   
                     
                 }
             }
@@ -178,6 +209,11 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 Invincible = false;
             }
         }
+    }
+    public float getCurHealth()
+    {
+        float curHealth = Health;
+        return curHealth;
     }
 
 
