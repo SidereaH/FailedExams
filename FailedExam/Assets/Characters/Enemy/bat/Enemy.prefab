@@ -82,7 +82,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagTarget: Player
   detectedObjs: []
-  playerAnimator: {fileID: 0}
   col: {fileID: 2388081142739118723}
 --- !u!1 &8425651322366886671
 GameObject:
@@ -281,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   knockbackForce: 5
-  detectionZone: {fileID: 0}
+  detectionZone: {fileID: 4101074359006925700}
   moveSpeed: 500
 --- !u!114 &925062344876654195
 MonoBehaviour:

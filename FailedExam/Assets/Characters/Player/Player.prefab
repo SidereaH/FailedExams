@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009086065, y: -0.05389732}
+  m_Offset: {x: 0.0026030093, y: -0.26270792}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.23604669, y: 0.26573166}
+  m_Size: {x: 0.5659385, y: 0.24750972}
   m_EdgeRadius: 0
 --- !u!114 &3512526202882926508
 MonoBehaviour:
@@ -264,7 +264,7 @@ MonoBehaviour:
   knockForce: 0
   _maxHealth: 5
   _health: 5
-  invincibilityTime: 1
+  invincibilityTime: 0.5
   canTurnInvincible: 1
   _invincible: 0
   slider: {fileID: 0}
@@ -501,6 +501,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 8328397278370962219}
   col: {fileID: 6030737856542749634}
   player: {fileID: 3028702493528169866}
+  isDanger: 1
 --- !u!58 &6030737856542749634
 CircleCollider2D:
   m_ObjectHideFlags: 0
