@@ -1,44 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SwordAttack : MonoBehaviour
 {
-    public Collider2D swordCollider;
+    Collider2D swordCollider;
     public float damage = 1f;
-    Vector2 rightAttackOffset;
-    public Vector3 gunRight = new Vector3(1, -0.9f, 0);
     public float knockBackForce = 15f;
     SpriteRenderer spriteRenderer;
-
-    private void Start() {
-        //rightAttackOffset = transform.position;
+    public float offset;
+    public GameObject bullet;
+    Transform shotPoint;
+    private float timeBtwShots = 0;
+    GameObject player;
+    public float startTimeBtwShots;
+    Animator playerAnimator;
+    public bool canAttack;
+    public bool isAttacking = false;
+    private void Start() { 
+        swordCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if(gameObject.tag != "SwordGun")
+        {
+            shotPoint = transform.GetChild(0).GetComponent<Transform>();
+            
+        }
+        player = transform.parent.gameObject;
+        playerAnimator = player.GetComponent<Animator>();
+       
+    }
+    void Update()
 
+    {
+
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
+        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+        if(playerAnimator.GetBool("isSafety") == false) {
+            if (timeBtwShots <= 0)
+            {
+                canAttack = true;
+
+                if (Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    timeBtwShots = startTimeBtwShots;
+                }
+            }
+            else
+            {
+                timeBtwShots -= Time.deltaTime;
+                canAttack = false;
+
+            }
+
+        }
+        
+        
     }
 
-       // gameObject.transform.position = gunRight;
-    
-
-    
     public void Attack() {
+        isAttacking = true;
         
-        swordCollider.enabled = true;
-        ExecuteAfterTime(1);
-
-        // transform.localPosition = new Vector3(rightAttackOffset.x * -1, rightAttackOffset.y);
-
+        if(canAttack == true)
+        {
+            if(gameObject.tag != "SwordGun")
+            {
+                Instantiate(bullet, shotPoint.position, transform.rotation);
+                isAttacking = false;
+            }
+            else
+            {
+                swordCollider.enabled = true;
+            }         
+        }  
     }
 
     public void StopAttack() {
         swordCollider.enabled = false;
-
     }
-    IEnumerator ExecuteAfterTime(float timeInSec)
-    {
-        yield return new WaitForSeconds(timeInSec);
-        swordCollider.enabled = false;
-    }
+  
 
    
 
@@ -49,33 +90,13 @@ public class SwordAttack : MonoBehaviour
             Vector3 parentPosition = transform.parent.position;
             Vector2 direction = (other.transform.position - parentPosition ).normalized;
             Vector2 knockback = direction * knockBackForce;
-
-            /*if (other.tag == "Enemy") {
-                // Deal damage to the enemy
-                Enemy enemy = other.GetComponent<Enemy>();
-
-                if(enemy != null) {
-                    enemy.Health -= damage;
-
-
-                }
-            }*/
-            //other.SendMessage("OnHit", damage, knockback);
             damagableObject.OnHit(damage, knockback);
             StopAttack();
         }
-        
-        
-        
-
-        
-
-
-        /*Vector2 CalculateKnockBack()
-        {
-            GameObject character = gameObject.GetComponentInParent<GameObject>();
-        }
-        */
+    }
+    public float getStartTime()
+    {
+        return startTimeBtwShots;
     }
     
 }

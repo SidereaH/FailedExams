@@ -7,6 +7,7 @@ public class LiftTp : MonoBehaviour
 {
     // Start is called before the first frame update
     Animator animator;
+    Animator planim;
     Scene scene;
     private bool _enabled;
     void Start()
@@ -27,17 +28,27 @@ public class LiftTp : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(_enabled)
-        {
-            if (collision.tag == "Player")
+        planim = collision.gameObject.GetComponent<Animator>();
+
+        if (planim.GetBool("isSafety") == true) {
+            if (_enabled)
             {
-                animator.SetBool("isOpen", true);
+                if (collision.tag == "Player")
+                {
+                    animator.SetBool("isOpen", true);
+                }
             }
+            else
+            {
+               // Debug.Log("tp disabled");
+            }
+
         }
         else
         {
-            Debug.Log("tp disabled");
+           // Debug.Log("not safety");
         }
+        
         
         
     }

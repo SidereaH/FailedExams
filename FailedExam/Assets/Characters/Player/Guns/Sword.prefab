@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 4642308005332695572}
   - component: {fileID: 7409192512800916599}
   - component: {fileID: 1397559313704494760}
-  - component: {fileID: 9092233646183543258}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: SwordGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,20 +165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc004e3890e2134483e0123ed01017f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swordCollider: {fileID: 7409192512800916599}
   damage: 1
-  gunRight: {x: -6.13, y: -0.96, z: 0}
   knockBackForce: 15
---- !u!114 &9092233646183543258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3705555386442687286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a7d1ca67e37eeb4699f5c760954940b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   offset: 0
+  bullet: {fileID: 0}
+  startTimeBtwShots: 0
+  canAttack: 0
+  isAttacking: 0

@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     Animator gunAnimator;
     SpriteRenderer gunRenderer;
     Transform gunObject;
+    private float _timeBtwShots;
     
 
     bool IsRunning
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
         gunRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         swordAttack = transform.GetChild(0).gameObject.GetComponent<SwordAttack>();
         animator.SetBool("isSafety", true);
+       
        
     }
     private void FixedUpdate()
@@ -91,55 +93,25 @@ public class Player : MonoBehaviour
         
     }
 
-    /*private bool TryMove(Vector2 direction)
-    {
-        if (direction != Vector2.zero)
-        {
-            // Check for potential collisions
-            int count = rb.Cast(
-                direction, // X and Y values between -1 and 1 that represent the direction from the body to look for collisions
-                movementFilter, // The settings that determine where a collision can occur on such as layers to collide with
-                castCollisions, // List of collisions to store the found collisions into after the Cast is finished
-                moveSpeed * Time.fixedDeltaTime + collisionOffset); // The amount to cast equal to the movement plus an offset
 
-            if (count == 0)
-            {
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            // Can't move if there's no direction to move in
-            return false;
-        }
-
-    }*/
 
     //получаем значения из инпут система для движения
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
     }
- 
+
 
     void OnAttack()
     {
-        gunAnimator.SetTrigger("isAttack");
-        SwordAttack();
+        if (animator.GetBool("isSafety") == false)
+        {
+            gunAnimator.SetTrigger("isAttack");
+            swordAttack.Attack();
+        }
+        
     }
 
-    public void SwordAttack()
-    {
-        
-            swordAttack.Attack();
-     
-        
-    }
     public void getSlowed()
     {
         maxSpeed = 1f;
