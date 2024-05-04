@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public ContactFilter2D movementFilter;
 
     //врнаш SCRIPT SWORD ATTACK гюпюанрюк оеперюыхре нпсфхе б онке SWORDATTACK
-    public SwordAttack swordAttack;
+    SwordAttack swordAttack;
     public float maxSpeed = 8f;
     public float idleFriction = 0.9f;
     Vector2 movementInput = Vector2.zero;
@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         gunAnimator = transform.GetChild(0).GetComponent<Animator>();
         gunRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        swordAttack = transform.GetChild(0).gameObject.GetComponent<SwordAttack>();
         animator.SetBool("isSafety", true);
        
     }
