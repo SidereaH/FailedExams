@@ -18,6 +18,7 @@ public class SwordAttack : MonoBehaviour
     Animator playerAnimator;
     public bool canAttack;
     public bool isAttacking = false;
+    public GameObject effect;
     private void Start() { 
         swordCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -66,6 +67,7 @@ public class SwordAttack : MonoBehaviour
         {
             if(gameObject.tag != "SwordGun")
             {
+                Instantiate(effect, shotPoint.position, Quaternion.identity);
                 Instantiate(bullet, shotPoint.position, transform.rotation);
                 isAttacking = false;
             }

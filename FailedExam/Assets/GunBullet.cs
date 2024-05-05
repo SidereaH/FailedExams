@@ -10,6 +10,7 @@ public class GunBullet : MonoBehaviour
     public int damage;
     public float distance;
     public LayerMask whatIsSolid;
+    public float knockBackForce = 1f;
     private void Update()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
@@ -20,8 +21,10 @@ public class GunBullet : MonoBehaviour
                 IDamageable damagableObject = (IDamageable) hitInfo.collider.GetComponent<IDamageable>();
                 if (damagableObject != null)
                 {
-                    damagableObject.OnHit(damage);
-                    
+                    Vector3 parentPosition = transform.root.position;
+                    Vector2 direction = (hitInfo.collider.transform.position - parentPosition).normalized;
+                    Vector2 knockback = direction * knockBackForce;
+                    damagableObject.OnHit(damage, knockback);
                 }
                
             }

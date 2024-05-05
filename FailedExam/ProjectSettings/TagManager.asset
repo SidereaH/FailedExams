@@ -16,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Solid
-  - 
+  - Effects
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FX
+    uniqueID: 3366464733
     locked: 0
