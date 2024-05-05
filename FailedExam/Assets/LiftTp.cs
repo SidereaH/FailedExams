@@ -28,29 +28,37 @@ public class LiftTp : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        planim = collision.gameObject.GetComponent<Animator>();
-
-        if (planim.GetBool("isSafety") == true) {
-            if (_enabled)
+        if(collision != null)
+        {
+            if(collision.gameObject.tag == "Player")
             {
-                if (collision.tag == "Player")
+                planim = collision.gameObject.GetComponent<Animator>();
+
+                if (planim.GetBool("isSafety") == true)
                 {
-                    animator.SetBool("isOpen", true);
+                    if (_enabled)
+                    {
+                        if (collision.tag == "Player")
+                        {
+                            animator.SetBool("isOpen", true);
+                        }
+                    }
+                    else
+                    {
+                        // Debug.Log("tp disabled");
+                    }
+
+                }
+                else
+                {
+                    // Debug.Log("not safety");
                 }
             }
-            else
-            {
-               // Debug.Log("tp disabled");
-            }
+            
 
         }
-        else
-        {
-           // Debug.Log("not safety");
-        }
-        
-        
-        
+
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -38,6 +40,18 @@ public class SwordAttack : MonoBehaviour
         Vector3 difference = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
         float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+        if(rotZ > 90f )
+        {
+            spriteRenderer.flipY=true;
+        }
+        else if(rotZ < -90f && rotZ > -180f)
+        {
+            spriteRenderer.flipY = true;
+        }
+        else if(rotZ > -90f)
+        {
+            spriteRenderer.flipY = false;
+        }
         if(playerAnimator.GetBool("isSafety") == false) {
             if (timeBtwShots <= 0)
             {
@@ -45,25 +59,25 @@ public class SwordAttack : MonoBehaviour
 
                 if (Mouse.current.leftButton.wasPressedThisFrame)
                 {
+                    
                     timeBtwShots = startTimeBtwShots;
                 }
             }
             else
             {
+               
                 timeBtwShots -= Time.deltaTime;
                 canAttack = false;
-
             }
 
         }
-        
-        
     }
 
     public void Attack() {
         isAttacking = true;
         
-        if(canAttack == true)
+       
+        if (canAttack == true)
         {
             if(gameObject.tag != "SwordGun")
             {
