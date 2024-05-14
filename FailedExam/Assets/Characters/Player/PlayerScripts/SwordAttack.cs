@@ -21,6 +21,7 @@ public class SwordAttack : MonoBehaviour
     public bool canAttack;
     public bool isAttacking = false;
     public GameObject effect;
+    public ScoreManager scoreManager;
     private void Start() { 
         swordCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();

@@ -1,6 +1,8 @@
+using JetBrains.Annotations;
 using System.Timers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class DamageableCharacter : MonoBehaviour, IDamageable
 {
@@ -19,10 +21,12 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public bool canTurnInvincible = false;
     //public int timeForDestroy = 10;
     public bool _invincible = false;
-    private float invincibleTimeElapsed = 0;
+    private float invincibleTimeElapsed = 1;
     TextMeshProUGUI textValue;
     public Slider slider;
-    
+    public ScoreManager scoreManager;
+    public GameObject panel;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,7 +53,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
 
             if (_invincible == true)
             {
-                invincibleTimeElapsed = 0f;
+                invincibleTimeElapsed = 1f;
 
             }
 
@@ -66,8 +70,6 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 
                     animator.SetTrigger("heal");
                     slider.value = value;
-                    
-                    print("heal! now +" + (_health - value));
                
             }
             else if(value < _health)
@@ -96,6 +98,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 Targetable = false;
                 rb.simulated = false;
                 slider.value = 0;
+                panel.SetActive(true);
             }
             else
             {
@@ -146,15 +149,16 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     {
         if(_health != _maxHealth)
         {
-            
-            
             _health += heal;
             slider.value = _health;
             Destroy(healBot);
 
-        }
-        
-        
+        }        
+    }
+    public void addKill()
+    {
+        scoreManager.addKill();
+        Debug.LogWarning(scoreManager.kills.ToString());
     }
     public void OnHit(float damage, Vector2 knockback)
     {
@@ -171,7 +175,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                     //включение задержки
                     Invincible = true;
                    
-                    
+              
                 }
             }
         }
@@ -180,24 +184,9 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     }
     public void OnObjectDestroyed()
     {
-        /*Timer timer = new Timer(timeForDestroy);   
-        timer.Elapsed += OnTimerDeath;  
-        timer.AutoReset = false;
-        timer.Start();
-        Debug.Log("timer start");
-        */
         Destroy(gameObject);
-
     }
-    private void OnTimerDeath(object sender, ElapsedEventArgs e)
-    {
 
-
-        /*Timer timer = (Timer)sender;
-        timer.Stop();*/
-
-
-    }
     public void FixedUpdate()
     {
         if (Invincible == true)
@@ -215,15 +204,4 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         float curHealth = Health;
         return curHealth;
     }
-
-
-
-
-
-
-
-
-
-
-
 }

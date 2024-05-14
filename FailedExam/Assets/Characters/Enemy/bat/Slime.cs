@@ -12,6 +12,7 @@ public class  Slime: MonoBehaviour
     SpriteRenderer spriteRenderer;
     DamageableCharacter character;
     
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,16 +48,19 @@ public class  Slime: MonoBehaviour
         Collider2D collider = collision.collider;
         IDamageable damageable = collider.GetComponent<IDamageable>();
 
+
         if (damageable != null)
         {
-
-            Vector2 direction = (collider.transform.position - transform.position).normalized;
-
-            Vector2 knockback = direction * knockbackForce;
-            damageable.OnHit(damage, knockback);
+            if(damageable.Invincible == false)
+            {
+                 Vector2 direction = (collider.transform.position - transform.position).normalized;
+                 Vector2 knockback = direction * knockbackForce;
+                 damageable.OnHit(damage, knockback);
+            }
+           
         }
-        
-    }
 
-    
+
+
+    }
 }

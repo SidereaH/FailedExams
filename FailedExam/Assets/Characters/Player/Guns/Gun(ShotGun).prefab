@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.11250952, w: 0.9936507}
   m_LocalPosition: {x: 0.043, y: -0.104, z: -0}
-  m_LocalScale: {x: 0.77, y: 0.77, z: 0.77}
+  m_LocalScale: {x: 0.7700001, y: 0.7700001, z: 0.7699999}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7870627914160233685}
@@ -174,6 +174,7 @@ MonoBehaviour:
   canAttack: 0
   isAttacking: 0
   effect: {fileID: 3041990009802970112, guid: a7b1dd0384ce2104296a1b052aaa1028, type: 3}
+  scoreManager: {fileID: 0}
 --- !u!1 &8780155701451882323
 GameObject:
   m_ObjectHideFlags: 0

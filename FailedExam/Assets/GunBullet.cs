@@ -24,13 +24,11 @@ public class GunBullet : MonoBehaviour
                     Vector3 parentPosition = transform.root.position;
                     Vector2 direction = (hitInfo.collider.transform.position - parentPosition).normalized;
                     Vector2 knockback = direction * knockBackForce;
+                    Destroy(gameObject);
                     damagableObject.OnHit(damage, knockback);
                 }
-               
             }
             Destroy(gameObject);
-            
-            
         }
         transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
