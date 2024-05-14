@@ -8,10 +8,11 @@ public class LiftTp : MonoBehaviour
     // Start is called before the first frame update
     Animator animator;
     Animator planim;
-    Scene scene;
+    public Scene scene;
     private bool _enabled;
+    public string _name;
     void Start()
-    {
+    {   
         animator = GetComponent<Animator>();
         scene = SceneManager.GetActiveScene();
         if(scene.name == "SampleScene")
@@ -24,7 +25,6 @@ public class LiftTp : MonoBehaviour
             _enabled = false;
         }
     }
-
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -69,6 +69,6 @@ public class LiftTp : MonoBehaviour
     }
     void TpPlayer()
     {
-        SceneManager.LoadScene("Test Scene");
+        SceneManager.LoadScene(_name);
     }
 }

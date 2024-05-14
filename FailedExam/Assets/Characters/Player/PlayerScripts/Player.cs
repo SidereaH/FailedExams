@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     public float moveSpeed = 500f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
+    [SerializeField] GameObject stepPrefab;
+    [SerializeField] int time, moveTime;
+    [SerializeField] GameObject slimeStepPref;
+
 
     //ЧТОБЫ SCRIPT SWORD ATTACK ЗАРАБОТАЛ ПЕРЕТАЩИТЕ ОРУЖИЕ В ПОЛЕ SWORDATTACK
     SwordAttack swordAttack;
@@ -23,6 +27,7 @@ public class Player : MonoBehaviour
     SpriteRenderer gunRenderer;
     Transform gunObject;
     private float _timeBtwShots;
+    bool inSlime = false;
     
 
     bool IsRunning
@@ -52,14 +57,43 @@ public class Player : MonoBehaviour
        
        
     }
+    void Update()
+    {
+        if (movementInput != Vector2.zero)
+        {
+            if (time == 0)
+            {
+                time = moveTime;
+                if (inSlime == true)
+                {
+                    GameObject _temp = Instantiate(slimeStepPref, transform.position, Quaternion.identity);
+                    _temp.GetComponent<AudioSource>().Play();
+                    Destroy(_temp, 1);
+                }
+                else
+                {
+                    GameObject _temp = Instantiate(stepPrefab, transform.position, Quaternion.identity);
+                    _temp.GetComponent<AudioSource>().Play();
+                    Destroy(_temp, 1);
+                }
+            }
+            
+            
+        }
+    }
     private void FixedUpdate()
     {
-       
-            // If movement input is not 0, try to move
-           //ускоряем игрока в его направлении
-            if (movementInput != Vector2.zero)
+
+         if(time >0)
+         {
+            time--;
+         }
+        // If movement input is not 0, try to move
+        //ускоряем игрока в его направлении
+        if (movementInput != Vector2.zero)
             {
             //rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
+           
              rb.AddForce(movementInput * moveSpeed * Time.deltaTime); 
                 if(rb.velocity.magnitude > maxSpeed)
             {
@@ -79,6 +113,7 @@ public class Player : MonoBehaviour
                     //gunRenderer.flipX = false;
                    
                 }
+
                 IsRunning = true;   
                        
             }
@@ -98,6 +133,7 @@ public class Player : MonoBehaviour
     //получаем значения из инпут система для движения
     void OnMove(InputValue movementValue)
     {
+        
         movementInput = movementValue.Get<Vector2>();
     }
 
@@ -116,12 +152,13 @@ public class Player : MonoBehaviour
     {
         maxSpeed = 1f;
         moveSpeed = 100f;
+        inSlime = true;
     }
     public void getUnSlowed()
     {
         maxSpeed = 5f;
         moveSpeed = 500f;
-
+        inSlime = false;
     }
 
     

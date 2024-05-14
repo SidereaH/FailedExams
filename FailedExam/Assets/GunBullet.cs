@@ -11,6 +11,7 @@ public class GunBullet : MonoBehaviour
     public float distance;
     public LayerMask whatIsSolid;
     public float knockBackForce = 1f;
+    [SerializeField] GameObject soundHeadshot;
     private void Update()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
@@ -21,11 +22,16 @@ public class GunBullet : MonoBehaviour
                 IDamageable damagableObject = (IDamageable) hitInfo.collider.GetComponent<IDamageable>();
                 if (damagableObject != null)
                 {
+                    Instantiate(soundHeadshot, transform.position, Quaternion.identity);
                     Vector3 parentPosition = transform.root.position;
                     Vector2 direction = (hitInfo.collider.transform.position - parentPosition).normalized;
                     Vector2 knockback = direction * knockBackForce;
+                    
                     Destroy(gameObject);
                     damagableObject.OnHit(damage, knockback);
+                    
+                    
+                
                 }
             }
             Destroy(gameObject);

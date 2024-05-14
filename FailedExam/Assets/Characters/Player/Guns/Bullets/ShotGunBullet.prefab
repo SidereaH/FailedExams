@@ -105,3 +105,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   knockBackForce: 5
+  soundHeadshot: {fileID: 8512351584943710833, guid: d78c3420a256bd8419b4cda0464e0e8f, type: 3}

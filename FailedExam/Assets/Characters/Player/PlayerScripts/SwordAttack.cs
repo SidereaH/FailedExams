@@ -22,6 +22,8 @@ public class SwordAttack : MonoBehaviour
     public bool isAttacking = false;
     public GameObject effect;
     public ScoreManager scoreManager;
+    public GameObject soundShot;
+   
     private void Start() { 
         swordCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -82,6 +84,9 @@ public class SwordAttack : MonoBehaviour
         {
             if(gameObject.tag != "SwordGun")
             {
+                GameObject _temp = Instantiate(soundShot, transform.position, Quaternion.identity);
+                _temp.GetComponent<AudioSource>().Play();
+                Destroy(_temp, 1);
                 Instantiate(effect, shotPoint.position, Quaternion.identity);
                 Instantiate(bullet, shotPoint.position, transform.rotation);
                 isAttacking = false;
