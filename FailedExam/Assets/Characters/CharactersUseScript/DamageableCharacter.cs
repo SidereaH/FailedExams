@@ -26,7 +26,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public Slider slider;
     public ScoreManager scoreManager;
     public GameObject panel;
-    public Collider2D head;
+
 
     void Start()
     {

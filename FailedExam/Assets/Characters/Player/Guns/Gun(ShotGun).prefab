@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: -1851007337, guid: d1c71b8caf46e044886e6dde3d38eef6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -116,7 +116,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3206101223366660737}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -174,7 +174,8 @@ MonoBehaviour:
   canAttack: 0
   isAttacking: 0
   effect: {fileID: 3041990009802970112, guid: a7b1dd0384ce2104296a1b052aaa1028, type: 3}
-  scoreManager: {fileID: 0}
+  scoreManager: {fileID: 3738940434820866563, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
+  soundShot: {fileID: 3233277997531015178, guid: 16f96d095e34802428785e09aa909905, type: 3}
 --- !u!1 &8780155701451882323
 GameObject:
   m_ObjectHideFlags: 0
