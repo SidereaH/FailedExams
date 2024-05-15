@@ -106,14 +106,17 @@ public class SwordAttack : MonoBehaviour
    
 
     private void OnTriggerEnter2D(Collider2D other) {
-        IDamageable damagableObject = (IDamageable) other.GetComponent<IDamageable>();
-        if ( damagableObject != null)
+        if(gameObject.tag == "SwordGun")
         {
-            Vector3 parentPosition = transform.parent.position;
-            Vector2 direction = (other.transform.position - parentPosition ).normalized;
-            Vector2 knockback = direction * knockBackForce;
-            damagableObject.OnHit(damage, knockback);
-            StopAttack();
+            IDamageable damagableObject = (IDamageable)other.GetComponent<IDamageable>();
+            if (damagableObject != null)
+            {
+                Vector3 parentPosition = transform.parent.position;
+                Vector2 direction = (other.transform.position - parentPosition).normalized;
+                Vector2 knockback = direction * knockBackForce;
+                damagableObject.OnHit(damage, knockback);
+                StopAttack();
+            }
         }
     }
     public float getStartTime()

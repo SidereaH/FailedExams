@@ -1528,6 +1528,10 @@ PrefabInstance:
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 605866740}
+    - target: {fileID: 2663259497976309807, guid: c0d4381f95886b948b7b06b9a473fe90, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3206101223366660737, guid: c0d4381f95886b948b7b06b9a473fe90, type: 3}
       propertyPath: m_Name
       value: Gun(ShotGun)
@@ -1535,6 +1539,10 @@ PrefabInstance:
     - target: {fileID: 3206101223366660737, guid: c0d4381f95886b948b7b06b9a473fe90, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344748117767893078, guid: c0d4381f95886b948b7b06b9a473fe90, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7870627914160233685, guid: c0d4381f95886b948b7b06b9a473fe90, type: 3}
       propertyPath: m_LocalScale.x
@@ -2886,7 +2894,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114051481}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
