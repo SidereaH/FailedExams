@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunBullet : MonoBehaviour
@@ -12,26 +13,55 @@ public class GunBullet : MonoBehaviour
     public LayerMask whatIsSolid;
     public float knockBackForce = 1f;
     [SerializeField] GameObject soundHeadshot;
+    [SerializeField] GameObject soundBodyshot;
+    Collider2D parentCol;
     private void Update()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
-        if(hitInfo.collider != null)
+        if (hitInfo.collider != null)
+           
         {
-            if (hitInfo.collider.CompareTag("Enemy"))
+            parentCol = hitInfo.collider.GetComponentInParent<Collider2D>();
+            if (parentCol.CompareTag("Enemy"))
             {
-                IDamageable damagableObject = (IDamageable) hitInfo.collider.GetComponent<IDamageable>();
+                
+                IDamageable damagableObject = (IDamageable) hitInfo.collider.GetComponentInParent<IDamageable>();
                 if (damagableObject != null)
+                    
                 {
-                    Instantiate(soundHeadshot, transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+
                     Vector3 parentPosition = transform.root.position;
                     Vector2 direction = (hitInfo.collider.transform.position - parentPosition).normalized;
                     Vector2 knockback = direction * knockBackForce;
+
+
                     
-                    Destroy(gameObject);
-                    damagableObject.OnHit(damage, knockback);
+                    if (hitInfo.collider.name == "Head"){
+                        Debug.Log("Head");
+                        GameObject _temp = Instantiate(soundHeadshot, transform.position, Quaternion.identity);
+                        damagableObject.OnHit(damage*2, knockback);
+                        
+                        Destroy(_temp, 2);
+                    }
+                    else if (hitInfo.collider.name == "Body"){
+                        //GameObject _temp = Instantiate(soundBodyshot, transform.position, Quaternion.identity);
+                        //Destroy(_temp, 2);
+                        Debug.Log("Body");
+                        damagableObject.OnHit(damage * 1, knockback);
+                    }
+                    else
+                    {
+                        Debug.Log("Else");
+                        //GameObject _temp = Instantiate(soundBodyshot, transform.position, Quaternion.identity);
+                        //Destroy(_temp, 2);
+                        damagableObject.OnHit(damage * 0.5f, knockback);
+                    }
                     
-                    
-                
+
+
+
+
                 }
             }
             Destroy(gameObject);

@@ -8,6 +8,7 @@ TagManager:
   - Canvas
   - BulletGun
   - SwordGun
+  - Head
   layers:
   - Default
   - TransparentFX

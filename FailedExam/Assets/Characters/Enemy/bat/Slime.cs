@@ -47,6 +47,7 @@ public class  Slime: MonoBehaviour
     {
         Collider2D collider = collision.collider;
         IDamageable damageable = collider.GetComponent<IDamageable>();
+        IDamageable me = gameObject.GetComponent<IDamageable>();
 
 
         if (damageable != null)
@@ -56,11 +57,9 @@ public class  Slime: MonoBehaviour
                  Vector2 direction = (collider.transform.position - transform.position).normalized;
                  Vector2 knockback = direction * knockbackForce;
                  damageable.OnHit(damage, knockback);
+                 me.OnHit(0, -knockback);
             }
            
         }
-
-
-
     }
 }
