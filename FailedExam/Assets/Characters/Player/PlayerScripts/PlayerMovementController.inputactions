@@ -106,7 +106,7 @@
                     "name": "",
                     "id": "73393d66-332d-4d7d-ada2-5b9da269d1fa",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",

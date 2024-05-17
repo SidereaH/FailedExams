@@ -25,11 +25,11 @@ public class GunBullet : MonoBehaviour
             if (parentCol.CompareTag("Enemy"))
             {
                 
-                IDamageable damagableObject = (IDamageable) hitInfo.collider.GetComponentInParent<IDamageable>();
+                DamageableCharacter damagableObject = hitInfo.collider.GetComponentInParent<DamageableCharacter>();
                 if (damagableObject != null)
                     
                 {
-                    Destroy(gameObject);
+                    
 
                     Vector3 parentPosition = transform.root.position;
                     Vector2 direction = (hitInfo.collider.transform.position - parentPosition).normalized;
@@ -38,26 +38,29 @@ public class GunBullet : MonoBehaviour
 
                     
                     if (hitInfo.collider.name == "Head"){
-                        Debug.Log("Head");
+                        
                         GameObject _temp = Instantiate(soundHeadshot, transform.position, Quaternion.identity);
-                        damagableObject.OnHit(damage*2, knockback);
+                        damagableObject.OnHit(damage * 2, knockback);
                        
                         Destroy(_temp, 1);
+                        
                     }
                     else if (hitInfo.collider.name == "Body"){
                         //GameObject _temp = Instantiate(soundBodyshot, transform.position, Quaternion.identity);
                         //Destroy(_temp, 2);
-                        Debug.Log("Body");
+                        
                         damagableObject.OnHit(damage * 1, knockback);
+                        
                     }
                     else
                     {
-                        Debug.Log("Else");
+                        
                         //GameObject _temp = Instantiate(soundBodyshot, transform.position, Quaternion.identity);
                         //Destroy(_temp, 2);
                         damagableObject.OnHit(damage * 0.5f, knockback);
+                        
                     }
-                    
+                    Destroy(gameObject);
 
 
 

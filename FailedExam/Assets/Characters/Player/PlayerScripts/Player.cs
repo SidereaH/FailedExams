@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
     Transform gunObject;
     private float _timeBtwShots;
     bool inSlime = false;
-    
+    DamageableCharacter character;
+
 
     bool IsRunning
     {
@@ -54,12 +55,13 @@ public class Player : MonoBehaviour
         gunRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         swordAttack = transform.GetChild(0).gameObject.GetComponent<SwordAttack>();
         animator.SetBool("isSafety", true);
+        character = gameObject.GetComponent<DamageableCharacter>();
        
        
     }
     void Update()
     {
-        if (movementInput != Vector2.zero)
+        if (movementInput != Vector2.zero && character.Health >0)
         {
             if (time == 0)
             {
@@ -90,7 +92,7 @@ public class Player : MonoBehaviour
          }
         // If movement input is not 0, try to move
         //ускоряем игрока в его направлении
-        if (movementInput != Vector2.zero)
+        if (movementInput != Vector2.zero && character.Health > 0)
             {
             //rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
            

@@ -23,14 +23,14 @@ public class SwordAttack : MonoBehaviour
     public GameObject effect;
     public ScoreManager scoreManager;
     public GameObject soundShot;
-   
+
+
     private void Start() { 
         swordCollider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         if(gameObject.tag != "SwordGun")
         {
             shotPoint = transform.GetChild(0).GetComponent<Transform>();
-            
         }
         player = transform.parent.gameObject;
         playerAnimator = player.GetComponent<Animator>();
@@ -78,8 +78,6 @@ public class SwordAttack : MonoBehaviour
 
     public void Attack() {
         isAttacking = true;
-        
-       
         if (canAttack == true)
         {
             if(gameObject.tag != "SwordGun")

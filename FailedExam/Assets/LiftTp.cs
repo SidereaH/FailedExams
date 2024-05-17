@@ -18,7 +18,6 @@ public class LiftTp : MonoBehaviour
         if(scene.name == "SampleScene")
         {
            _enabled = true;
-            Debug.Log(enabled);
         }
         else
         {

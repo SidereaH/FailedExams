@@ -11,13 +11,25 @@ public class  Slime: MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     DamageableCharacter character;
-    
-    
+    Animator animator;
+    bool isRunning = false;
+    bool IsRunning
+    {
+        set
+        {
+            isRunning = value;
+            animator.SetBool("isRunning", isRunning);
+        }
+    }
+
+   
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
         character = rb.GetComponent<DamageableCharacter>();
+        animator = rb.GetComponent<Animator>();
     }
     private void FixedUpdate()
         
@@ -26,7 +38,7 @@ public class  Slime: MonoBehaviour
 
         if (character.Targetable && detectionZone.detectedObjs.Count > 0)
         {
-
+            IsRunning = true;
             
             //расчет направления между объектом и нами
             Vector2 direction = (detectionZone.detectedObjs[0].transform.position - transform.position).normalized;
@@ -41,6 +53,10 @@ public class  Slime: MonoBehaviour
             {
                 spriteRenderer.flipX = false;
             }
+        }
+        else
+        {
+            IsRunning = false;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

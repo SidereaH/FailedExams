@@ -1,8 +1,7 @@
-using JetBrains.Annotations;
-using System.Timers;
+
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class DamageableCharacter : MonoBehaviour, IDamageable
 {
@@ -26,6 +25,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public Slider slider;
     public ScoreManager scoreManager;
     public GameObject panel;
+    
 
 
     void Start()
@@ -75,31 +75,32 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             }
             else if(value < _health)
             {
-                    animator.SetTrigger("hit");
-                    textValue.text = (_health - value).ToString();
-                    RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
-                    textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-                    Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-                    textTransform.SetParent(canvas.transform);
+                animator.SetTrigger("hit");
+                textValue.text = (_health - value).ToString();
+                RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
+                textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+                Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+                textTransform.SetParent(canvas.transform);
                     if(slider != null )
                     {
                         slider.value = value;
                     }
-                    
             }
-            
             _health = value;
-
-            
-
-
             if (_health <= 0)
             {
                 animator.SetBool("isAlive", false);
                 Targetable = false;
                 rb.simulated = false;
-                slider.value = 0;
-                panel.SetActive(true);
+                if(slider != null)
+                {
+                    slider.value = 0;
+                }
+                if(panel != null)
+                {
+                    panel.SetActive(true);
+                }
+
             }
             else
             {
@@ -124,7 +125,6 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             {
                 rb.simulated = false;
             }
-           
             physicsCollider.enabled = value;
         }
 
@@ -159,7 +159,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public void addKill()
     {
         scoreManager.addKill();
-        Debug.LogWarning(scoreManager.kills.ToString());
+        Destroy(gameObject);
     }
     public void OnHit(float damage, Vector2 knockback)
     {
