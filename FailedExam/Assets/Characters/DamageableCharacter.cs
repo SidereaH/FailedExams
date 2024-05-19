@@ -188,6 +188,10 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         
        
     }
+    public void destroyGun()
+    {
+        Destroy(transform.GetChild(0).gameObject);
+    }
     public void OnObjectDestroyed()
     {
         Destroy(gameObject);

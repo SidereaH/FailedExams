@@ -326,7 +326,7 @@ MonoBehaviour:
   _maxHealth: 3
   _health: 10
   invincibilityTime: 1
-  canTurnInvincible: 1
+  canTurnInvincible: 0
   _invincible: 0
   slider: {fileID: 0}
   scoreManager: {fileID: 0}
@@ -338,7 +338,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4958344156432520018}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -360,11 +360,11 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01, y: -0.24}
-  m_Size: {x: 0.97, y: 0.64}
+  m_Offset: {x: 0.15334363, y: 0.049828935}
+  m_Size: {x: 0.06697266, y: 0.060348086}
   m_Direction: 1
 --- !u!1 &5336690856210717745
 GameObject:

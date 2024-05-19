@@ -17,10 +17,10 @@ TagManager:
   - Player
   - Water
   - UI
-  - Solid
+  - ForPlayer
   - Effects
-  - 
-  - 
+  - ForEnemy
+  - Attributes
   - 
   - 
   - 

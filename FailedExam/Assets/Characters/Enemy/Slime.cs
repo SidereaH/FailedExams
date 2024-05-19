@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Timers;
 public class  Slime: MonoBehaviour
 {
+    [SerializeField] EnemyType enemyType;
     public float damage = 1f;
     public float knockbackForce = 100f;
     public DetectionZone detectionZone;
@@ -13,16 +14,20 @@ public class  Slime: MonoBehaviour
     DamageableCharacter character;
     Animator animator;
     bool isRunning = false;
-    bool IsRunning
+    [SerializeField] enum EnemyType { MeleeEnemy, RangeEnemy };
+    [SerializeField] float distanceToShoot;
+    public bool IsRunning
     {
         set
         {
             isRunning = value;
             animator.SetBool("isRunning", isRunning);
         }
+        get
+        {
+            return isRunning;
+        }
     }
-
-   
 
     private void Start()
     {
@@ -38,12 +43,27 @@ public class  Slime: MonoBehaviour
 
         if (character.Targetable && detectionZone.detectedObjs.Count > 0)
         {
-            IsRunning = true;
+            
             
             //расчет направления между объектом и нами
             Vector2 direction = (detectionZone.detectedObjs[0].transform.position - transform.position).normalized;
             //следовать за обнаруженным объектом
-            rb.AddForce(moveSpeed * direction * Time.deltaTime);
+            if(enemyType.ToString() == "RangeEnemy")
+            {
+                if (Vector2.Distance(detectionZone.detectedObjs[0].transform.position, transform.position) > distanceToShoot)
+                {
+                    IsRunning = true;
+                    rb.AddForce(moveSpeed * direction * Time.deltaTime);
+                }
+            }
+            else
+            {
+                IsRunning = true;
+                rb.AddForce(moveSpeed * direction * Time.deltaTime);
+            }
+            
+            
+            
             if (direction.x < 0)
             {
                 spriteRenderer.flipX = true;
@@ -68,10 +88,11 @@ public class  Slime: MonoBehaviour
 
         if (damageable != null)
         {
-            if(damageable.Invincible == false)
+            while(damageable.Invincible == false)
             {
                  Vector2 direction = (collider.transform.position - transform.position).normalized;
                  Vector2 knockback = direction * knockbackForce;
+                 
                  damageable.OnHit(damage, knockback);
                  me.OnHit(0, -knockback);
             }

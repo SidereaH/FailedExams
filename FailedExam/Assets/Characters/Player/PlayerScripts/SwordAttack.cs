@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class SwordAttack : MonoBehaviour
 {
+    [SerializeField] TargetType targetType;
+    public GunType guntype;
     Collider2D swordCollider;
     public float damage = 1f;
     public float knockBackForce = 15f;
@@ -23,57 +25,124 @@ public class SwordAttack : MonoBehaviour
     public GameObject effect;
     public ScoreManager scoreManager;
     public GameObject soundShot;
+    [SerializeField] bool isEnemy;
+    [SerializeField] enum TargetType { Player, EnemyBoss };
+    //[SerializeField] string tagTarget;
+    GameObject target;
+    Slime enemySlime;
+    public enum GunType { Default, Enemy};
 
 
-    private void Start() { 
-        swordCollider = GetComponent<Collider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if(gameObject.tag != "SwordGun")
-        {
-            shotPoint = transform.GetChild(0).GetComponent<Transform>();
-        }
+    private void Start() {
         player = transform.parent.gameObject;
-        playerAnimator = player.GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (player.tag == "Player")
+        {
+            isEnemy = false;
+            swordCollider = GetComponent<Collider2D>();
+            
+            if (gameObject.tag != "SwordGun")
+            {
+                shotPoint = transform.GetChild(0).GetComponent<Transform>();
+            }
+
+            playerAnimator = player.GetComponent<Animator>();
+        }
+        else if(player.tag == "Enemy")
+        {
+            enemySlime = player.GetComponent<Slime>();
+      
+            isEnemy = true;
+            
+            target = GameObject.FindGameObjectWithTag(targetType.ToString());
+            if (gameObject.tag != "SwordGun")
+            {
+                shotPoint = transform.GetChild(0).GetComponent<Transform>();
+            }
+        }
        
     }
     void Update()
 
     {
-
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
-        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-        if(rotZ > 90f )
+        if(player.tag == "Player" && GunType.Default == guntype)
         {
-            spriteRenderer.flipY=true;
-        }
-        else if(rotZ < -90f && rotZ > -180f)
-        {
-            spriteRenderer.flipY = true;
-        }
-        else if(rotZ > -90f)
-        {
-            spriteRenderer.flipY = false;
-        }
-        if(playerAnimator.GetBool("isSafety") == false) {
-            if (timeBtwShots <= 0)
+            Vector3 difference = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
+            float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+            if (rotZ > 90f)
             {
-                canAttack = true;
-
-                if (Mouse.current.leftButton.wasPressedThisFrame)
+                spriteRenderer.flipY = true;
+            }
+            else if (rotZ < -90f && rotZ > -180f)
+            {
+                spriteRenderer.flipY = true;
+            }
+            else if (rotZ > -90f)
+            {
+                spriteRenderer.flipY = false;
+            }
+            if (playerAnimator.GetBool("isSafety") == false)
+            {
+                if (timeBtwShots <= 0)
                 {
-                    
+                    canAttack = true;
+
+                    if (Mouse.current.leftButton.wasPressedThisFrame)
+                    {
+
+                        timeBtwShots = startTimeBtwShots;
+                    }
+                }
+                else
+                {
+
+                    timeBtwShots -= Time.deltaTime;
+                    canAttack = false;
+                }
+
+            }
+        }
+        else if(player.tag == "Enemy")
+        {
+            
+            Vector3 difference = target.transform.position - transform.position;
+            float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+            if (rotZ > 90f)
+            {
+                spriteRenderer.flipY = true;
+            }
+            else if (rotZ < -90f && rotZ > -180f)
+            {
+                spriteRenderer.flipY = true;
+            }
+            else if (rotZ > -90f)
+            {
+                spriteRenderer.flipY = false;
+            }
+
+            if (enemySlime.IsRunning ==true)
+            {
+                if (timeBtwShots <= 0)
+                {
+                   
+                    canAttack = true;
+                  
+                    Attack();
                     timeBtwShots = startTimeBtwShots;
+                    
+                }
+                else
+                {
+
+                    timeBtwShots -= Time.deltaTime;
+                    canAttack = false;
                 }
             }
-            else
-            {
-               
-                timeBtwShots -= Time.deltaTime;
-                canAttack = false;
-            }
-
         }
+        
+
     }
 
     public void Attack() {

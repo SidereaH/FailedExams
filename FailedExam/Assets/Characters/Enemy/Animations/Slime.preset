@@ -6,7 +6,7 @@ Preset:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: bat
+  m_Name: Slime
   m_TargetType:
     m_NativeTypeID: 95
     m_ManagedTypePPtr: {fileID: 0}

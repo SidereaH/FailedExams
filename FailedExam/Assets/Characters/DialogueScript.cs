@@ -27,7 +27,6 @@ public class DialogueScript : MonoBehaviour
         speaker = gameObject.transform.GetChild(1).GetComponent<Image>();
         listener.sprite = listenerSprite;
         speaker.sprite = speakerSprite;
-        
         dialogueText.text = string.Empty;
         StartDialogue();
     }
