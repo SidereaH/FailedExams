@@ -16,6 +16,7 @@ public class DetectionZone : MonoBehaviour
         col.GetComponent<Collider2D>();
     }
     //чужой коллайдер вошел в зону
+   
     private void OnTriggerEnter2D(Collider2D collider)
     {
         

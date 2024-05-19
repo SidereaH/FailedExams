@@ -11,12 +11,14 @@ public class DetectEnemies : MonoBehaviour
     SpriteRenderer gunRenderer;
     public GameObject player;
     public bool isDanger = true;
+    DamageableCharacter character;
     // Start is called before the first frame update
     void Start()
     {
         gunRenderer = player.transform.GetChild(0).GetComponent<SpriteRenderer>();
         col.GetComponent<Collider2D>();
         gunRenderer.enabled = false;
+        character = player.GetComponent<DamageableCharacter>();
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -37,6 +39,9 @@ public class DetectEnemies : MonoBehaviour
             }
 
         }
+        if(col.gameObject.tag == "Dialogue") {
+            character.SetPause();
+        }
     }
     // Update is called once per frame
     private void OnTriggerExit2D(Collider2D collider)
@@ -51,6 +56,10 @@ public class DetectEnemies : MonoBehaviour
                 gunRenderer.enabled = false;
             }
             
+        }
+        if (col.gameObject.tag == "Dialogue")
+        {
+            character.UnPause();
         }
     }
 }

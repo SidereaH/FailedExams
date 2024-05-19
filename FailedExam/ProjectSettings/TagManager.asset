@@ -9,6 +9,7 @@ TagManager:
   - BulletGun
   - SwordGun
   - Head
+  - Dialogue
   layers:
   - Default
   - TransparentFX

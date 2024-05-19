@@ -37,7 +37,12 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
         textValue = healthText.GetComponent<TextMeshProUGUI>();
         if(gameObject.tag == "Player")
         {
-            slider.maxValue = _maxHealth;
+            if(slider != null)
+            {
+                slider.maxValue = _maxHealth;
+
+            }
+            
         }
         
     }
@@ -204,5 +209,16 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     {
         float curHealth = Health;
         return curHealth;
+    }
+    public void SetPause()
+    {
+        Debug.Log("pause");
+        rb.simulated = false;
+        Targetable = false;
+    }
+    public void UnPause()
+    {
+        rb.simulated = true;
+        Targetable = true;
     }
 }

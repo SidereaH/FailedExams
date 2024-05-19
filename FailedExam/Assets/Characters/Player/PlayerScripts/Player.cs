@@ -162,9 +162,16 @@ public class Player : MonoBehaviour
         moveSpeed = 500f;
         inSlime = false;
     }
+    
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision != null)
+        {
+            if (collision.tag == "Dialogue")
+            {
+                rb.simulated = false;
+            }
+        }
+    }
 
-    
-    
-    
-    
 }
