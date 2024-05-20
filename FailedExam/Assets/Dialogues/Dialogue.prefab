@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -3.369995, y: 222.72}
-  m_SizeDelta: {x: 1533.11, y: 445.43}
+  m_AnchoredPosition: {x: 32.09, y: 222.72}
+  m_SizeDelta: {x: -64.201, y: 445.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4646100324295584510
 CanvasRenderer:
@@ -279,6 +279,7 @@ MonoBehaviour:
   index: 0
   listenerSprite: {fileID: 0}
   speakerSprite: {fileID: 0}
+  audioWrite: {fileID: 7038159253181893473, guid: c1d21b8fdb2540af989757cf5460d4f2, type: 3}
 --- !u!1 &3764533769564272588
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -74, y: 275}
+  m_AnchoredPosition: {x: -135, y: 284}
   m_SizeDelta: {x: 385.07996, y: 430.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6968270147937433463

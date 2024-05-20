@@ -341,7 +341,7 @@ MonoBehaviour:
   knockbackForce: 5
   detectionZone: {fileID: 7492020697102518055}
   moveSpeed: 500
-  distanceToShoot: 2
+  distanceToShoot: 3
 --- !u!114 &9138653165796918525
 MonoBehaviour:
   m_ObjectHideFlags: 0

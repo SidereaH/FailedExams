@@ -17,6 +17,7 @@ public class DialogueScript : MonoBehaviour
     [SerializeField] Sprite listenerSprite;
     [SerializeField] Sprite speakerSprite;
     GameObject[] dialogWindow;
+    [SerializeField] GameObject audioWrite;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,9 @@ public class DialogueScript : MonoBehaviour
     {
         foreach (char c in lines[index].ToCharArray())
         {
+            GameObject _temp = Instantiate(audioWrite, transform.position, Quaternion.identity);
+                                
+            Destroy(_temp, 1);
             dialogueText.text += c;
             if (dialogueText.text == lines[index].ToString())
             {

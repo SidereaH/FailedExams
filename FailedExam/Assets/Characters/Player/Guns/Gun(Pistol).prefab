@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.04449116, w: 0.9990098}
   m_LocalPosition: {x: 2.45321, y: -2.40577, z: 0.7606468}
-  m_LocalScale: {x: 1.6247004, y: 1.6247004, z: 1.6246997}
+  m_LocalScale: {x: 0.77000034, y: 0.77000034, z: 0.7699999}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2897245012824769745}
@@ -141,7 +141,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21881896, y: 0.044505958}
+  m_Offset: {x: 0.033871874, y: 0.044505954}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.25800985, y: 0.3014927}
@@ -152,7 +152,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0192286, y: 0.28900522}
+  m_Size: {x: 0.6493343, y: 0.28900522}
   m_EdgeRadius: 0
 --- !u!114 &4511434143129340411
 MonoBehaviour:
@@ -166,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc004e3890e2134483e0123ed01017f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetType: 0
+  guntype: 0
   damage: 1
   knockBackForce: 3
   offset: 1
@@ -176,6 +178,7 @@ MonoBehaviour:
   effect: {fileID: 3041990009802970112, guid: a7b1dd0384ce2104296a1b052aaa1028, type: 3}
   scoreManager: {fileID: 3738940434820866563, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
   soundShot: {fileID: 7857343889761764476, guid: 2548e8c9fd1a5a649b601526524688b2, type: 3}
+  isEnemy: 0
 --- !u!1 &7027720802152050911
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 7027720802152050911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.673, y: 0.106, z: 0}
+  m_LocalPosition: {x: 0.332, y: 0.106, z: 0}
   m_LocalScale: {x: 0.2, y: 0.124796584, z: 2.4183743}
   m_ConstrainProportionsScale: 1
   m_Children: []

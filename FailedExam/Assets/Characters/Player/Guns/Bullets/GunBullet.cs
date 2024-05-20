@@ -76,7 +76,7 @@ public class GunBullet : MonoBehaviour
                 }
                 if(enemyBulet == true)
                 {
-                    Debug.Log(damage);
+                    
                     DamageableCharacter damagableObject = hitInfo.collider.GetComponentInParent<DamageableCharacter>();
                     if (damagableObject != null)
 

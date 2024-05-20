@@ -4904,14 +4904,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1803577304066875870, guid: 73a7c29063401324b9ed966e2b75cd45, type: 3}
-      propertyPath: distanceToShoot
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3092463083929108001, guid: 73a7c29063401324b9ed966e2b75cd45, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3228421881312777595, guid: 73a7c29063401324b9ed966e2b75cd45, type: 3}
       propertyPath: m_Name
       value: Squidward
@@ -4955,6 +4947,10 @@ PrefabInstance:
     - target: {fileID: 7314540464657550942, guid: 73a7c29063401324b9ed966e2b75cd45, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7423698516860407272, guid: 73a7c29063401324b9ed966e2b75cd45, type: 3}
+      propertyPath: startTimeBtwShots
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9138653165796918525, guid: 73a7c29063401324b9ed966e2b75cd45, type: 3}
       propertyPath: scoreManager
@@ -5069,10 +5065,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5313259385386288704}
     m_Modifications:
-    - target: {fileID: 2897245012824769745, guid: bead361c813402543ae288e19bc2ad33, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.332
-      objectReference: {fileID: 0}
     - target: {fileID: 3421456727697508116, guid: bead361c813402543ae288e19bc2ad33, type: 3}
       propertyPath: m_Name
       value: Gun(Pistol)
@@ -5088,18 +5080,6 @@ PrefabInstance:
     - target: {fileID: 7027720802152050911, guid: bead361c813402543ae288e19bc2ad33, type: 3}
       propertyPath: m_Layer
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414770308001829190, guid: bead361c813402543ae288e19bc2ad33, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.77000034
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414770308001829190, guid: bead361c813402543ae288e19bc2ad33, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.77000034
-      objectReference: {fileID: 0}
-    - target: {fileID: 7414770308001829190, guid: bead361c813402543ae288e19bc2ad33, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7699999
       objectReference: {fileID: 0}
     - target: {fileID: 7414770308001829190, guid: bead361c813402543ae288e19bc2ad33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5263,8 +5243,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6308545437672640323, guid: bd1176a443e43c843a402ead161e7277, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -367.87988
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308545437672640323, guid: bd1176a443e43c843a402ead161e7277, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -91.119995
+      value: -91.12012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5570,6 +5554,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2847551822366204225, guid: 66b22b92e7b05c347a2f32149b58f610, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.3701172
+      objectReference: {fileID: 0}
+    - target: {fileID: 2847551822366204225, guid: 66b22b92e7b05c347a2f32149b58f610, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 222.71997
+      objectReference: {fileID: 0}
     - target: {fileID: 3763567403845671041, guid: 66b22b92e7b05c347a2f32149b58f610, type: 3}
       propertyPath: m_Name
       value: DialogueField
@@ -5652,7 +5644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8158428590577210145, guid: 66b22b92e7b05c347a2f32149b58f610, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0025634766
+      value: 0.0024414062
       objectReference: {fileID: 0}
     - target: {fileID: 8158428590577210145, guid: 66b22b92e7b05c347a2f32149b58f610, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5677,6 +5669,10 @@ PrefabInstance:
     - target: {fileID: 8501346008957922748, guid: 66b22b92e7b05c347a2f32149b58f610, type: 3}
       propertyPath: lines.Array.data[0]
       value: "\u041F\u0440\u0438\u0432\u0435\u0442! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722492344769580346, guid: 66b22b92e7b05c347a2f32149b58f610, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0029296875
       objectReference: {fileID: 0}
     - target: {fileID: 8722492344769580346, guid: 66b22b92e7b05c347a2f32149b58f610, type: 3}
       propertyPath: m_AnchoredPosition.y
