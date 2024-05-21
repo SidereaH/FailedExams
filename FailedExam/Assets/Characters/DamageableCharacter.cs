@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class DamageableCharacter : MonoBehaviour, IDamageable
 {
@@ -42,8 +43,21 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 slider.maxValue = _maxHealth;
 
             }
-            
+            if (SceneManager.GetActiveScene().name != "SampleScene")
+            {
+                Debug.Log(SceneManager.GetActiveScene().name);
+                if (PlayerPrefs.HasKey("hp") == true)
+                {
+                    Debug.Log("PlayerHasSavedHp" + PlayerPrefs.GetFloat("hp"));
+                    _health = PlayerPrefs.GetFloat("hp");
+                    slider.value = _health;
+                }
+                
+            }
         }
+        
+        
+        
         
     }
     public bool Invincible
@@ -86,12 +100,14 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 textTransform.transform.position = Camera.main.WorldToScreenPoint(gameObject.transform.position);
                 Canvas canvas = GameObject.FindObjectOfType<Canvas>();
                 textTransform.SetParent(canvas.transform);
-                    if(slider != null )
-                    {
-                        slider.value = value;
-                    }
+                if (slider != null)
+                {
+                    slider.value = value;
+                }
+
             }
             _health = value;
+            
             if (_health <= 0)
             {
                 animator.SetBool("isAlive", false);

@@ -10,9 +10,14 @@ public class LiftTp : MonoBehaviour
     Animator planim;
     public Scene scene;
     private bool _enabled;
-    public string _name;
+    [SerializeField] string _name;
+    GameObject player;
+    DamageableCharacter characterStats;
+    private float hpAfterLevel;
     void Start()
-    {   
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        characterStats = player.GetComponent<DamageableCharacter>();
         animator = GetComponent<Animator>();
         scene = SceneManager.GetActiveScene();
         if(scene.name == "SampleScene")
@@ -24,7 +29,6 @@ public class LiftTp : MonoBehaviour
             _enabled = false;
         }
     }
-    // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision != null)
@@ -39,7 +43,11 @@ public class LiftTp : MonoBehaviour
                     {
                         if (collision.tag == "Player")
                         {
+                            hpAfterLevel = characterStats.Health;
+                            PlayerPrefs.SetFloat("hp", hpAfterLevel);
+                            Debug.Log(PlayerPrefs.GetFloat("hp"));
                             animator.SetBool("isOpen", true);
+                            PlayerPrefs.SetString("lastScene", _name);
                         }
                     }
                     else
@@ -68,6 +76,7 @@ public class LiftTp : MonoBehaviour
     }
     void TpPlayer()
     {
+        
         SceneManager.LoadScene(_name);
     }
 }

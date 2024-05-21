@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 // Takes and handles input and movement for a player character
 public class Player : MonoBehaviour
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject stepPrefab;
     [SerializeField] int time, moveTime;
     [SerializeField] GameObject slimeStepPref;
-
+   
 
     //◊“Œ¡€ SCRIPT SWORD ATTACK «¿–¿¡Œ“¿À œ≈–≈“¿Ÿ»“≈ Œ–”∆»≈ ¬ œŒÀ≈ SWORDATTACK
     SwordAttack swordAttack;
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -56,8 +58,10 @@ public class Player : MonoBehaviour
         swordAttack = transform.GetChild(0).gameObject.GetComponent<SwordAttack>();
         animator.SetBool("isSafety", true);
         character = gameObject.GetComponent<DamageableCharacter>();
-       
-       
+        
+        
+
+
     }
     void Update()
     {

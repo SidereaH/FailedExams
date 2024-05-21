@@ -353,7 +353,7 @@ MonoBehaviour:
   knockForce: 0
   _maxHealth: 5
   _health: 5
-  invincibilityTime: 1.5
+  invincibilityTime: 0.5
   canTurnInvincible: 1
   _invincible: 0
   slider: {fileID: 3113673511118579050, guid: 46d8345ec2348584bbd7d2e734079668, type: 3}

@@ -144,7 +144,7 @@ public class DialogueScript : MonoBehaviour
     }
     public void ScipText()
     {
-        if (dialogueText.text == lines[index] || dialogueText.text == lines[index]+" |" || dialogueText.text == lines[index] + " " || dialogueText.text == lines[index] + "|")
+        if (dialogueText.text == lines[index] || dialogueText.text == lines[index]+" |" || dialogueText.text == lines[index] + " " || dialogueText.text == lines[index] + "|" || dialogueText.text == lines[index] + "" )
         {
             Debug.Log("success");
             successLine = true;

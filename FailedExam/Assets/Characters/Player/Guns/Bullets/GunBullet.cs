@@ -28,7 +28,7 @@ public class GunBullet : MonoBehaviour
                     parentCol = hitInfo.collider.GetComponentInParent<Collider2D>();
                     if (parentCol.CompareTag("Enemy"))
                     {
-                        Debug.Log("whatthehell");
+                       
                         DamageableCharacter damagableObject = hitInfo.collider.GetComponentInParent<DamageableCharacter>();
                         if (damagableObject != null)
 
