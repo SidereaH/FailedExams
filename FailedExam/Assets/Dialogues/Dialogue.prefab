@@ -277,8 +277,8 @@ MonoBehaviour:
   speedtext: 0.06
   dialogueText: {fileID: 3931164930468552016}
   index: 0
-  listenerSprite: {fileID: 0}
-  speakerSprite: {fileID: 0}
+  listenerSprite: {fileID: -1207825107, guid: 5c6b08275a52ed04094e2c12c03cb0fa, type: 3}
+  speakerSprite: {fileID: 1801714621, guid: 8c6f451739b5b9b438509044971f792d, type: 3}
   audioWrite: {fileID: 7038159253181893473, guid: c1d21b8fdb2540af989757cf5460d4f2, type: 3}
 --- !u!1 &3764533769564272588
 GameObject:
