@@ -50,10 +50,7 @@ public class LiftTp : MonoBehaviour
                             PlayerPrefs.SetString("lastScene", _name);
                         }
                     }
-                    else
-                    {
-                        // Debug.Log("tp disabled");
-                    }
+                    
 
                 }
                 else
