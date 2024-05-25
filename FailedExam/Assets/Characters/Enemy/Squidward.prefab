@@ -178,9 +178,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08305723, y: -0.26836634}
-  m_Size: {x: 0.84327346, y: 0.58172596}
-  m_Direction: 1
+  m_Offset: {x: -0.12580957, y: 0.0200812}
+  m_Size: {x: 0.3827111, y: 0.45946738}
+  m_Direction: 0
 --- !u!1 &3228421881312777595
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +477,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.087977245, y: 0.23306827}
+  m_Offset: {x: 0.3, y: 0.23306827}
   m_Size: {x: 0.4244091, y: 0.5070001}
   m_Direction: 0
 --- !u!1 &6575057183855262955
@@ -651,7 +651,7 @@ MonoBehaviour:
   knockBackForce: 15
   offset: 0
   bullet: {fileID: 2164276471717942447, guid: e7d14b3f1389a7c4f9fb5e65bad675c5, type: 3}
-  startTimeBtwShots: 0.3
+  startTimeBtwShots: 1
   canAttack: 0
   isAttacking: 0
   effect: {fileID: 3041990009802970112, guid: a7b1dd0384ce2104296a1b052aaa1028, type: 3}

@@ -303,10 +303,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9339f382fee53d4ebe9861e316d278f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   damage: 1
   knockbackForce: 5
   detectionZone: {fileID: 8990935137258874618}
   moveSpeed: 500
+  distanceToShoot: 0
 --- !u!114 &664755866222412057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,8 +432,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.25497165, y: -0.47440854}
-  m_Size: {x: 0.4677981, y: 0.20357916}
+  m_Offset: {x: -0.21647468, y: -0.47440848}
+  m_Size: {x: 0.44931474, y: 0.20357916}
   m_Direction: 1
 --- !u!1 &7783689911846804282
 GameObject:

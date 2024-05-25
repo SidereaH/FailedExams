@@ -45,9 +45,9 @@ public class  Slime: MonoBehaviour
         {
             
             
-            //расчет направления между объектом и нами
+            //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
             Vector2 direction = (detectionZone.detectedObjs[0].transform.position - transform.position).normalized;
-            //следовать за обнаруженным объектом
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             if(enemyType.ToString() == "RangeEnemy")
             {
                 if (Vector2.Distance(detectionZone.detectedObjs[0].transform.position, transform.position) > distanceToShoot)
@@ -66,12 +66,19 @@ public class  Slime: MonoBehaviour
             
             if (direction.x < 0)
             {
-                spriteRenderer.flipX = true;
-                
+                //spriteRenderer.flipX = true;
+                //gameObject.transform.Rotate(0,180,0, Space.Self);
+                Quaternion rot = transform.rotation;
+                rot.y = 180;
+                transform.rotation = rot;
+
             }
             else if (direction.x > 0)
             {
-                spriteRenderer.flipX = false;
+                //spriteRenderer.flipX = false;
+                Quaternion rot = transform.rotation;
+                rot.y = 0;
+                transform.rotation = rot;
             }
         }
         else
