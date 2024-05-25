@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int kills=0;
-    public int gold = 0;
+    public int kills;
+    public int gold;
     [SerializeField] GameObject soundRampage;
     [SerializeField] int time, castTime;
 
     // Start is called before the first frame update
 
-
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("kills"))
+        {
+            kills = PlayerPrefs.GetInt("kills");
+            Debug.Log(kills);
+        }
+        else
+        {
+            Debug.Log("kills is null");
+        }
+    }
     // Update is called once per frame
     private void Update()
     {
@@ -30,8 +41,10 @@ public class ScoreManager : MonoBehaviour
 
         }
     }
+    
     public int addKill()
     {
+        Debug.Log(kills + 1);
         return kills++;
 
     }
@@ -41,6 +54,6 @@ public class ScoreManager : MonoBehaviour
     }
     public void validateKill()
     {
-        kills--;
+        //kills--;
     }
 }

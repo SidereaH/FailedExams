@@ -91,7 +91,7 @@ public class DialogueScript : MonoBehaviour
     {
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-
+            nextLineCountTime = 0;
             ScipText();
         }
         if (successLine == true)
@@ -146,7 +146,6 @@ public class DialogueScript : MonoBehaviour
     {
         if (dialogueText.text == lines[index] || dialogueText.text == lines[index]+" |" || dialogueText.text == lines[index] + " " || dialogueText.text == lines[index] + "|" || dialogueText.text == lines[index] + "" )
         {
-            Debug.Log("success");
             successLine = true;
             NextLines();
 

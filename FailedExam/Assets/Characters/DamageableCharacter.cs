@@ -45,20 +45,16 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             }
             if (SceneManager.GetActiveScene().name != "SampleScene")
             {
-                Debug.Log(SceneManager.GetActiveScene().name);
+
                 if (PlayerPrefs.HasKey("hp") == true)
                 {
-                    Debug.Log("PlayerHasSavedHp" + PlayerPrefs.GetFloat("hp"));
+
                     _health = PlayerPrefs.GetFloat("hp");
                     slider.value = _health;
                 }
                 
             }
         }
-        
-        
-        
-        
     }
     public bool Invincible
     {
@@ -232,7 +228,6 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     }
     public void SetPause()
     {
-        Debug.Log("pause");
         rb.simulated = false;
         Targetable = false;
     }

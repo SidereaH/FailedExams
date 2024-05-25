@@ -7,15 +7,21 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] Sprite beforeHoverSprite;
     Image imageComp;
     Sprite defSprite;
+    Button button;
     void Start()
     {
+        button = gameObject.GetComponent<Button>();
         imageComp = GetComponent<Image>();
         defSprite =imageComp.sprite;
     }
    
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        imageComp.sprite = beforeHoverSprite;
+        if(button.interactable == true)
+        {
+            imageComp.sprite = beforeHoverSprite;
+        }
+
     }
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {

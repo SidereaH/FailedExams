@@ -14,6 +14,7 @@ public class LiftTp : MonoBehaviour
     GameObject player;
     DamageableCharacter characterStats;
     private float hpAfterLevel;
+    [SerializeField] ScoreManager scoreManager;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -33,35 +34,34 @@ public class LiftTp : MonoBehaviour
     {
         if(collision != null)
         {
-            if(collision.gameObject.tag == "Player")
-            {
-                planim = collision.gameObject.GetComponent<Animator>();
-
-                if (planim.GetBool("isSafety") == true)
+            
+                if (collision.gameObject.tag == "Player")
                 {
-                    if (_enabled)
+                    planim = collision.gameObject.GetComponent<Animator>();
+
+                    if (planim.GetBool("isSafety") == true)
                     {
-                        if (collision.tag == "Player")
+                        if (_enabled)
                         {
-                            hpAfterLevel = characterStats.Health;
-                            PlayerPrefs.SetFloat("hp", hpAfterLevel);
-                            Debug.Log(PlayerPrefs.GetFloat("hp"));
-                            animator.SetBool("isOpen", true);
-                            PlayerPrefs.SetString("lastScene", _name);
+                            if (collision.tag == "Player")
+                            {
+                                int kills = scoreManager.kills;
+                                PlayerPrefs.SetInt("kills", kills);
+                                hpAfterLevel = characterStats.Health;
+                                PlayerPrefs.SetFloat("hp", hpAfterLevel);
+                                animator.SetBool("isOpen", true);
+                                PlayerPrefs.SetString("lastScene", _name);
+                            }
                         }
-                    }
-                    
 
-                }
-                else
-                {
-                    // Debug.Log("not safety");
+
+                    }
+                    else
+                    {
+                        // Debug.Log("not safety");
+                    }
                 }
             }
-            
-
-        }
-
 
     }
     private void OnTriggerExit2D(Collider2D collision)

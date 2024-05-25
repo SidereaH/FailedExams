@@ -49,7 +49,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        PlayerPrefs.SetString("lastScene", SceneManager.GetActiveScene().name);
+        Debug.Log(PlayerPrefs.GetString("lastScene"));
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();

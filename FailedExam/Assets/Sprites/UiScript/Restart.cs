@@ -24,7 +24,7 @@ public class Reload : MonoBehaviour
     {
         if(Keyboard.current.enterKey.wasPressedThisFrame)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(PlayerPrefs.GetString("lastScene"));
         }
     }
 }
