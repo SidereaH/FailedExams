@@ -13,9 +13,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject stepPrefab;
     [SerializeField] int time, moveTime;
     [SerializeField] GameObject slimeStepPref;
-   
 
-    //ЧТОБЫ SCRIPT SWORD ATTACK ЗАРАБОТАЛ ПЕРЕТАЩИТЕ ОРУЖИЕ В ПОЛЕ SWORDATTACK
+    [SerializeField] ScoreManager score;
+    //пїЅпїЅпїЅпїЅпїЅ SCRIPT SWORD ATTACK пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ SWORDATTACK
     SwordAttack swordAttack;
     public float maxSpeed = 8f;
     public float idleFriction = 0.9f;
@@ -42,10 +42,6 @@ public class Player : MonoBehaviour
     }
 
     bool isRunning = false;
-    
-
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -59,14 +55,10 @@ public class Player : MonoBehaviour
         swordAttack = transform.GetChild(0).gameObject.GetComponent<SwordAttack>();
         animator.SetBool("isSafety", true);
         character = gameObject.GetComponent<DamageableCharacter>();
-        
-        
-
-
     }
     void Update()
     {
-        if (movementInput != Vector2.zero && character.Health >0)
+        if (movementInput != Vector2.zero && character.Health > 0)
         {
             if (time == 0)
             {
@@ -84,67 +76,69 @@ public class Player : MonoBehaviour
                     Destroy(_temp, 1);
                 }
             }
-            
-            
+
+
         }
     }
     private void FixedUpdate()
     {
 
-         if(time >0)
-         {
+        if (time > 0)
+        {
             time--;
-         }
+        }
         // If movement input is not 0, try to move
-        //ускоряем игрока в его направлении
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (movementInput != Vector2.zero && character.Health > 0)
-            {
+        {
             //rb.velocity = Vector2.ClampMagnitude(rb.velocity + (movementInput * moveSpeed * Time.deltaTime), maxSpeed);
-           
-             rb.AddForce(movementInput * moveSpeed * Time.deltaTime); 
-                if(rb.velocity.magnitude > maxSpeed)
+
+            rb.AddForce(movementInput * moveSpeed * Time.deltaTime);
+            if (rb.velocity.magnitude > maxSpeed)
             {
-              
+
                 float limitedSpeed = Mathf.Lerp(rb.velocity.magnitude, maxSpeed, idleFriction);
                 rb.velocity = rb.velocity.normalized * limitedSpeed;
             }
-            //контрол направление право, лево
-                if (movementInput.x < 0)
-                {
-                    spriteRenderer.flipX = true;
-                    //gunRenderer.flipX = true;
-                }
-                else if (movementInput.x > 0)
-                {
-                    spriteRenderer.flipX = false;
-                    //gunRenderer.flipX = false;
-                   
-                }
-
-                IsRunning = true;   
-                       
-            }
-            else
+            //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ
+            if (movementInput.x < 0)
             {
-            //если нет движения -> интерполяция скорости приближается к нулю
-                rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, idleFriction);
-                IsRunning = false;
+                spriteRenderer.flipX = true;
+                //gunRenderer.flipX = true;
+            }
+            else if (movementInput.x > 0)
+            {
+                spriteRenderer.flipX = false;
+                //gunRenderer.flipX = false;
+
             }
 
-            
-        
+            IsRunning = true;
+
+        }
+        else
+        {
+            //пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ -> пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
+            rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, idleFriction);
+            IsRunning = false;
+        }
+
+
+
     }
 
 
 
-    //получаем значения из инпут система для движения
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     void OnMove(InputValue movementValue)
     {
-        
+
         movementInput = movementValue.Get<Vector2>();
     }
 
-
+    public void addGold(int goldCost){
+        score.addGold(goldCost);
+    }
     void OnAttack()
     {
         if (animator.GetBool("isSafety") == false)
@@ -152,7 +146,7 @@ public class Player : MonoBehaviour
             gunAnimator.SetTrigger("isAttack");
             swordAttack.Attack();
         }
-        
+
     }
 
     public void getSlowed()
@@ -167,7 +161,7 @@ public class Player : MonoBehaviour
         moveSpeed = 500f;
         inSlime = false;
     }
-    
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision != null)

@@ -47,6 +47,8 @@ public class LiftTp : MonoBehaviour
                             {
                                 int kills = scoreManager.kills;
                                 PlayerPrefs.SetInt("kills", kills);
+                                int gold = scoreManager.gold;
+                                PlayerPrefs.SetInt("gold", gold);
                                 hpAfterLevel = characterStats.Health;
                                 PlayerPrefs.SetFloat("hp", hpAfterLevel);
                                 animator.SetBool("isOpen", true);
@@ -73,7 +75,6 @@ public class LiftTp : MonoBehaviour
     }
     void TpPlayer()
     {
-        
         SceneManager.LoadScene(_name);
     }
 }

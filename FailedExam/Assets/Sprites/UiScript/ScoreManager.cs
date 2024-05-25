@@ -18,9 +18,8 @@ public class ScoreManager : MonoBehaviour
             kills = PlayerPrefs.GetInt("kills");
             Debug.Log(kills);
         }
-        else
-        {
-            Debug.Log("kills is null");
+        if(PlayerPrefs.HasKey("gold")){
+            gold = PlayerPrefs.GetInt("gold");
         }
     }
     // Update is called once per frame
@@ -31,14 +30,10 @@ public class ScoreManager : MonoBehaviour
             if (time == 0)
             {
                 time = castTime;
-
                 GameObject _temp = Instantiate(soundRampage, transform.position, Quaternion.identity);
                 _temp.GetComponent<AudioSource>().Play();
                 Destroy(_temp, 4);
-
-
             }
-
         }
     }
     
@@ -48,9 +43,9 @@ public class ScoreManager : MonoBehaviour
         return kills++;
 
     }
-    public int addGold()
+    public int addGold(int goldCost)
     {
-        return gold++;
+        return gold+=goldCost;
     }
     public void validateKill()
     {

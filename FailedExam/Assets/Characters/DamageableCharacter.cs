@@ -112,6 +112,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 if(slider != null)
                 {
                     slider.value = 0;
+                    
                 }
                 if(panel != null)
                 {
@@ -155,7 +156,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 Health -= damage;
                 if (canTurnInvincible == true)
                 {
-                    //включение задержки
+                    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     Invincible = true;
                    
                 }
@@ -190,7 +191,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
 
                 if (canTurnInvincible == true)
                 {
-                    //включение задержки
+                    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     Invincible = true;
                    
               

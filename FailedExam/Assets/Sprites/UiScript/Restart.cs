@@ -15,8 +15,10 @@ public class Reload : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        killsText.text = scoreManager.kills.ToString();
-        goldText.text = scoreManager.gold.ToString();
+        //killsText.text = scoreManager.kills.ToString();
+        killsText.text = PlayerPrefs.GetInt("kills").ToString();
+        //goldText.text = scoreManager.gold.ToString();
+        goldText.text = PlayerPrefs.GetInt("gold").ToString();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class Reload : MonoBehaviour
     {
         if(Keyboard.current.enterKey.wasPressedThisFrame)
         {
+            PlayerPrefs.SetInt("kills", 0);
             SceneManager.LoadScene(PlayerPrefs.GetString("lastScene"));
         }
     }
