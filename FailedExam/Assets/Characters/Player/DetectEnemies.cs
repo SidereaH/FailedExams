@@ -8,33 +8,37 @@ public class DetectEnemies : MonoBehaviour
     public List<Collider2D> detectedEnObjs = new List<Collider2D>();
     public Animator playerAnimator;
     public Collider2D col;
-    SpriteRenderer gunRenderer;
     public GameObject player;
     public bool isDanger = true;
     DamageableCharacter character;
+    GameObject gun;
     // Start is called before the first frame update
     void Start()
     {
-        gunRenderer = player.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        gun = player.transform.GetChild(1).gameObject;
+        
         col.GetComponent<Collider2D>();
-        gunRenderer.enabled = false;
+        gun.GetComponent<SpriteRenderer>().enabled = false;
         character = player.GetComponent<DamageableCharacter>();
     }
+    private void FixedUpdate()
+    {
+        gun = player.transform.GetChild(1).gameObject;
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(isDanger == true)
+        
+        if (collider.gameObject.tag == tagTarget)
         {
-            playerAnimator.SetBool("isSafety", false);
-            gunRenderer.enabled = true;
-        }
-        else if (collider.gameObject.tag == tagTarget)
-        {
+            isDanger = true;
             detectedEnObjs.Add(collider);
             int countEnemies = detectedEnObjs.Count;
             if (countEnemies > 0)
             {
                 playerAnimator.SetBool("isSafety", false);
-                gunRenderer.enabled = true;
+                gun.GetComponent<SpriteRenderer>().enabled = true;
 
             }
 
@@ -53,7 +57,7 @@ public class DetectEnemies : MonoBehaviour
             if (countEnemies == 0)
             {
                 playerAnimator.SetBool("isSafety", true);
-                gunRenderer.enabled = false;
+                gun.GetComponent<SpriteRenderer>().enabled = false;
             }
             
         }

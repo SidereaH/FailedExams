@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     Animator animator;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     Animator gunAnimator;
+    GameObject gun;
     SpriteRenderer gunRenderer;
     Transform gunObject;
     private float _timeBtwShots;
@@ -49,10 +50,10 @@ public class Player : MonoBehaviour
         Debug.Log(PlayerPrefs.GetString("lastScene"));
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        
+
         spriteRenderer = GetComponent<SpriteRenderer>();
-        gunAnimator = transform.GetChild(0).GetComponent<Animator>();
-        gunRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
-        swordAttack = transform.GetChild(0).gameObject.GetComponent<SwordAttack>();
+      
         animator.SetBool("isSafety", true);
         character = gameObject.GetComponent<DamageableCharacter>();
     }
@@ -82,6 +83,10 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        gun = transform.GetChild(1).gameObject;
+        gunAnimator = gun.GetComponent<Animator>();
+        gunRenderer = gun.GetComponent<SpriteRenderer>();
+        swordAttack = gun.GetComponent<SwordAttack>();
 
         if (time > 0)
         {
