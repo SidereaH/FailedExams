@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class SwordAttack : MonoBehaviour
 {
     [SerializeField] TargetType targetType;
+    Animator gunanimator;
     public GunType guntype;
     Collider2D swordCollider;
     public float damage = 1f;
@@ -26,14 +28,25 @@ public class SwordAttack : MonoBehaviour
     public ScoreManager scoreManager;
     public GameObject soundShot;
     [SerializeField] bool isEnemy;
+    public bool inPlayer;
     [SerializeField] enum TargetType { Player, EnemyBoss };
-    //[SerializeField] string tagTarget;
     GameObject target;
     Slime enemySlime;
-    public enum GunType { Default, Enemy};
-
-
+    public enum GunType {Default, Enemy};
     private void Start() {
+        gunanimator = GetComponent<Animator>();
+        if(transform.parent.tag == "Player")
+        {
+            inPlayer = true;
+            gunanimator.SetBool("isPicked", true);
+            pickUp();
+        }
+        else if(transform.parent.tag =="GunHolder")
+        {
+            inPlayer = false;
+            gunanimator.SetBool("isPicked", false);
+            pickDown();
+        }
         player = transform.parent.gameObject;
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (player.tag == "Player")
@@ -135,14 +148,11 @@ public class SwordAttack : MonoBehaviour
                 }
                 else
                 {
-
                     timeBtwShots -= Time.deltaTime;
                     canAttack = false;
                 }
             }
         }
-        
-
     }
 
     public void Attack() {
@@ -164,14 +174,22 @@ public class SwordAttack : MonoBehaviour
             }         
         }  
     }
-
+    public void pickDown()
+    {
+        Debug.Log("pickedDown");
+        inPlayer = false;
+        gunanimator.SetBool("isPicked", false);
+        transform.Rotate(0, 0, 0);
+    }
+    public void pickUp()
+    {
+        Debug.Log("pickedUp");
+        inPlayer = true;
+        gunanimator.SetBool("isPicked", true);
+    }
     public void StopAttack() {
         swordCollider.enabled = false;
     }
-  
-
-   
-
     private void OnTriggerEnter2D(Collider2D other) {
         if(gameObject.tag == "SwordGun")
         {
@@ -190,5 +208,4 @@ public class SwordAttack : MonoBehaviour
     {
         return startTimeBtwShots;
     }
-    
 }

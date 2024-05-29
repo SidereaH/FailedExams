@@ -140,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.37691545, y: 0.20143399}
+  m_Offset: {x: 0.20681289, y: 0.20715465}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.29052466, y: 0.24602556}
@@ -151,7 +151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12, y: 8.25}
+  m_Size: {x: 0.41878873, y: 0.37332907}
   m_EdgeRadius: 0
 --- !u!114 &1397559313704494760
 MonoBehaviour:
@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc004e3890e2134483e0123ed01017f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetType: 0
+  guntype: 0
   damage: 1
   knockBackForce: 15
   offset: 0
@@ -173,3 +175,7 @@ MonoBehaviour:
   canAttack: 0
   isAttacking: 0
   effect: {fileID: 0}
+  scoreManager: {fileID: 0}
+  soundShot: {fileID: 0}
+  isEnemy: 0
+  inPlayer: 0

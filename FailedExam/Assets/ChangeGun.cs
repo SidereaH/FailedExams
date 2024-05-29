@@ -25,13 +25,16 @@ public class ChangeGun : MonoBehaviour
         {
             if (Keyboard.current.fKey.wasPressedThisFrame)
             {
+                
                 detectEnemies = collision.transform.GetChild(0).GetComponent<DetectEnemies>();
                 Debug.Log(detectEnemies.isDanger);
                 if (detectEnemies.isDanger == false)
                 {
                     GameObject tempGun = gameObject.transform.GetChild(0).gameObject;
                     Debug.Log("change");
+                    tempGun.GetComponent<SwordAttack>().pickUp();
                     GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
+                    oldGun.GetComponent<SwordAttack>().pickDown();
                     oldGun.transform.GetComponent<SpriteRenderer>().enabled = true;
                     tempGun.transform.GetComponent<SpriteRenderer>().enabled = false;
                     Instantiate(oldGun, gameObject.transform);
@@ -43,9 +46,12 @@ public class ChangeGun : MonoBehaviour
                 {
                     GameObject tempGun = gameObject.transform.GetChild(0).gameObject;
                     Debug.Log("change");
+                    tempGun.GetComponent<SwordAttack>().pickUp();
                     GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
+                    oldGun.GetComponent<SwordAttack>().pickDown();
                     Instantiate(oldGun, gameObject.transform);
                     Instantiate(tempGun, collision.gameObject.transform);
+                    tempGun.name = "Gun";
                     Destroy(oldGun);
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                 }

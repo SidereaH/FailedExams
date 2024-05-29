@@ -70,7 +70,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
+    resizeAlgorithm: 1
     textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
@@ -151,7 +151,7 @@ TextureImporter:
         serializedVersion: 2
         x: 23
         y: 169
-        width: 5
+        width: 6
         height: 3
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -175,7 +175,7 @@ TextureImporter:
         y: 195
         width: 13
         height: 8
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -193,11 +193,11 @@ TextureImporter:
         \u043E\u0440\u0443\u0436\u0438\u0435_3"
       rect:
         serializedVersion: 2
-        x: 91
-        y: 195
-        width: 26
-        height: 9
-      alignment: 0
+        x: 89
+        y: 194
+        width: 28
+        height: 10
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []

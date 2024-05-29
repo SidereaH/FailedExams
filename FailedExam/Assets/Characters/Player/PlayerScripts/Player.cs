@@ -49,11 +49,8 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetString("lastScene", SceneManager.GetActiveScene().name);
         Debug.Log(PlayerPrefs.GetString("lastScene"));
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-      
+        animator = GetComponent<Animator>();     
+        spriteRenderer = GetComponent<SpriteRenderer>();  
         animator.SetBool("isSafety", true);
         character = gameObject.GetComponent<DamageableCharacter>();
     }
@@ -148,7 +145,6 @@ public class Player : MonoBehaviour
     {
         if (animator.GetBool("isSafety") == false)
         {
-            gunAnimator.SetTrigger("isAttack");
             swordAttack.Attack();
         }
 

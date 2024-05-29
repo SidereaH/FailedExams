@@ -86,6 +86,7 @@ public class  Slime: MonoBehaviour
             IsRunning = false;
         }
     }
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider = collision.collider;
@@ -104,6 +105,31 @@ public class  Slime: MonoBehaviour
                  me.OnHit(0, -knockback);
             }
            
+        }
+    }*/
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Collider2D collider = collision.collider;
+        IDamageable damageable;
+        if (collision.gameObject.tag != "Player")
+        {
+            damageable = collider.transform.parent.GetComponentInParent<IDamageable>();
+        }
+        else
+        {
+            damageable = collider.GetComponent<IDamageable>();
+        }
+        IDamageable me = gameObject.GetComponent<IDamageable>();
+
+
+        if (damageable != null)
+        {
+                Vector2 direction = (collider.transform.position - transform.position).normalized;
+                Vector2 knockback = direction * knockbackForce;
+
+                damageable.OnHit(damage, knockback);
+                me.OnHit(0, -knockback);
+
         }
     }
 }

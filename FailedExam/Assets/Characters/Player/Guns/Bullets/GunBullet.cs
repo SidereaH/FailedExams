@@ -21,10 +21,10 @@ public class GunBullet : MonoBehaviour
         
             RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
             if (hitInfo.collider != null)
-
             {
-                if(enemyBulet == false)
-                {
+                Debug.Log(whatIsSolid);
+                if (enemyBulet == false)
+                 {
                     parentCol = hitInfo.collider.GetComponentInParent<Collider2D>();
                     if (parentCol.CompareTag("Enemy"))
                     {

@@ -10,6 +10,7 @@ TagManager:
   - SwordGun
   - Head
   - Dialogue
+  - GunHolder
   layers:
   - Default
   - TransparentFX
