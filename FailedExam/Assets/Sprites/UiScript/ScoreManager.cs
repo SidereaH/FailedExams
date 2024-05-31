@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour
         }
         if(PlayerPrefs.HasKey("gold")){
             gold = PlayerPrefs.GetInt("gold");
+            Debug.Log(gold);    
         }
     }
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class ScoreManager : MonoBehaviour
             {
                 time = castTime;
                 GameObject _temp = Instantiate(soundRampage, transform.position, Quaternion.identity);
-                _temp.GetComponent<AudioSource>().Play();
+                //_temp.GetComponent<AudioSource>().Play();
                 Destroy(_temp, 4);
             }
         }

@@ -46,14 +46,16 @@ public class ChangeGun : MonoBehaviour
                 {
                     GameObject tempGun = gameObject.transform.GetChild(0).gameObject;
                     Debug.Log("change");
-                    tempGun.GetComponent<SwordAttack>().pickUp();
+                    
                     GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
-                    oldGun.GetComponent<SwordAttack>().pickDown();
-                    Instantiate(oldGun, gameObject.transform);
-                    Instantiate(tempGun, collision.gameObject.transform);
+                    
+                    GameObject oldObj = Instantiate(oldGun, gameObject.transform);
+                    GameObject newObj = Instantiate(tempGun, collision.gameObject.transform);
+                    newObj.GetComponent<SwordAttack>().pickUp();
+                    oldObj.GetComponent<SwordAttack>().pickDown();
                     tempGun.name = "Gun";
-                    Destroy(oldGun);
                     Destroy(gameObject.transform.GetChild(0).gameObject);
+                    Destroy(collision.gameObject.transform.GetChild(1).gameObject);
                 }
 
 

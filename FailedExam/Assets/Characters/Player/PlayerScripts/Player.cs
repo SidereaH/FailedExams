@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private float _timeBtwShots;
     bool inSlime = false;
     DamageableCharacter character;
-
+    DetectEnemies detectEnemies;
 
     bool IsRunning
     {
@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();     
         spriteRenderer = GetComponent<SpriteRenderer>();  
         animator.SetBool("isSafety", true);
+        detectEnemies = gameObject.transform.GetChild(0).GetComponent<DetectEnemies>();
         character = gameObject.GetComponent<DamageableCharacter>();
     }
     void Update()

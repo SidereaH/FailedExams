@@ -24,7 +24,14 @@ public class DetectEnemies : MonoBehaviour
     private void FixedUpdate()
     {
         gun = player.transform.GetChild(1).gameObject;
-
+        if(isDanger == false)
+        {
+            gun.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else
+        {
+            gun.GetComponent<SpriteRenderer>().enabled = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -57,7 +64,9 @@ public class DetectEnemies : MonoBehaviour
             if (countEnemies == 0)
             {
                 playerAnimator.SetBool("isSafety", true);
+                
                 gun.GetComponent<SpriteRenderer>().enabled = false;
+                isDanger = false;
             }
             
         }

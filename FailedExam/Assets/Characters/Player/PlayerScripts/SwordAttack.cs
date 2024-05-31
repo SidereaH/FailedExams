@@ -78,6 +78,7 @@ public class SwordAttack : MonoBehaviour
     void Update()
 
     {
+        
         if(player.tag == "Player" && GunType.Default == guntype)
         {
             Vector3 difference = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
@@ -178,17 +179,36 @@ public class SwordAttack : MonoBehaviour
     {
         Debug.Log("pickedDown");
         inPlayer = false;
-        gunanimator.SetBool("isPicked", false);
+        gameObject.GetComponent<Animator>().SetBool("isPicked", false);
         transform.Rotate(0, 0, 0);
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
     public void pickUp()
     {
         Debug.Log("pickedUp");
         inPlayer = true;
-        gunanimator.SetBool("isPicked", true);
+        gameObject.GetComponent<Animator>().SetBool("isPicked", true);
+        player = transform.GetComponentInParent<Transform>().gameObject;
+        Debug.Log(player.tag);
+        /*
+            if (player.transform.GetChild(0).GetComponent<DetectEnemies>().isDanger == true)
+            {
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            }
+        */
+
+        gameObject.GetComponent<Collider2D>().enabled = true;
+
+
+        //swordCollider.enabled=true;
     }
     public void StopAttack() {
-        swordCollider.enabled = false;
+        //swordCollider.enabled = false;
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if(gameObject.tag == "SwordGun")

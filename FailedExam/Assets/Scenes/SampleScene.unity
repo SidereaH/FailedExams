@@ -6310,6 +6310,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4511434143129340411, guid: bead361c813402543ae288e19bc2ad33, type: 3}
+      propertyPath: inPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511434143129340411, guid: bead361c813402543ae288e19bc2ad33, type: 3}
       propertyPath: isAuthomatic
       value: 1
       objectReference: {fileID: 0}
@@ -7250,6 +7254,10 @@ PrefabInstance:
     - target: {fileID: 2552568853441135255, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738940434820866563, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8708466522028715183, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
       propertyPath: m_Name

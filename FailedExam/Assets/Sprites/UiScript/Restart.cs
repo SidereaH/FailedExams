@@ -16,9 +16,10 @@ public class Reload : MonoBehaviour
     void Start()
     {
         //killsText.text = scoreManager.kills.ToString();
-        killsText.text = PlayerPrefs.GetInt("kills").ToString();
+        killsText.text = scoreManager.kills.ToString();
         //goldText.text = scoreManager.gold.ToString();
-        goldText.text = PlayerPrefs.GetInt("gold").ToString();
+        goldText.text = scoreManager.gold.ToString();
+
     }
 
     // Update is called once per frame
