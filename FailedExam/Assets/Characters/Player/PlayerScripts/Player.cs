@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     DamageableCharacter character;
     DetectEnemies detectEnemies;
 
+    public bool isActiveMenu;
     bool IsRunning
     {
         set
@@ -46,8 +47,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isActiveMenu = false;
         PlayerPrefs.SetString("lastScene", SceneManager.GetActiveScene().name);
-        Debug.Log(PlayerPrefs.GetString("lastScene"));
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();     
         spriteRenderer = GetComponent<SpriteRenderer>();  
@@ -81,6 +82,7 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
         gun = transform.GetChild(1).gameObject;
         gunAnimator = gun.GetComponent<Animator>();
         gunRenderer = gun.GetComponent<SpriteRenderer>();
@@ -129,7 +131,10 @@ public class Player : MonoBehaviour
 
 
     }
-
+    public void isPaused(bool paused)
+    {
+        isActiveMenu = paused;
+    }
 
 
     //�������� �������� �� ����� ������� ��� ��������

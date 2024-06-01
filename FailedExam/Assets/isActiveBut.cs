@@ -13,7 +13,7 @@ public class isActiveBut : MonoBehaviour
         
         if(PlayerPrefs.HasKey("lastScene") == true)
         {
-            Debug.Log(PlayerPrefs.GetString("lastScene"));
+
             button.interactable = true;
         }
         else

@@ -16,11 +16,11 @@ public class ScoreManager : MonoBehaviour
         if (PlayerPrefs.HasKey("kills"))
         {
             kills = PlayerPrefs.GetInt("kills");
-            Debug.Log(kills);
+
         }
         if(PlayerPrefs.HasKey("gold")){
             gold = PlayerPrefs.GetInt("gold");
-            Debug.Log(gold);    
+  
         }
     }
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour
     
     public int addKill()
     {
-        Debug.Log(kills + 1);
+
         return kills++;
 
     }

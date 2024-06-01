@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class SwordAttack : MonoBehaviour
@@ -32,11 +33,14 @@ public class SwordAttack : MonoBehaviour
     [SerializeField] enum TargetType { Player, EnemyBoss };
     GameObject target;
     Slime enemySlime;
+    Player playerScr;
+    
     public enum GunType {Default, Enemy};
     private void Start() {
         gunanimator = GetComponent<Animator>();
         if(transform.parent.tag == "Player")
         {
+            playerScr = gameObject.transform.parent.GetComponent<Player>();
             inPlayer = true;
             gunanimator.SetBool("isPicked", true);
             pickUp();
@@ -79,7 +83,7 @@ public class SwordAttack : MonoBehaviour
 
     {
         
-        if(player.tag == "Player" && GunType.Default == guntype)
+        if(player.tag == "Player" && GunType.Default == guntype && playerScr.isActiveMenu == false)
         {
             Vector3 difference = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
             float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
@@ -177,20 +181,21 @@ public class SwordAttack : MonoBehaviour
     }
     public void pickDown()
     {
-        Debug.Log("pickedDown");
+
         inPlayer = false;
         gameObject.GetComponent<Animator>().SetBool("isPicked", false);
         transform.Rotate(0, 0, 0);
         gameObject.GetComponent<Collider2D>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 3;
     }
     public void pickUp()
     {
-        Debug.Log("pickedUp");
+
         inPlayer = true;
         gameObject.GetComponent<Animator>().SetBool("isPicked", true);
         player = transform.GetComponentInParent<Transform>().gameObject;
-        Debug.Log(player.tag);
+
         /*
             if (player.transform.GetChild(0).GetComponent<DetectEnemies>().isDanger == true)
             {
@@ -203,6 +208,7 @@ public class SwordAttack : MonoBehaviour
         */
 
         gameObject.GetComponent<Collider2D>().enabled = true;
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
 
 
         //swordCollider.enabled=true;

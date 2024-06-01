@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 749218751874343387}
   - component: {fileID: 2309749158519306446}
   - component: {fileID: 7286442295453665064}
+  - component: {fileID: 5973745978613578266}
   m_Layer: 3
   m_Name: Player 1
   m_TagString: Player
@@ -260,8 +261,11 @@ MonoBehaviour:
   time: 0
   moveTime: 14
   slimeStepPref: {fileID: 5958420761228846928, guid: ee492c60310cd914a804f084118ea206, type: 3}
+  score: {fileID: 0}
   maxSpeed: 5
   idleFriction: 0.9
+  menuUi: {fileID: 0}
+  isActiveMenu: 0
 --- !u!95 &749218751874343387
 Animator:
   serializedVersion: 5
@@ -359,6 +363,41 @@ MonoBehaviour:
   slider: {fileID: 3113673511118579050, guid: 46d8345ec2348584bbd7d2e734079668, type: 3}
   scoreManager: {fileID: 3738940434820866563, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
   panel: {fileID: 5545771539427126969, guid: bd1176a443e43c843a402ead161e7277, type: 3}
+--- !u!70 &5973745978613578266
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8381485170184398479}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.018062863, y: 0.20691483}
+  m_Size: {x: 0.4252209, y: 0.4252209}
+  m_Direction: 0
 --- !u!1001 &8750238257636871426
 PrefabInstance:
   m_ObjectHideFlags: 0

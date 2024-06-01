@@ -27,11 +27,11 @@ public class ChangeGun : MonoBehaviour
             {
                 
                 detectEnemies = collision.transform.GetChild(0).GetComponent<DetectEnemies>();
-                Debug.Log(detectEnemies.isDanger);
+
                 if (detectEnemies.isDanger == false)
                 {
                     GameObject tempGun = gameObject.transform.GetChild(0).gameObject;
-                    Debug.Log("change");
+
                     tempGun.GetComponent<SwordAttack>().pickUp();
                     GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
                     oldGun.GetComponent<SwordAttack>().pickDown();
@@ -45,14 +45,14 @@ public class ChangeGun : MonoBehaviour
                 else
                 {
                     GameObject tempGun = gameObject.transform.GetChild(0).gameObject;
-                    Debug.Log("change");
-                    
+
                     GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
                     
                     GameObject oldObj = Instantiate(oldGun, gameObject.transform);
                     GameObject newObj = Instantiate(tempGun, collision.gameObject.transform);
                     newObj.GetComponent<SwordAttack>().pickUp();
                     oldObj.GetComponent<SwordAttack>().pickDown();
+                    
                     tempGun.name = "Gun";
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                     Destroy(collision.gameObject.transform.GetChild(1).gameObject);

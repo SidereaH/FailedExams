@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6009729076462018538}
   - component: {fileID: 5006484496676047489}
   - component: {fileID: 2928785808592243805}
+  - component: {fileID: 1144891987990816775}
+  - component: {fileID: 7971337340517472577}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -120,7 +122,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6009729076462018538}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ScenesChange, Assembly-CSharp
+        m_MethodName: ContinueGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PlayerPrefs.GetString("lastGame")
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!70 &2928785808592243805
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -150,9 +164,34 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 2.4}
   m_Size: {x: 630.6, y: 73.2}
   m_Direction: 1
+--- !u!114 &1144891987990816775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5643177680929871758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0357d4221157dff4bab3f2451f2fb27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beforeHoverSprite: {fileID: 21300000, guid: 49673aaf03a6d5843bf201f18d64521d, type: 3}
+--- !u!114 &7971337340517472577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5643177680929871758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248e3369fffa6154e9c4cc8ae2a61c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

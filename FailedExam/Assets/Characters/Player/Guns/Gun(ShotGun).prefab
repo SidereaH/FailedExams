@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 6
+  m_SortingOrder: 3
   m_Sprite: {fileID: -1851007337, guid: d1c71b8caf46e044886e6dde3d38eef6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   knockBackForce: 3
   offset: 1
   bullet: {fileID: 2164276471717942447, guid: ff2358ccbfe3c984a86f3a6d2b6eeb2c, type: 3}
-  startTimeBtwShots: 0.5
+  startTimeBtwShots: 0.3
   canAttack: 0
   isAttacking: 0
   effect: {fileID: 3041990009802970112, guid: a7b1dd0384ce2104296a1b052aaa1028, type: 3}
