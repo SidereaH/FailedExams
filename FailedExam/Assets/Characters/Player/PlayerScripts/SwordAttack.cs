@@ -218,7 +218,8 @@ public class SwordAttack : MonoBehaviour
         //swordCollider.enabled = false;
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        if(gameObject.tag == "SwordGun")
+        Debug.Log("HIT");
+        if (gameObject.tag == "SwordGun")
         {
             IDamageable damagableObject = (IDamageable)other.GetComponent<IDamageable>();
             if (damagableObject != null)

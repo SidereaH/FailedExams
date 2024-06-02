@@ -13,7 +13,8 @@ public class ScenesChange : MonoBehaviour
     public bool isActivemenu;
     private void Start()
     {
-        if(parentGameobj != null)
+        Time.timeScale = 1;
+        if (parentGameobj != null)
         {
             menuUi = parentGameobj.transform.GetChild(0).gameObject;
         }
