@@ -31,34 +31,58 @@ public class ChangeGun : MonoBehaviour
                 if (detectEnemies.isDanger == false)
                 {
                     GameObject tempGun = gameObject.transform.GetChild(0).gameObject;
+                    bool moreThanOne;
+                    if (collision.gameObject.transform.childCount >= 2)
+                    {
+                        moreThanOne = true;
+                        GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
+                        oldGun.GetComponent<SwordAttack>().pickDown();
+                        oldGun.transform.GetComponent<SpriteRenderer>().enabled = true;
+                        Instantiate(oldGun, gameObject.transform);
+                        Destroy(collision.gameObject.transform.GetChild(1).gameObject);
+                    }
+                    else
+                    {
+                        moreThanOne = false;
+                    }
 
-                    tempGun.GetComponent<SwordAttack>().pickUp();
-                    GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
-                    oldGun.GetComponent<SwordAttack>().pickDown();
-                    oldGun.transform.GetComponent<SpriteRenderer>().enabled = true;
-                    tempGun.transform.GetComponent<SpriteRenderer>().enabled = false;
-                    Instantiate(oldGun, gameObject.transform);
-                    Instantiate(tempGun, collision.gameObject.transform);
-                    Destroy(oldGun);
+                    GameObject newObj = Instantiate(tempGun, collision.gameObject.transform);
+                    newObj.GetComponent<SwordAttack>().pickUp();
+                    newObj.name = "Gun";
                     Destroy(gameObject.transform.GetChild(0).gameObject);
+                    if (moreThanOne == false)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
                 else
                 {
                     GameObject tempGun = gameObject.transform.GetChild(0).gameObject;
+                    bool moreThanOne;
+                    if(collision.gameObject.transform.childCount >=2)
+                    {
+                        moreThanOne = true;
+                        GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
+                        GameObject oldObj = Instantiate(oldGun, gameObject.transform);
+                        oldObj.GetComponent<SwordAttack>().pickDown();
+                        Destroy(collision.gameObject.transform.GetChild(1).gameObject);
+                    }
+                    else
+                    {
+                        
+                        moreThanOne = false;
 
-                    GameObject oldGun = collision.gameObject.transform.GetChild(1).gameObject;
-                    
-                    GameObject oldObj = Instantiate(oldGun, gameObject.transform);
+                    }
+
                     GameObject newObj = Instantiate(tempGun, collision.gameObject.transform);
                     newObj.GetComponent<SwordAttack>().pickUp();
-                    oldObj.GetComponent<SwordAttack>().pickDown();
-                    
-                    tempGun.name = "Gun";
+                    newObj.name = "Gun";
                     Destroy(gameObject.transform.GetChild(0).gameObject);
-                    Destroy(collision.gameObject.transform.GetChild(1).gameObject);
+                    if(moreThanOne == false)
+                    {
+                        Destroy(gameObject);
+                    }
                 }
-
-
             }
         }
     }

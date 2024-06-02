@@ -209,6 +209,7 @@ public class SwordAttack : MonoBehaviour
 
         gameObject.GetComponent<Collider2D>().enabled = true;
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
+        gameObject.transform.parent.GetComponent<Player>().pickUpGun();
 
 
         //swordCollider.enabled=true;
@@ -222,6 +223,7 @@ public class SwordAttack : MonoBehaviour
             IDamageable damagableObject = (IDamageable)other.GetComponent<IDamageable>();
             if (damagableObject != null)
             {
+                Debug.Log("HIT");
                 Vector3 parentPosition = transform.parent.position;
                 Vector2 direction = (other.transform.position - parentPosition).normalized;
                 Vector2 knockback = direction * knockBackForce;

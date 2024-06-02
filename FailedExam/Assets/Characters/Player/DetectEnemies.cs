@@ -15,23 +15,34 @@ public class DetectEnemies : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gun = player.transform.GetChild(1).gameObject;
-        
+        if (player.transform.childCount == 2)
+        {
+            gun = player.transform.GetChild(1).gameObject;
+            gun.GetComponent<SpriteRenderer>().enabled = false;
+        }
         col.GetComponent<Collider2D>();
-        gun.GetComponent<SpriteRenderer>().enabled = false;
+        
         character = player.GetComponent<DamageableCharacter>();
     }
     private void FixedUpdate()
-    {
-        gun = player.transform.GetChild(1).gameObject;
-        if(isDanger == false)
+    { 
+        if(player.transform.childCount == 2)
         {
-            gun.GetComponent<SpriteRenderer>().enabled = false;
+            gun = player.transform.GetChild(1).gameObject;
+            if (gun != null)
+            {
+                if (isDanger == false)
+                {
+                    gun.GetComponent<SpriteRenderer>().enabled = false;
+                }
+                else
+                {
+                    gun.GetComponent<SpriteRenderer>().enabled = true;
+                }
+            }
         }
-        else
-        {
-            gun.GetComponent<SpriteRenderer>().enabled = true;
-        }
+        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -45,7 +56,11 @@ public class DetectEnemies : MonoBehaviour
             if (countEnemies > 0)
             {
                 playerAnimator.SetBool("isSafety", false);
-                gun.GetComponent<SpriteRenderer>().enabled = true;
+                if(gun != null)
+                {
+                    gun.GetComponent<SpriteRenderer>().enabled = true;
+                }
+                
 
             }
 
@@ -64,8 +79,12 @@ public class DetectEnemies : MonoBehaviour
             if (countEnemies == 0)
             {
                 playerAnimator.SetBool("isSafety", true);
-                
-                gun.GetComponent<SpriteRenderer>().enabled = false;
+                if (gun != null)
+                {
+
+                    gun.GetComponent<SpriteRenderer>().enabled = false;
+                }
+
                 isDanger = false;
             }
             

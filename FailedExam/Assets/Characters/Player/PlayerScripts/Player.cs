@@ -32,8 +32,8 @@ public class Player : MonoBehaviour
     bool inSlime = false;
     DamageableCharacter character;
     DetectEnemies detectEnemies;
-
     public bool isActiveMenu;
+    public bool withoutGun;
     bool IsRunning
     {
         set
@@ -55,6 +55,16 @@ public class Player : MonoBehaviour
         animator.SetBool("isSafety", true);
         detectEnemies = gameObject.transform.GetChild(0).GetComponent<DetectEnemies>();
         character = gameObject.GetComponent<DamageableCharacter>();
+        if(gameObject.transform.childCount >=2)
+        {
+            withoutGun = false;
+            animator.SetBool("withoutGun", withoutGun);
+        }
+        else
+        {
+            withoutGun = true;
+            animator.SetBool("withoutGun", withoutGun);
+        }
     }
     void Update()
     {
@@ -76,17 +86,27 @@ public class Player : MonoBehaviour
                     Destroy(_temp, 1);
                 }
             }
-
-
         }
+    }
+    public void pickUpGun()
+    {
+        withoutGun = false;
+        animator.SetBool("withoutGun", withoutGun);
     }
     private void FixedUpdate()
     {
 
-        gun = transform.GetChild(1).gameObject;
-        gunAnimator = gun.GetComponent<Animator>();
-        gunRenderer = gun.GetComponent<SpriteRenderer>();
-        swordAttack = gun.GetComponent<SwordAttack>();
+        if(transform.childCount == 2)
+        {
+
+                gun = transform.GetChild(1).gameObject;
+                gunAnimator = gun.GetComponent<Animator>();
+                gunRenderer = gun.GetComponent<SpriteRenderer>();
+                swordAttack = gun.GetComponent<SwordAttack>();
+            
+        }
+        
+        
 
         if (time > 0)
         {
@@ -151,7 +171,11 @@ public class Player : MonoBehaviour
     {
         if (animator.GetBool("isSafety") == false)
         {
-            swordAttack.Attack();
+            if(swordAttack != null)
+            {
+                swordAttack.Attack();
+            }
+            
         }
 
     }
