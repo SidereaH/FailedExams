@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Random;
 
 // Takes and handles input and movement for a player character
 public class Player : MonoBehaviour
@@ -10,9 +10,10 @@ public class Player : MonoBehaviour
     public float moveSpeed = 500f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
-    [SerializeField] GameObject stepPrefab;
+    //[SerializeField] GameObject stepPrefab;
     [SerializeField] int time, moveTime;
     [SerializeField] GameObject slimeStepPref;
+    [SerializeField] GameObject[] stepprefabs;
 
     [SerializeField] ScoreManager score;
     //����� SCRIPT SWORD ATTACK ��������� ���������� ������ � ���� SWORDATTACK
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour
     DetectEnemies detectEnemies;
     public bool isActiveMenu;
     public bool withoutGun;
+    [SerializeField] GameObject[] soundsHit;
+
     bool IsRunning
     {
         set
@@ -50,12 +53,12 @@ public class Player : MonoBehaviour
         isActiveMenu = false;
         PlayerPrefs.SetString("lastScene", SceneManager.GetActiveScene().name);
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();     
-        spriteRenderer = GetComponent<SpriteRenderer>();  
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         animator.SetBool("isSafety", true);
         detectEnemies = gameObject.transform.GetChild(0).GetComponent<DetectEnemies>();
         character = gameObject.GetComponent<DamageableCharacter>();
-        if(gameObject.transform.childCount >=2)
+        if (gameObject.transform.childCount >= 2)
         {
             withoutGun = false;
             animator.SetBool("withoutGun", withoutGun);
@@ -65,27 +68,23 @@ public class Player : MonoBehaviour
             withoutGun = true;
             animator.SetBool("withoutGun", withoutGun);
         }
+
     }
-    void Update()
+
+    public void Walking()
     {
-        if (movementInput != Vector2.zero && character.Health > 0)
+        if (inSlime == true)
         {
-            if (time == 0)
-            {
-                time = moveTime;
-                if (inSlime == true)
-                {
-                    GameObject _temp = Instantiate(slimeStepPref, transform.position, Quaternion.identity);
-                    _temp.GetComponent<AudioSource>().Play();
-                    Destroy(_temp, 1);
-                }
-                else
-                {
-                    GameObject _temp = Instantiate(stepPrefab, transform.position, Quaternion.identity);
-                    _temp.GetComponent<AudioSource>().Play();
-                    Destroy(_temp, 1);
-                }
-            }
+            GameObject _temp = Instantiate(slimeStepPref, transform.position, Quaternion.identity);
+            _temp.GetComponent<AudioSource>().Play();
+            Destroy(_temp, 1);
+        }
+        else
+        {
+            GameObject element = stepprefabs[UnityEngine.Random.Range(0, stepprefabs.Length)];
+            GameObject _temp = Instantiate(element, transform.position, Quaternion.identity);
+            _temp.GetComponent<AudioSource>().Play();
+            Destroy(_temp, 1);
         }
     }
     public void pickUpGun()
@@ -96,18 +95,13 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if(transform.childCount == 2)
+        if (transform.childCount == 2)
         {
-
-                gun = transform.GetChild(1).gameObject;
-                gunAnimator = gun.GetComponent<Animator>();
-                gunRenderer = gun.GetComponent<SpriteRenderer>();
-                swordAttack = gun.GetComponent<SwordAttack>();
-            
+            gun = transform.GetChild(1).gameObject;
+            gunAnimator = gun.GetComponent<Animator>();
+            gunRenderer = gun.GetComponent<SpriteRenderer>();
+            swordAttack = gun.GetComponent<SwordAttack>();
         }
-        
-        
-
         if (time > 0)
         {
             time--;
@@ -164,18 +158,19 @@ public class Player : MonoBehaviour
         movementInput = movementValue.Get<Vector2>();
     }
 
-    public void addGold(int goldCost){
+    public void addGold(int goldCost)
+    {
         score.addGold(goldCost);
     }
     void OnAttack()
     {
         if (animator.GetBool("isSafety") == false)
         {
-            if(swordAttack != null)
+            if (swordAttack != null)
             {
                 swordAttack.Attack();
             }
-            
+
         }
 
     }
@@ -202,6 +197,11 @@ public class Player : MonoBehaviour
                 rb.simulated = false;
             }
         }
+    }
+    public void playHit()
+    {
+        GameObject _temp = Instantiate(soundsHit[Random.Range(0, soundsHit.Length)], transform.position, Quaternion.identity);
+        Destroy(_temp,1);
     }
 
 }

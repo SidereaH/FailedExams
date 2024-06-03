@@ -286,7 +286,7 @@ Animator:
   m_GameObject: {fileID: 3228421881312777595}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 363390157057d924d9b8173d96b0a6d1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0a2a51230fff8234fbaaa8a3f5e5145f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -650,11 +650,13 @@ MonoBehaviour:
   damage: 1
   knockBackForce: 15
   offset: 0
-  bullet: {fileID: 2164276471717942447, guid: e7d14b3f1389a7c4f9fb5e65bad675c5, type: 3}
+  bullet: {fileID: 2164276471717942447, guid: 78345a88f1537944b993e672fd4737b8, type: 3}
   startTimeBtwShots: 1
   canAttack: 0
   isAttacking: 0
   effect: {fileID: 3041990009802970112, guid: a7b1dd0384ce2104296a1b052aaa1028, type: 3}
   scoreManager: {fileID: 0}
-  soundShot: {fileID: 7857343889761764476, guid: 2548e8c9fd1a5a649b601526524688b2, type: 3}
+  soundsShot:
+  - {fileID: 4900271844854517822, guid: 79031955a6e700346bfabb765152916e, type: 3}
   isEnemy: 1
+  inPlayer: 0

@@ -16,6 +16,7 @@ public class  Slime: MonoBehaviour
     bool isRunning = false;
     [SerializeField] enum EnemyType { MeleeEnemy, RangeEnemy };
     [SerializeField] float distanceToShoot;
+    SwordAttack gun;
     public bool IsRunning
     {
         set
@@ -31,6 +32,7 @@ public class  Slime: MonoBehaviour
 
     private void Start()
     {
+        gun  = transform.GetChild(0).GetComponent<SwordAttack>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = rb.GetComponent<SpriteRenderer>();
         character = rb.GetComponent<DamageableCharacter>();
@@ -107,29 +109,38 @@ public class  Slime: MonoBehaviour
            
         }
     }*/
+
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Collider2D collider = collision.collider;
-        IDamageable damageable;
-        if (collision.gameObject.tag != "Player")
+
+        if (collision.gameObject.tag != "Enemy")
         {
-            damageable = collider.transform.parent.GetComponentInParent<IDamageable>();
-        }
-        else
-        {
-            damageable = collider.GetComponent<IDamageable>();
-        }
-        IDamageable me = gameObject.GetComponent<IDamageable>();
+            Collider2D collider = collision.collider;
+            IDamageable damageable;
+            if (collision.gameObject.tag != "Player")
+            {
+                damageable = collider.transform.parent.GetComponentInParent<IDamageable>();
+            }
+            else
+            {
+                damageable = collider.GetComponent<IDamageable>();
+            }
+            IDamageable me = gameObject.GetComponent<IDamageable>();
 
 
-        if (damageable != null)
-        {
+            if (damageable != null)
+            {
                 Vector2 direction = (collider.transform.position - transform.position).normalized;
                 Vector2 knockback = direction * knockbackForce;
-
                 damageable.OnHit(damage, knockback);
                 me.OnHit(0, -knockback);
 
-        }
+            }
+
+        } 
+    }
+    public void SpawnBullet()
+    {
+        gun.RangeAttack();
     }
 }

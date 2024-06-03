@@ -177,7 +177,8 @@ MonoBehaviour:
   isAttacking: 0
   effect: {fileID: 3041990009802970112, guid: a7b1dd0384ce2104296a1b052aaa1028, type: 3}
   scoreManager: {fileID: 3738940434820866563, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
-  soundShot: {fileID: 3233277997531015178, guid: 16f96d095e34802428785e09aa909905, type: 3}
+  soundsShot:
+  - {fileID: 3233277997531015178, guid: 16f96d095e34802428785e09aa909905, type: 3}
   isEnemy: 0
   inPlayer: 0
 --- !u!1 &8780155701451882323

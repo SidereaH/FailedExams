@@ -26,6 +26,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public Slider slider;
     public ScoreManager scoreManager;
     public GameObject panel;
+    [SerializeField] GameObject[] soundsHit;
     
 
 
@@ -81,7 +82,13 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     {
         set
         {
-            if(value > _health)
+            if (soundsHit.Length != 0 || soundsHit == null)
+            {
+                GameObject tempsound = soundsHit[Random.Range(0, soundsHit.Length)];
+                GameObject _temp = Instantiate(tempsound, transform.position, Quaternion.identity);
+                Destroy(_temp, 1);
+            }
+            if (value > _health)
             {
                 
                     animator.SetTrigger("heal");
@@ -90,6 +97,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             }
             else if(value < _health)
             {
+                
                 animator.SetTrigger("hit");
                 textValue.text = (_health - value).ToString();
                 RectTransform textTransform = Instantiate(healthText).GetComponent<RectTransform>();
@@ -154,6 +162,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
             if (unkillable == false)
             {
                 Health -= damage;
+                
                 if (canTurnInvincible == true)
                 {
                     //��������� ��������

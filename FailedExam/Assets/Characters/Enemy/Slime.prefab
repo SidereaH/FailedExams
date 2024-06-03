@@ -144,11 +144,11 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.087977245, y: 0.23306827}
-  m_Size: {x: 0.4244091, y: 0.5070001}
+  m_Offset: {x: 0.13567595, y: 0.17293638}
+  m_Size: {x: 0.45987436, y: 0.54553115}
   m_Direction: 0
 --- !u!1 &4958344156432520018
 GameObject:
@@ -234,7 +234,7 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_Sprite: {fileID: 1038723560, guid: 8c6f451739b5b9b438509044971f792d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.64, y: 0.64}

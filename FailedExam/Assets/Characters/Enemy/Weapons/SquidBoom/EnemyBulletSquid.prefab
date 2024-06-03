@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8958894477649425}
   - component: {fileID: 4965164186750203788}
   m_Layer: 0
-  m_Name: EnemyBullet
+  m_Name: EnemyBulletSquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2164276471717942447}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb66b2c9a160e54b9f311d65a68234d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullType: 0
   speed: 10
   lifetime: 0.5
   damage: 1
@@ -108,3 +109,8 @@ MonoBehaviour:
   soundHeadshot: {fileID: 8512351584943710833, guid: d78c3420a256bd8419b4cda0464e0e8f, type: 3}
   soundBodyshot: {fileID: 0}
   enemyBulet: 1
+  grenadeObj: {fileID: 7805463318234757515, guid: 8b4a4a6a9aafac347969532cf430d383, type: 3}
+  brokegrenade:
+  - {fileID: 5083882683222553797, guid: f53e8e54cf9f1444d9efb86297ce4cbe, type: 3}
+  - {fileID: 6957572610450328394, guid: fa16b33bcaf410d46b8e657cbbf188c0, type: 3}
+  - {fileID: 2786665481268346237, guid: 0cc3f17b29a70984a99413a7c0c41e9e, type: 3}

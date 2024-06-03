@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -27,13 +24,14 @@ public class SwordAttack : MonoBehaviour
     public bool isAttacking = false;
     public GameObject effect;
     public ScoreManager scoreManager;
-    public GameObject soundShot;
+    public GameObject[] soundsShot;
     [SerializeField] bool isEnemy;
     public bool inPlayer;
     [SerializeField] enum TargetType { Player, EnemyBoss };
     GameObject target;
     Slime enemySlime;
     Player playerScr;
+    Animator parentAnimator;
     
     public enum GunType {Default, Enemy};
     private void Start() {
@@ -67,8 +65,9 @@ public class SwordAttack : MonoBehaviour
         }
         else if(player.tag == "Enemy")
         {
+            parentAnimator = transform.parent.GetComponent<Animator>();
             enemySlime = player.GetComponent<Slime>();
-      
+            swordCollider = GetComponent<Collider2D>();
             isEnemy = true;
             
             target = GameObject.FindGameObjectWithTag(targetType.ToString());
@@ -146,8 +145,7 @@ public class SwordAttack : MonoBehaviour
                 {
                    
                     canAttack = true;
-                  
-                    Attack();
+                    parentAnimator.SetTrigger("Attack");
                     timeBtwShots = startTimeBtwShots;
                     
                 }
@@ -166,18 +164,38 @@ public class SwordAttack : MonoBehaviour
         {
             if(gameObject.tag != "SwordGun")
             {
-                GameObject _temp = Instantiate(soundShot, transform.position, Quaternion.identity);
-                _temp.GetComponent<AudioSource>().Play();
-                Destroy(_temp, 1);
-                Instantiate(effect, shotPoint.position, Quaternion.identity);
-                Instantiate(bullet, shotPoint.position, transform.rotation);
-                isAttacking = false;
+                RangeAttack();
             }
             else
             {
                 swordCollider.enabled = true;
             }         
         }  
+    }
+    public void RangeAttack()
+    {
+        if (player.tag == "Player")
+        {
+            GameObject soundShot = soundsShot[Random.Range(0, soundsShot.Length)];
+            GameObject _temp = Instantiate(soundShot, transform.position, Quaternion.identity);
+            _temp.GetComponent<AudioSource>().Play();
+            Destroy(_temp, 1);
+            Instantiate(effect, shotPoint.position, Quaternion.identity);
+            Instantiate(bullet, shotPoint.position, transform.rotation);
+            isAttacking = false;
+        }
+        else
+        {
+
+            GameObject soundShot = soundsShot[Random.Range(0, soundsShot.Length)];
+            GameObject _temp = Instantiate(soundShot, transform.position, Quaternion.identity);
+            _temp.GetComponent<AudioSource>().Play();
+            Destroy(_temp, 1);
+            //Instantiate(effect, shotPoint.position, Quaternion.identity);
+            Instantiate(bullet, shotPoint.position, transform.rotation);
+            isAttacking = false;
+        }
+        
     }
     public void pickDown()
     {
@@ -218,13 +236,13 @@ public class SwordAttack : MonoBehaviour
         //swordCollider.enabled = false;
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("HIT");
+       
         if (gameObject.tag == "SwordGun")
         {
             IDamageable damagableObject = (IDamageable)other.GetComponent<IDamageable>();
             if (damagableObject != null)
             {
-                Debug.Log("HIT");
+                
                 Vector3 parentPosition = transform.parent.position;
                 Vector2 direction = (other.transform.position - parentPosition).normalized;
                 Vector2 knockback = direction * knockBackForce;

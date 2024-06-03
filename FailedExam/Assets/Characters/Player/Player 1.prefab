@@ -120,7 +120,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.01, z: 0.7606468}
-  m_LocalScale: {x: 2.11, y: 2.11, z: 2.11}
+  m_LocalScale: {x: 1.75, y: 1.75, z: 1.75}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1508479094993962448}
@@ -186,7 +186,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0026030093, y: -0.19186519}
+  m_Offset: {x: 0.0026030093, y: -0.13316216}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -197,7 +197,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28256765, y: 0.38919523}
+  m_Size: {x: 0.28256765, y: 0.32837984}
   m_EdgeRadius: 0
 --- !u!114 &5504298807582636354
 MonoBehaviour:
@@ -257,15 +257,21 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  stepPrefab: {fileID: 4725446534934313987, guid: aab4b29738029fc47b57aa770d895b50, type: 3}
   time: 0
   moveTime: 14
   slimeStepPref: {fileID: 5958420761228846928, guid: ee492c60310cd914a804f084118ea206, type: 3}
+  stepprefabs:
+  - {fileID: 4826844604670069721, guid: 0c9905e6b40782a47b43143fe742fe90, type: 3}
+  - {fileID: 2831156792842561160, guid: 218e7a157eba7f8488f2fc451c5c9438, type: 3}
+  - {fileID: 263720535616531406, guid: 6a6de8043a74b5141beb6e17a2b28dbf, type: 3}
+  - {fileID: 7324617138846442882, guid: 7d0c13d1b2420454180aa3e6b389193a, type: 3}
+  - {fileID: 4750145398018850666, guid: 2f7a9cc83b63606469c5b7d300694efb, type: 3}
   score: {fileID: 0}
   maxSpeed: 5
   idleFriction: 0.9
-  menuUi: {fileID: 0}
   isActiveMenu: 0
+  withoutGun: 0
+  soundsHit: []
 --- !u!95 &749218751874343387
 Animator:
   serializedVersion: 5
@@ -354,7 +360,7 @@ MonoBehaviour:
   healthText: {fileID: 6253719824281227341, guid: d6791d6560a9a8d428fa6cd6b45ed0aa, type: 3}
   disableSimulation: 0
   unkillable: 0
-  knockForce: 0
+  knockForce: 5
   _maxHealth: 5
   _health: 5
   invincibilityTime: 0.5
@@ -363,6 +369,10 @@ MonoBehaviour:
   slider: {fileID: 3113673511118579050, guid: 46d8345ec2348584bbd7d2e734079668, type: 3}
   scoreManager: {fileID: 3738940434820866563, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
   panel: {fileID: 5545771539427126969, guid: bd1176a443e43c843a402ead161e7277, type: 3}
+  soundsHit:
+  - {fileID: 5747785189443847358, guid: 52ccdb623389d624c8189e471d57dc42, type: 3}
+  - {fileID: 4639728204732563664, guid: 98f12fb62d627c246866ca4d5c66c2e6, type: 3}
+  - {fileID: 6817447280494136706, guid: 996d2a6188e0b384a8527a5a720c1aae, type: 3}
 --- !u!70 &5973745978613578266
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
