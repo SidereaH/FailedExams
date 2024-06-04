@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class LiftTp : MonoBehaviour
@@ -9,61 +11,80 @@ public class LiftTp : MonoBehaviour
     Animator animator;
     Animator planim;
     public Scene scene;
-    private bool _enabled;
+    [SerializeField] bool _enabled;
     [SerializeField] string _name;
     GameObject player;
     DamageableCharacter characterStats;
     private float hpAfterLevel;
     [SerializeField] ScoreManager scoreManager;
+    bool inTrigger;
+    [SerializeField] Visible toVisiblehintImg;
+    [SerializeField] Invisible toInvisiblehintImg;
+    [SerializeField] TextVisible toVisiblehintText;
+    [SerializeField] TextInvisible toInvisiblehintText;
+    [SerializeField] GameObject hint;
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         characterStats = player.GetComponent<DamageableCharacter>();
         animator = GetComponent<Animator>();
         scene = SceneManager.GetActiveScene();
-        if(scene.name == "SampleScene")
+        planim = player.GetComponent<Animator>();
+
+
+    }
+    private void Update()
+    {
+        if (inTrigger)
         {
-           _enabled = true;
-        }
-        else
-        {
-            _enabled = false;
+            //
+
+            if (Keyboard.current.fKey.wasPressedThisFrame)
+            {
+                int kills = scoreManager.kills;
+                PlayerPrefs.SetInt("kills", kills);
+                int gold = scoreManager.gold;
+                PlayerPrefs.SetInt("gold", gold);
+                hpAfterLevel = characterStats.Health;
+                PlayerPrefs.SetFloat("hp", hpAfterLevel);
+                PlayerPrefs.SetString("lastScene", _name);
+                SceneManager.LoadScene(_name);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision != null)
+        if (collision != null)
         {
-            
-                if (collision.gameObject.tag == "Player")
-                {
-                    planim = collision.gameObject.GetComponent<Animator>();
 
-                    if (planim.GetBool("isSafety") == true)
+            if (collision.gameObject.tag == "Player")
+            {
+
+                if (planim.GetBool("isSafety") == true)
+                {
+                    if (_enabled)
                     {
-                        if (_enabled)
+                        if (collision.tag == "Player")
                         {
-                            if (collision.tag == "Player")
+                            animator.SetBool("isOpen", true);
+                            inTrigger = true;
+                            //hint.SetActive(true);
+                            if (toInvisiblehintImg != null)
                             {
-                                int kills = scoreManager.kills;
-                                PlayerPrefs.SetInt("kills", kills);
-                                int gold = scoreManager.gold;
-                                PlayerPrefs.SetInt("gold", gold);
-                                hpAfterLevel = characterStats.Health;
-                                PlayerPrefs.SetFloat("hp", hpAfterLevel);
-                                animator.SetBool("isOpen", true);
-                                PlayerPrefs.SetString("lastScene", _name);
+                                toInvisiblehintImg.StartInvivisble();
+                                toInvisiblehintText.StartInvisible();
                             }
                         }
-
-
-                    }
-                    else
-                    {
-                        // Debug.Log("not safety");
                     }
                 }
+                else
+                {
+                    // Debug.Log("not safety");
+                }
             }
+        }
 
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -72,6 +93,21 @@ public class LiftTp : MonoBehaviour
         {
             animator.SetBool("isOpen", false);
         }
+        inTrigger = false;
+        //hint.SetActive(false);
+        if(planim.GetBool("isSafety") == true)
+        {
+            if(_enabled)
+            {
+                if (toVisiblehintImg != null)
+                {
+                    toVisiblehintImg.StartVisble();
+                    toVisiblehintText.StartVisible();
+                }
+            }
+        }
+        
+
     }
     void TpPlayer()
     {
