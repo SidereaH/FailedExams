@@ -11,11 +11,13 @@ public class ChangeGun : MonoBehaviour
     bool inTrigger = false;
     Collider2D collision;
     DetectEnemies detectEnemies;
+    
     // Start is called before the first frame update
+    GunManager gunManager;
     void Start()
     {
         col = GetComponent<Collider2D>();
-
+        gunManager = GameObject.FindGameObjectWithTag("GunManager").GetComponent<GunManager>();
     }
 
     // Update is called once per frame
@@ -49,6 +51,7 @@ public class ChangeGun : MonoBehaviour
                     GameObject newObj = Instantiate(tempGun, collision.gameObject.transform);
                     newObj.GetComponent<SwordAttack>().pickUp();
                     newObj.name = "Gun";
+                    gunManager.ChangeGun(newObj);
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                     if (moreThanOne == false)
                     {
@@ -77,6 +80,7 @@ public class ChangeGun : MonoBehaviour
                     GameObject newObj = Instantiate(tempGun, collision.gameObject.transform);
                     newObj.GetComponent<SwordAttack>().pickUp();
                     newObj.name = "Gun";
+                    gunManager.ChangeGun(newObj);
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                     if(moreThanOne == false)
                     {

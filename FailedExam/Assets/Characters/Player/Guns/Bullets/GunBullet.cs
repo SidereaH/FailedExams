@@ -51,10 +51,10 @@ public class GunBullet : MonoBehaviour
                         if (hitInfo.collider.name == "Head")
                         {
 
-                            GameObject _temp = Instantiate(soundHeadshot, transform.position, Quaternion.identity);
+                            //GameObject _temp = Instantiate(soundHeadshot, transform.position, Quaternion.identity);
                             damagableObject.OnHit(damage * 2, knockback);
 
-                            Destroy(_temp, 1);
+                            //Destroy(_temp, 1);
 
                         }
                         else if (hitInfo.collider.name == "Body")

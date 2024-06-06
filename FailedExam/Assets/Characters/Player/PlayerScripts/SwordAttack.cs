@@ -227,6 +227,7 @@ public class SwordAttack : MonoBehaviour
 
         gameObject.GetComponent<Collider2D>().enabled = true;
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 5;
+
         gameObject.transform.parent.GetComponent<Player>().pickUpGun();
 
 

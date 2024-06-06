@@ -12,6 +12,7 @@ TagManager:
   - Dialogue
   - GunHolder
   - Menu
+  - GunManager
   layers:
   - Default
   - TransparentFX

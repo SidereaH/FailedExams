@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     public bool isActiveMenu;
     public bool withoutGun;
     [SerializeField] GameObject[] soundsHit;
+    [SerializeField] GunManager gunManager;
 
     bool IsRunning
     {
@@ -91,6 +92,7 @@ public class Player : MonoBehaviour
     {
         withoutGun = false;
         animator.SetBool("withoutGun", withoutGun);
+        
     }
     private void FixedUpdate()
     {
