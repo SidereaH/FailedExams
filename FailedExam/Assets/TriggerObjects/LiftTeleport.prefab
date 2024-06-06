@@ -56,7 +56,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,7 +141,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.3150754}
+  m_Offset: {x: 0, y: -0.5901141}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -152,7 +152,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1875, y: 2.6301508}
+  m_Size: {x: 1.1875, y: 3.1802282}
   m_EdgeRadius: 0
 --- !u!114 &386127385557574417
 MonoBehaviour:
@@ -171,10 +171,10 @@ MonoBehaviour:
   _enabled: 1
   _name: Test Scene
   scoreManager: {fileID: 0}
-  toVisiblehintImg: {fileID: 0}
-  toInvisiblehintImg: {fileID: 0}
-  toVisiblehintText: {fileID: 0}
-  toInvisiblehintText: {fileID: 0}
+  toVisiblehintImg: {fileID: 4260889962906298086}
+  toInvisiblehintImg: {fileID: 2219195243761494922}
+  toVisiblehintText: {fileID: 3720332623608283083}
+  toInvisiblehintText: {fileID: 7345231753796180433}
   hint: {fileID: 8449130464919554853}
 --- !u!1 &3310688062998750615
 GameObject:
@@ -187,6 +187,8 @@ GameObject:
   - component: {fileID: 2742390071408106826}
   - component: {fileID: 6624765215447311402}
   - component: {fileID: 8804400320971963827}
+  - component: {fileID: 7345231753796180433}
+  - component: {fileID: 3720332623608283083}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -310,6 +312,30 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7345231753796180433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310688062998750615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90abc2b681a63c44595033acb98cda4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3720332623608283083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3310688062998750615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7339ba8ec8f32d04d9cdc91534f423ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7833918073042449601
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +347,8 @@ GameObject:
   - component: {fileID: 4033468245117257865}
   - component: {fileID: 8843327359185878987}
   - component: {fileID: 7875584728637567925}
+  - component: {fileID: 2219195243761494922}
+  - component: {fileID: 4260889962906298086}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -369,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -386,6 +414,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2219195243761494922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833918073042449601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a21972b821059b41809a2ce83a96faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4260889962906298086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833918073042449601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c798e9880910b49b9cbf2c16c12eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8449130464919554853
 GameObject:
   m_ObjectHideFlags: 0

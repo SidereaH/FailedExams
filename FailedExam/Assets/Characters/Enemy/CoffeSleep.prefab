@@ -389,7 +389,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -409,7 +409,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 3
   m_Sprite: {fileID: -1214229723, guid: 8c6f451739b5b9b438509044971f792d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -511,6 +511,7 @@ MonoBehaviour:
   slider: {fileID: 0}
   scoreManager: {fileID: 0}
   panel: {fileID: 0}
+  soundsHit: []
 --- !u!70 &1337486982973126923
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

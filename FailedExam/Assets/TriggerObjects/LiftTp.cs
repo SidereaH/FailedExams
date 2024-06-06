@@ -71,11 +71,8 @@ public class LiftTp : MonoBehaviour
                             animator.SetBool("isOpen", true);
                             inTrigger = true;
                             //hint.SetActive(true);
-                            if (toInvisiblehintImg != null)
-                            {
-                                toInvisiblehintImg.StartInvivisble();
-                                toInvisiblehintText.StartInvisible();
-                            }
+                           // toInvisiblehintImg.StartInvivisble();
+                            //toInvisiblehintText.StartInvisible();
                         }
                     }
                 }
@@ -100,9 +97,9 @@ public class LiftTp : MonoBehaviour
             if(_enabled)
             {
                 if (toVisiblehintImg != null)
-                {
-                    toVisiblehintImg.StartVisble();
-                    toVisiblehintText.StartVisible();
+                {//
+                    //toVisiblehintImg.StartVisble();
+                    //toVisiblehintText.StartVisible();
                 }
             }
         }

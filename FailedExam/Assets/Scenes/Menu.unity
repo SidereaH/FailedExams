@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852b28fbaa132a44fbf533c956924b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentGameobj: {fileID: 0}
+  player: {fileID: 0}
+  isActivemenu: 0
 --- !u!4 &25193872
 Transform:
   m_ObjectHideFlags: 0
@@ -547,7 +550,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: StartScene
+          m_StringArgument: StartLocation
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 25193871}
