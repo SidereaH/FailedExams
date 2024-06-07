@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     public int gold;
     [SerializeField] GameObject soundRampage;
     [SerializeField] int time, castTime;
+    CoinManager coinManager;
 
     // Start is called before the first frame update
 
@@ -22,6 +24,11 @@ public class ScoreManager : MonoBehaviour
             gold = PlayerPrefs.GetInt("gold");
   
         }
+        else{
+            gold = 0;
+        }
+        coinManager = GameObject.FindGameObjectWithTag("CoinManager").transform.GetComponent<CoinManager>();
+        coinManager.UpdateCoin(gold);
     }
     // Update is called once per frame
     private void Update()
@@ -46,7 +53,10 @@ public class ScoreManager : MonoBehaviour
     }
     public int addGold(int goldCost)
     {
-        return gold+=goldCost;
+        
+        gold+=goldCost;
+        coinManager.UpdateCoin(gold);
+        return gold;
     }
     public void validateKill()
     {

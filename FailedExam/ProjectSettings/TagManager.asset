@@ -13,6 +13,8 @@ TagManager:
   - GunHolder
   - Menu
   - GunManager
+  - ScoreManager
+  - CoinManager
   layers:
   - Default
   - TransparentFX
