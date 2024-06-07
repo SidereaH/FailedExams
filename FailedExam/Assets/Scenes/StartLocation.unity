@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Intensity: 0.24
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000dd2ca8c8
+  m_ApplyToSortingLayers: 00000000dd2ca8c877c02392b78cb837
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7015,6 +7015,18 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 988820245}
+    - target: {fileID: 7702601459183440665, guid: 52e099a5f819c474880b7e31f90ef010, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702601459183440665, guid: 52e099a5f819c474880b7e31f90ef010, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7702601459183440665, guid: 52e099a5f819c474880b7e31f90ef010, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[3]
+      value: 934841527
+      objectReference: {fileID: 0}
     - target: {fileID: 8381485170184398479, guid: 52e099a5f819c474880b7e31f90ef010, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8978,10 +8990,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 8777371007390736706, guid: 9a17f25fabacc864c8b672324a9c1082, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 6582046967323461550, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
