@@ -159,7 +159,7 @@ public class DialogueScript : MonoBehaviour
         }
         if(successText == true)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("StartLocation");
         }
     }
     private void NextLines()
