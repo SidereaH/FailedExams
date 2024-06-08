@@ -13,11 +13,17 @@ public class GunManager : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         image = transform.GetComponent<Image>();
-        if(player.transform.GetChild(1) != null)
+        try{
+            if(player.transform.GetChild(1) != null)
         {
             gunSprite = player.transform.GetChild(1).transform.GetComponent<SpriteRenderer>().sprite;
             image.sprite = gunSprite;
         }
+        }
+        catch{
+            Debug.Log("нету");
+        }
+        
     }
 
     // Update is called once per frame

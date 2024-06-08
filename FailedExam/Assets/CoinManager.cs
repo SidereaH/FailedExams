@@ -10,7 +10,13 @@ public class CoinManager : MonoBehaviour
     void Start()
     {
         //score = GameObject.FindGameObjectWithTag("SceneManger").gameObject.transform.GetComponent<ScoreManager>();
-        text = gameObject.transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>();
+        try{
+            text = gameObject.transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>();
+        }
+        catch{
+            Debug.Log("out of dauns");
+        }
+        
         //text.text = score.gold.ToString();
     }
 

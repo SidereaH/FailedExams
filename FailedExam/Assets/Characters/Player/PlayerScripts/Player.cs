@@ -177,10 +177,10 @@ public class Player : MonoBehaviour
 
     }
 
-    public void getSlowed()
+    public void getSlowed(float maxSpeed, float moveSpeed)
     {
-        maxSpeed = 1f;
-        moveSpeed = 100f;
+        this.maxSpeed = maxSpeed;
+        this.moveSpeed = moveSpeed;
         inSlime = true;
     }
     public void getUnSlowed()

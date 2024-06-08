@@ -6,13 +6,13 @@ public class slimeToMoveDown : MonoBehaviour
 {
     
     public string tagTarget = "Player";
-    public Player player;
-
+    [SerializeField] float maxSpeed;
+    [SerializeField] float moveSpeed;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player") {
-            player.getSlowed();
+            other.transform.GetComponent<Player>().getSlowed(maxSpeed,moveSpeed);
    
         }
     }
@@ -20,7 +20,7 @@ public class slimeToMoveDown : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.getUnSlowed();
+            other.transform.GetComponent<Player>().getUnSlowed();
 
         }
     }

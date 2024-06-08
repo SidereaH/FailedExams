@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagTarget: Player
-  player: {fileID: 0}
+  maxSpeed: 1
+  moveSpeed: 100
 --- !u!61 &5902703851575342480
 BoxCollider2D:
   m_ObjectHideFlags: 0

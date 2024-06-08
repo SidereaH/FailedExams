@@ -172,7 +172,7 @@ MonoBehaviour:
   knockBackForce: 3
   offset: 1
   bullet: {fileID: 2164276471717942447, guid: ff2358ccbfe3c984a86f3a6d2b6eeb2c, type: 3}
-  startTimeBtwShots: 0.3
+  startTimeBtwShots: 0.5
   canAttack: 0
   isAttacking: 0
   effect: {fileID: 3041990009802970112, guid: a7b1dd0384ce2104296a1b052aaa1028, type: 3}
