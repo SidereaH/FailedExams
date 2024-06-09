@@ -10,7 +10,7 @@ public class  Slime: MonoBehaviour
     public DetectionZone detectionZone;
     public float moveSpeed = 500f;
     Rigidbody2D rb;
-    SpriteRenderer spriteRenderer;
+    //SpriteRenderer spriteRenderer;
     DamageableCharacter character;
     Animator animator;
     bool isRunning = false;
@@ -34,7 +34,7 @@ public class  Slime: MonoBehaviour
     {
         gun  = transform.GetChild(0).GetComponent<SwordAttack>();
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = rb.GetComponent<SpriteRenderer>();
+       // spriteRenderer = rb.GetComponent<SpriteRenderer>();
         character = rb.GetComponent<DamageableCharacter>();
         animator = rb.GetComponent<Animator>();
     }

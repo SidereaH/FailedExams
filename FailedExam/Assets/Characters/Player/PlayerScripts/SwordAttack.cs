@@ -10,8 +10,7 @@ public class SwordAttack : MonoBehaviour
     Animator gunanimator;
     public GunType guntype;
     Collider2D swordCollider;
-    public float damage = 1f;
-    public float knockBackForce = 15f;
+
     SpriteRenderer spriteRenderer;
     public float offset;
     public GameObject bullet;
@@ -25,16 +24,28 @@ public class SwordAttack : MonoBehaviour
     public GameObject effect;
     public ScoreManager scoreManager;
     public GameObject[] soundsShot;
-    [SerializeField] bool isEnemy;
     public bool inPlayer;
     [SerializeField] enum TargetType { Player, EnemyBoss };
     GameObject target;
     Slime enemySlime;
     Player playerScr;
     Animator parentAnimator;
-    
+
+    [SerializeField] GameObject swordAttack;
+    AttackInside attackinsideSword;
+    SpriteRenderer attackRenderer;
+    //Collider2D attackinsideSwordCol;
+
+
     public enum GunType {Default, Enemy};
     private void Start() {
+        if(swordAttack != null)
+        {
+            attackinsideSword = swordAttack.transform.GetComponent<AttackInside>();
+            attackRenderer = swordAttack.transform.GetComponent<SpriteRenderer>();  
+           // attackinsideSwordCol = swordAttack.transform.transform.GetComponent<Collider2D>();
+        }
+
         gunanimator = GetComponent<Animator>();
         if(transform.parent.tag == "Player")
         {
@@ -53,7 +64,7 @@ public class SwordAttack : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (player.tag == "Player")
         {
-            isEnemy = false;
+            
             swordCollider = GetComponent<Collider2D>();
             
             if (gameObject.tag != "SwordGun")
@@ -68,7 +79,7 @@ public class SwordAttack : MonoBehaviour
             parentAnimator = transform.parent.GetComponent<Animator>();
             enemySlime = player.GetComponent<Slime>();
             swordCollider = GetComponent<Collider2D>();
-            isEnemy = true;
+            
             
             target = GameObject.FindGameObjectWithTag(targetType.ToString());
             if (gameObject.tag != "SwordGun")
@@ -90,14 +101,29 @@ public class SwordAttack : MonoBehaviour
             if (rotZ > 90f)
             {
                 spriteRenderer.flipY = true;
+                if(swordAttack != null)
+                {
+                    attackRenderer.flipY = true;
+                }
+                
             }
             else if (rotZ < -90f && rotZ > -180f)
             {
                 spriteRenderer.flipY = true;
+                if (swordAttack != null)
+                {
+                    attackRenderer.flipY = true;
+                }
+                
             }
             else if (rotZ > -90f)
             {
                 spriteRenderer.flipY = false;
+                if (swordAttack != null)
+                {
+                    attackRenderer.flipY = false;
+                }
+                
             }
             if (playerAnimator.GetBool("isSafety") == false)
             {
@@ -168,9 +194,15 @@ public class SwordAttack : MonoBehaviour
             }
             else
             {
-                swordCollider.enabled = true;
+                gunanimator.SetBool("isAttacking", true);
+                
+                attackinsideSword.Attack();
             }         
         }  
+    }
+    public void StateOfCollider()
+    {
+        Debug.Log(spriteRenderer.enabled);
     }
     public void RangeAttack()
     {
@@ -234,8 +266,9 @@ public class SwordAttack : MonoBehaviour
         //swordCollider.enabled=true;
     }
     public void StopAttack() {
-        //swordCollider.enabled = false;
+        gunanimator.SetBool("isAttacking", false);
     }
+    /*
     private void OnTriggerEnter2D(Collider2D other) {
        
         if (gameObject.tag == "SwordGun")
@@ -252,6 +285,7 @@ public class SwordAttack : MonoBehaviour
             }
         }
     }
+    */
     public float getStartTime()
     {
         return startTimeBtwShots;

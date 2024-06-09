@@ -32,6 +32,7 @@ public class ChangeGun : MonoBehaviour
 
                 if (detectEnemies.isDanger == false)
                 {
+
                     GameObject tempGun = gameObject.transform.GetChild(0).gameObject;
                     bool moreThanOne;
                     if (collision.gameObject.transform.childCount >= 2)
@@ -57,6 +58,8 @@ public class ChangeGun : MonoBehaviour
                     {
                         Destroy(gameObject);
                     }
+                    collision.gameObject.GetComponent<Player>().pickUpGun();
+
                 }
                 else
                 {
@@ -86,7 +89,9 @@ public class ChangeGun : MonoBehaviour
                     {
                         Destroy(gameObject);
                     }
+                    collision.gameObject.GetComponent<Player>().pickUpGun();
                 }
+                
             }
         }
     }

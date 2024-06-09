@@ -90,8 +90,9 @@ public class Player : MonoBehaviour
     }
     public void pickUpGun()
     {
+        Debug.Log("поднял");
         withoutGun = false;
-        animator.SetBool("withoutGun", withoutGun);
+        animator.SetBool("withoutGun", false);
         
     }
     private void FixedUpdate()
@@ -170,6 +171,7 @@ public class Player : MonoBehaviour
         {
             if (swordAttack != null)
             {
+                gunRenderer.enabled = false;
                 swordAttack.Attack();
             }
 

@@ -1164,6 +1164,300 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ttlbase_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 155
+        width: 7
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb2abfa11c1f66438e666165ad55789
+      internalID: -1743736663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 159
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7faa7874acde75f46b4a2edb27a32d2e
+      internalID: 1778285010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_2
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 161
+        width: 6
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f5e61057df44140a7362b5617e3698
+      internalID: 1422703993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_3
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 157
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51789c8b7ea6c7042bcbcac6c78c2d1b
+      internalID: 563162505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_4
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 155
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d0409cee9efdb488b629519875ca9d
+      internalID: 627994440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_10
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 157
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772ca8cc4f368774a9904461e23d5cbc
+      internalID: 1915941027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_11
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 133
+        width: 10
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca7950fe6013c534a983558150c4950f
+      internalID: 445688305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_12
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 152
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89cea34e7bec9af49bee39d29a42e0fe
+      internalID: -1787506866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_57
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 154
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c5b49a6808f79a42be18252ea05bcee
+      internalID: 2060342396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_58
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 153
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754a6cae074ac2244a9dfb382aff38e8
+      internalID: -872564835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_59
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 159
+        width: 4
+        height: 2
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56f9e2fabc49a924da8dcb13d83aafbf
+      internalID: 1296540558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_60
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 135
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2621de98a70af4eb1ad0bfae339b63
+      internalID: -1675915117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_61
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 174
+        width: 6
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bcd0a2e2fe0f66448b0dd0d7f59a92c
+      internalID: -347515151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ttlbase_62
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 156
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96abcfd462f3fcd438e4e1b5dbce8279
+      internalID: 2014396171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1228,7 +1522,14 @@ TextureImporter:
       ttlbase_54: -1353223847
       ttlbase_55: 1703170022
       ttlbase_56: -2141579808
+      ttlbase_57: 2060342396
+      ttlbase_58: -872564835
+      ttlbase_59: 1296540558
       ttlbase_6: 1264195126
+      ttlbase_60: -1675915117
+      ttlbase_61: -347515151
+      ttlbase_62: 2014396171
+      ttlbase_63: -1855102487
       ttlbase_7: 519898158
       ttlbase_8: 208835272
       ttlbase_9: 1386977877

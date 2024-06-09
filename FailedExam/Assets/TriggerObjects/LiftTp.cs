@@ -92,19 +92,20 @@ public class LiftTp : MonoBehaviour
         }
         inTrigger = false;
         //hint.SetActive(false);
-        if(planim.GetBool("isSafety") == true)
+        if(planim!= null)
         {
-            if(_enabled)
+            if (planim.GetBool("isSafety") == true)
             {
-                if (toVisiblehintImg != null)
-                {//
-                    //toVisiblehintImg.StartVisble();
-                    //toVisiblehintText.StartVisible();
+                if (_enabled)
+                {
+                    if (toVisiblehintImg != null)
+                    {//
+                     //toVisiblehintImg.StartVisble();
+                     //toVisiblehintText.StartVisible();
+                    }
                 }
             }
         }
-        
-
     }
     void TpPlayer()
     {
