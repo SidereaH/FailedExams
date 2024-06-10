@@ -185,10 +185,10 @@ public class Player : MonoBehaviour
     void OnAttack()
     {
         if (animator.GetBool("isSafety") == false)
-        {
+        { 
             if (swordAttack != null)
             {
-                gunRenderer.enabled = false;
+                //gunRenderer.enabled = false;
                 swordAttack.Attack();
             }
 

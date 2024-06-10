@@ -187,16 +187,17 @@ public class SwordAttack : MonoBehaviour
     }
 
     public void Attack() {
-        isAttacking = true;
+        //isAttacking = true;
         if (canAttack == true)
         {
-            if(gameObject.tag != "SwordGun")
+            gunanimator.SetBool("isAttacking", true);
+            if (gameObject.tag != "SwordGun")
             {
                 RangeAttack();
             }
             else
             {
-                gunanimator.SetBool("isAttacking", true);
+                
                 
                 attackinsideSword.Attack();
             }         
@@ -210,15 +211,13 @@ public class SwordAttack : MonoBehaviour
     {
         if (player.tag == "Player")
         {
-            float razbr = Random.Range(0, randRacbros);
-            
             GameObject soundShot = soundsShot[Random.Range(0, soundsShot.Length)];
             GameObject _temp = Instantiate(soundShot, transform.position, Quaternion.identity);
             _temp.GetComponent<AudioSource>().Play();
             Destroy(_temp, 1);
             Instantiate(effect, shotPoint.position, Quaternion.identity);
             Instantiate(bullet, shotPoint.position, transform.rotation);
-            isAttacking = false;
+            //isAttacking = false;
         }
         else
         {
@@ -229,7 +228,7 @@ public class SwordAttack : MonoBehaviour
             Destroy(_temp, 1);
             //Instantiate(effect, shotPoint.position, Quaternion.identity);
             Instantiate(bullet, shotPoint.position, transform.rotation);
-            isAttacking = false;
+            //isAttacking = false;
         }
         
     }

@@ -19,13 +19,9 @@ public class CoinManager : MonoBehaviour
         catch{
             Debug.Log("out of dauns");
         }
-        
-        
         //text.text = score.gold.ToString();
     }
-
     public void UpdateCoin(int coins){
         text.text = coins.ToString();
     }
-
 }
