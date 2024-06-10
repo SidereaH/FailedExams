@@ -193,7 +193,7 @@ TextureImporter:
         \u043E\u0440\u0443\u0436\u0438\u0435_3"
       rect:
         serializedVersion: 2
-        x: 89
+        x: 90
         y: 194
         width: 28
         height: 10
@@ -748,7 +748,7 @@ TextureImporter:
         width: 31
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

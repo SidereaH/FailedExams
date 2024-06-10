@@ -13,14 +13,13 @@ public class fire : MonoBehaviour
     {
 
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (timeBtwShots <= 0)
         {
 
             canAttack = true;     
             timeBtwShots = startTimeBtwShots;
-
         }
         else
         {
@@ -33,25 +32,28 @@ public class fire : MonoBehaviour
 
         if (collision.gameObject.tag != "Enemy")
         {
-            Collider2D collider = collision.collider;
-            IDamageable damageable;
-            if (collision.gameObject.tag != "Player")
+            if(canAttack)
             {
-                damageable = collider.transform.parent.GetComponentInParent<IDamageable>();
+                Collider2D collider = collision.collider;
+                IDamageable damageable;
+                if (collision.gameObject.tag != "Player")
+                {
+                    damageable = collider.transform.parent.GetComponentInParent<IDamageable>();
+                }
+                else
+                {
+                    damageable = collider.GetComponent<IDamageable>();
+                }
+                IDamageable me = gameObject.GetComponent<IDamageable>();
+                if (damageable != null)
+                {
+                    Vector2 direction = (collider.transform.position - transform.position).normalized;
+                    // Vector2 knockback = direction * knockbackForce;
+                    damageable.OnHit(damage);
+                    Debug.Log("hit");
+                }
             }
-            else
-            {
-                damageable = collider.GetComponent<IDamageable>();
-            }
-            IDamageable me = gameObject.GetComponent<IDamageable>();
 
-
-            if (damageable != null)
-            {
-                Vector2 direction = (collider.transform.position - transform.position).normalized;
-                // Vector2 knockback = direction * knockbackForce;
-                damageable.OnHit(damage);
-            }
         }
     }
 }

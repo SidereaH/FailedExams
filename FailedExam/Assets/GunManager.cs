@@ -7,21 +7,32 @@ public class GunManager : MonoBehaviour
 {
     // Start is called before the first frame update
     GameObject player;
+    GameObject imagePref;
+    RectTransform rectTransform;
     Image image;
-    Sprite gunSprite;
+    GameObject gunUI;
+    Sprite DefSprite;
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        image = transform.GetComponent<Image>();
-        try{
+        imagePref = gameObject.transform.GetChild(1).gameObject;
+        image = imagePref.GetComponent<Image>();
+        rectTransform = imagePref.GetComponent<RectTransform>();
+        try
+        {
             if(player.transform.GetChild(1) != null)
         {
-            gunSprite = player.transform.GetChild(1).transform.GetComponent<SpriteRenderer>().sprite;
-            image.sprite = gunSprite;
-        }
+                gunUI = player.transform.GetChild(1).transform.GetChild(1).gameObject;
+                float width = gunUI.transform.GetComponent<RectTransform>().rect.width;
+                float height = gunUI.transform.GetComponent<RectTransform>().rect.height;
+                rectTransform.sizeDelta = new Vector2(width, height);
+            }
+            else
+            {
+                image.sprite = DefSprite;
+            }
         }
         catch{
-            Debug.Log("нету");
         }
         
     }
@@ -29,7 +40,8 @@ public class GunManager : MonoBehaviour
     // Update is called once per frame
     public void ChangeGun(GameObject gun)
     {
-        gunSprite = gun.transform.GetComponent<SpriteRenderer>().sprite;
-        image.sprite = gunSprite;
+        rectTransform.sizeDelta = new Vector2(gun.transform.GetComponent<RectTransform>().rect.width, gun.transform.GetComponent<RectTransform>().rect.height);
+
+        image.sprite = gun.GetComponent<Image>().sprite;
     }
 }

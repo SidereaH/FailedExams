@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class ChangeGun : MonoBehaviour
@@ -52,7 +53,7 @@ public class ChangeGun : MonoBehaviour
                     GameObject newObj = Instantiate(tempGun, collision.gameObject.transform);
                     newObj.GetComponent<SwordAttack>().pickUp();
                     newObj.name = "Gun";
-                    gunManager.ChangeGun(newObj);
+                    gunManager.ChangeGun(newObj.transform.GetChild(1).gameObject);
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                     if (moreThanOne == false)
                     {
@@ -82,8 +83,8 @@ public class ChangeGun : MonoBehaviour
 
                     GameObject newObj = Instantiate(tempGun, collision.gameObject.transform);
                     newObj.GetComponent<SwordAttack>().pickUp();
-                    newObj.name = "Gun";
-                    gunManager.ChangeGun(newObj);
+                    newObj.name = tempGun.name;
+                    gunManager.ChangeGun(newObj.transform.GetChild(1).gameObject);
                     Destroy(gameObject.transform.GetChild(0).gameObject);
                     if(moreThanOne == false)
                     {

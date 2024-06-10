@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2410263626236801548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4749967158228278578}
+  - component: {fileID: 9114292591836972739}
+  - component: {fileID: 51198406606825412}
+  m_Layer: 5
+  m_Name: SwordUi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4749967158228278578
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410263626236801548}
+  m_LocalRotation: {x: -0, y: -0, z: -0.11250952, w: 0.9936507}
+  m_LocalPosition: {x: 0, y: 0, z: 67.354836}
+  m_LocalScale: {x: 0.00380705, y: 0.0038070497, z: 0.0038070502}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7890349338018007250}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.100669384, y: -2.6097221}
+  m_SizeDelta: {x: 175.69, y: 62.746}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &9114292591836972739
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410263626236801548}
+  m_CullTransparentMesh: 1
+--- !u!114 &51198406606825412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410263626236801548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1062212970, guid: d1c71b8caf46e044886e6dde3d38eef6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3206101223366660737
 GameObject:
   m_ObjectHideFlags: 0
@@ -34,6 +109,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7870627914160233685}
+  - {fileID: 4749967158228278578}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 12.92}
 --- !u!212 &6344748117767893078
@@ -168,8 +244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   guntype: 0
-  damage: 1
-  knockBackForce: 3
   offset: 1
   bullet: {fileID: 2164276471717942447, guid: ff2358ccbfe3c984a86f3a6d2b6eeb2c, type: 3}
   startTimeBtwShots: 0.5
@@ -179,8 +253,8 @@ MonoBehaviour:
   scoreManager: {fileID: 3738940434820866563, guid: 5b5fa9619db6ba148ad8d043161ca206, type: 3}
   soundsShot:
   - {fileID: 3233277997531015178, guid: 16f96d095e34802428785e09aa909905, type: 3}
-  isEnemy: 0
   inPlayer: 0
+  swordAttack: {fileID: 0}
 --- !u!1 &8780155701451882323
 GameObject:
   m_ObjectHideFlags: 0

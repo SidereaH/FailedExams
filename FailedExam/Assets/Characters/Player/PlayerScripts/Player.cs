@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     [SerializeField] int time, moveTime;
     [SerializeField] GameObject slimeStepPref;
     [SerializeField] GameObject[] stepprefabs;
-
     [SerializeField] ScoreManager score;
     //����� SCRIPT SWORD ATTACK ��������� ���������� ������ � ���� SWORDATTACK
     SwordAttack swordAttack;
@@ -37,6 +36,7 @@ public class Player : MonoBehaviour
     public bool withoutGun;
     [SerializeField] GameObject[] soundsHit;
     [SerializeField] GunManager gunManager;
+    [SerializeField] GameObject[] guns;
 
     bool IsRunning
     {
@@ -69,6 +69,23 @@ public class Player : MonoBehaviour
             withoutGun = true;
             animator.SetBool("withoutGun", withoutGun);
         }
+        if (PlayerPrefs.HasKey("Gun"))
+        {
+            string gunname = PlayerPrefs.GetString("Gun");
+            bool find = false;
+            for (int i = 0; i< guns.Length; i++)
+            {
+                if(find == false)
+                {
+                    Debug.Log(guns[i].name );
+                    if (guns[i].name == gunname)
+                    {
+                        gun = Instantiate(guns[i], gameObject.transform);
+                        gunManager.ChangeGun(gun.transform.GetChild(1).gameObject);
+                    }
+                }    
+            }
+        }
 
     }
 
@@ -90,7 +107,7 @@ public class Player : MonoBehaviour
     }
     public void pickUpGun()
     {
-        Debug.Log("поднял");
+        
         withoutGun = false;
         animator.SetBool("withoutGun", false);
         

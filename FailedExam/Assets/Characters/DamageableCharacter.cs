@@ -44,17 +44,13 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
                 slider.maxValue = _maxHealth;
 
             }
-            if (SceneManager.GetActiveScene().name != "SampleScene")
-            {
-
                 if (PlayerPrefs.HasKey("hp") == true)
                 {
 
                     _health = PlayerPrefs.GetFloat("hp");
                     slider.value = _health;
                 }
-                
-            }
+
         }
     }
     public bool Invincible

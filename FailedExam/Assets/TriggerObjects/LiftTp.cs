@@ -51,6 +51,15 @@ public class LiftTp : MonoBehaviour
                 PlayerPrefs.SetFloat("hp", hpAfterLevel);
                 PlayerPrefs.SetString("lastScene", _name);
                 SceneManager.LoadScene(_name);
+                try
+                {
+                    string name = player.transform.GetChild(1).name;
+                    PlayerPrefs.SetString("Gun", name);
+                }
+                catch{
+                    Debug.Log("Пуст");
+                }
+                
             }
         }
     }
@@ -99,7 +108,8 @@ public class LiftTp : MonoBehaviour
                 if (_enabled)
                 {
                     if (toVisiblehintImg != null)
-                    {//
+                    {
+                        
                      //toVisiblehintImg.StartVisble();
                      //toVisiblehintText.StartVisible();
                     }

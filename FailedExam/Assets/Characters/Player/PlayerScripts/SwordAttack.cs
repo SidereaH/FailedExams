@@ -38,6 +38,8 @@ public class SwordAttack : MonoBehaviour
 
 
     public enum GunType {Default, Enemy};
+
+    public float randRacbros;
     private void Start() {
         if(swordAttack != null)
         {
@@ -208,6 +210,8 @@ public class SwordAttack : MonoBehaviour
     {
         if (player.tag == "Player")
         {
+            float razbr = Random.Range(0, randRacbros);
+            
             GameObject soundShot = soundsShot[Random.Range(0, soundsShot.Length)];
             GameObject _temp = Instantiate(soundShot, transform.position, Quaternion.identity);
             _temp.GetComponent<AudioSource>().Play();
