@@ -34,10 +34,12 @@ public class SwordAttack : MonoBehaviour
     [SerializeField] GameObject swordAttack;
     AttackInside attackinsideSword;
     SpriteRenderer attackRenderer;
+    
     //Collider2D attackinsideSwordCol;
 
 
     public enum GunType {Default, Enemy};
+    [SerializeField] GameObject swordSwing;
 
     public float randRacbros;
     private void Start() {
@@ -198,7 +200,7 @@ public class SwordAttack : MonoBehaviour
             else
             {
                 
-                
+                Instantiate(swordSwing, transform.position, Quaternion.identity);
                 attackinsideSword.Attack();
             }         
         }  

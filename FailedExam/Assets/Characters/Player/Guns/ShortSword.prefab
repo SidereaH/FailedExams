@@ -179,6 +179,7 @@ MonoBehaviour:
   soundsShot: []
   inPlayer: 0
   swordAttack: {fileID: 5595413716108534205}
+  swordSwing: {fileID: 8013459755535282046, guid: c11490ecf6be63346821111320d52d22, type: 3}
   randRacbros: 0
 --- !u!1 &5595413716108534205
 GameObject:

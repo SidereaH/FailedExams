@@ -22,6 +22,10 @@ public class CoinManager : MonoBehaviour
         //text.text = score.gold.ToString();
     }
     public void UpdateCoin(int coins){
-        text.text = coins.ToString();
+        if (text != null)
+        {
+            text.text = coins.ToString();
+        }
+        
     }
 }

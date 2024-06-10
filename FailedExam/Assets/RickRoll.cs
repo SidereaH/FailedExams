@@ -12,8 +12,11 @@ public class RickRoll : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            rickPrefab.SetActive(true);
-            rickMusic.Play();
+            if(collision.GetComponent<Animator>().GetBool("isSafety") == true)
+            {
+                rickPrefab.SetActive(true);
+                rickMusic.Play();
+            }    
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

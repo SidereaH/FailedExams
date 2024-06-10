@@ -8103,18 +8103,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1227495776720676565, guid: f88c2b17a8ee61145bf8dac751efda56, type: 3}
-      propertyPath: m_Size.x
-      value: 28.549822
-      objectReference: {fileID: 0}
-    - target: {fileID: 1227495776720676565, guid: f88c2b17a8ee61145bf8dac751efda56, type: 3}
-      propertyPath: m_Offset.x
-      value: -8.840381
-      objectReference: {fileID: 0}
-    - target: {fileID: 1227495776720676565, guid: f88c2b17a8ee61145bf8dac751efda56, type: 3}
-      propertyPath: m_Offset.y
-      value: -2.7304401
-      objectReference: {fileID: 0}
     - target: {fileID: 6706428440193227053, guid: f88c2b17a8ee61145bf8dac751efda56, type: 3}
       propertyPath: m_Name
       value: RickRoll

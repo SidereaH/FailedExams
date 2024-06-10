@@ -24,7 +24,16 @@ public class AttackInside : MonoBehaviour
     {
         renderer.enabled = true;
         collider.enabled = true;
-        animator.SetTrigger("Attack");
+        Random.Range(0, 1);
+        if(Random.Range(0, 2) == 0)
+        {
+            animator.SetTrigger("Attack");
+        }
+        else
+        {
+            animator.SetTrigger("Attack2");
+        }
+        
     }
     public void StopAttack()
     {
