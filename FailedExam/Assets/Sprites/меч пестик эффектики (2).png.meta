@@ -606,6 +606,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: "\u043C\u0435\u0447 \u043F\u0435\u0441\u0442\u0438\u043A \u044D\u0444\u0444\u0435\u043A\u0442\u0438\u043A\u0438
+        (2)_19"
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 115
+        width: 478
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d02a520e1e5a74a81986c616a88f19
+      internalID: -740690975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

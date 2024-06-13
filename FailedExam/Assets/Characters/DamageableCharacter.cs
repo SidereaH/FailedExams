@@ -24,7 +24,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     private float invincibleTimeElapsed = 1;
     TextMeshProUGUI textValue;
     public Slider slider;
-    public ScoreManager scoreManager;
+    ScoreManager scoreManager;
     public GameObject panel;
     [SerializeField] GameObject[] soundsHit;
     
@@ -32,6 +32,7 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
 
     void Start()
     {
+        scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").transform.GetComponent<ScoreManager>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         physicsCollider = GetComponent<Collider2D>();
