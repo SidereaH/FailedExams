@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using static UnityEngine.Random;
 
 // Takes and handles input and movement for a player character
@@ -14,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] int time, moveTime;
     [SerializeField] GameObject slimeStepPref;
     [SerializeField] GameObject[] stepprefabs;
-    [SerializeField] ScoreManager score;
+    ScoreManager score;
     //����� SCRIPT SWORD ATTACK ��������� ���������� ������ � ���� SWORDATTACK
     SwordAttack swordAttack;
     public float maxSpeed = 8f;
@@ -51,6 +52,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = GameObject.FindGameObjectWithTag("ScoreManager").transform.GetComponent<ScoreManager>();
         isActiveMenu = false;
         PlayerPrefs.SetString("lastScene", SceneManager.GetActiveScene().name);
         rb = GetComponent<Rigidbody2D>();
