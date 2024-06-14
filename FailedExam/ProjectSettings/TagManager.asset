@@ -15,6 +15,7 @@ TagManager:
   - GunManager
   - ScoreManager
   - CoinManager
+  - Dialog
   layers:
   - Default
   - TransparentFX
