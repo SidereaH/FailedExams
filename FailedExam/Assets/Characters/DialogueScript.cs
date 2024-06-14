@@ -19,11 +19,8 @@ public class DialogueScript : MonoBehaviour
     private float timeToLoadScene = 0;
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] int index;
-    Image listener;
-    Image speaker;
-    [SerializeField] Sprite listenerSprite;
-    [SerializeField] Sprite speakerSprite;
-    GameObject[] dialogWindow;
+    [SerializeField] GameObject startDialogue;
+    [SerializeField] GameObject nextDialogue;
     [SerializeField] GameObject audioWrite;
     [SerializeField] enum TypeOfSetText {Dialogue, Text };
     private bool successLine;
@@ -34,11 +31,6 @@ public class DialogueScript : MonoBehaviour
     {
         if(type == TypeOfSetText.Dialogue)
         {
-            dialogWindow = GameObject.FindGameObjectsWithTag("Dialogue");
-            listener = gameObject.transform.GetChild(0).GetComponent<Image>();
-            speaker = gameObject.transform.GetChild(1).GetComponent<Image>();
-            listener.sprite = listenerSprite;
-            speaker.sprite = speakerSprite;
             dialogueText.text = string.Empty;
             StartDialogue();
         }
@@ -49,10 +41,6 @@ public class DialogueScript : MonoBehaviour
             StartDialogue();
         }
        
-    }
-    private void FixedUpdate()
-    {
-        
     }
     void StartDialogue()
     {
@@ -65,17 +53,14 @@ public class DialogueScript : MonoBehaviour
     {
         foreach (char c in lines[index].ToCharArray())
         {
-            if(c != ' ')
+            if(c != ' ' && c != '-')
             {
                 GameObject _temp = Instantiate(audioWrite, transform.position, Quaternion.identity);
-
                 Destroy(_temp, 1);
             }
             dialogueText.text += c;
             if (dialogueText.text == lines[index].ToString())
             {
-
-
                 successLine = true;
                 //NextLines();
             }
@@ -109,14 +94,10 @@ public class DialogueScript : MonoBehaviour
                     dialogueText.text = lines[index].ToString() + "  ";
                     timeBtwSymbDel = startEditTime;
                 }
-
-
             }
             else
             {
-
                 timeBtwSymbDel -= Time.deltaTime;
-
             }
 
             if (nextLineCountTime >= nextLineTime)
@@ -163,8 +144,7 @@ public class DialogueScript : MonoBehaviour
         }
     }
     private void NextLines()
-    {
-        
+    {  
         if (index < lines.Length - 1)
         {
             successLine = false;
@@ -176,12 +156,15 @@ public class DialogueScript : MonoBehaviour
         {
             if(type == TypeOfSetText.Dialogue)
             {
-                dialogWindow[0].SetActive(false);
+                startDialogue.SetActive(false);
+                if(nextDialogue != null)
+                {
+                    nextDialogue.SetActive(true);
+                }
             }
             else
             {
                 successText = true;
-
             }
         }
     }

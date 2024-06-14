@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a25c4e8ae9d824782ee50d33165fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreManager: {fileID: 0}
 --- !u!1 &5852060751980057163
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a25c4e8ae9d824782ee50d33165fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreManager: {fileID: 0}
 --- !u!1 &6211861747442993721
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +527,10 @@ PrefabInstance:
     - target: {fileID: 254657040579664810, guid: 46d8345ec2348584bbd7d2e734079668, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3113673511118579050, guid: 46d8345ec2348584bbd7d2e734079668, type: 3}
+      propertyPath: m_Value
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3113673511118579050, guid: 46d8345ec2348584bbd7d2e734079668, type: 3}
       propertyPath: m_Interactable

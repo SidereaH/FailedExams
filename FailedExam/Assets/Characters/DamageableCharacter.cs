@@ -236,11 +236,11 @@ public class DamageableCharacter : MonoBehaviour, IDamageable
     public void SetPause()
     {
         rb.simulated = false;
-        Targetable = false;
+        
     }
     public void UnPause()
     {
         rb.simulated = true;
-        Targetable = true;
+        
     }
 }
