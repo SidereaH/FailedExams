@@ -117,9 +117,9 @@ public class  Slime: MonoBehaviour
         {
             Collider2D collider = collision.collider;
             IDamageable damageable;
-            if (collision.gameObject.tag != "Player")
+            if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "SceneChecker" && collision.gameObject.tag != "BulletGun" && collision.gameObject.tag != "SwordGun" && collision.gameObject.tag != "Untagged")
             {
-                damageable = collider.transform.parent.GetComponentInParent<IDamageable>();
+               damageable = collider.transform.parent.GetComponentInParent<IDamageable>();
             }
             else
             {

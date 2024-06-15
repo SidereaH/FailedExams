@@ -20,7 +20,7 @@ public class Box : MonoBehaviour
        
        if(other.tag == "Player")
         {
-            if(other.GetComponent<Animator>().GetBool("isSafety") == true)
+            
             if (isOpened == false)
             {
                 

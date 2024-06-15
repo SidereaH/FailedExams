@@ -529,10 +529,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3113673511118579050, guid: 46d8345ec2348584bbd7d2e734079668, type: 3}
-      propertyPath: m_Value
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3113673511118579050, guid: 46d8345ec2348584bbd7d2e734079668, type: 3}
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}

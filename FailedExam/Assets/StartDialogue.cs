@@ -21,21 +21,31 @@ public class StartDialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isEnter)
+        if (!continued)
         {
-            if(Keyboard.current.fKey.wasPressedThisFrame)
+            if (isEnter)
             {
-                dialogue.SetActive(true);
-                collisionplayer.SetPause();
-                continued = true;
+                if (Keyboard.current.fKey.wasPressedThisFrame)
+                {
+                    dialogue.SetActive(true);
+                    collisionplayer.SetPause();
+                    continued = true;
+                }
             }
         }
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
-        {   
-            isEnter = true;
+        {
+            
+            if (collision.GetComponent<Animator>().GetBool("isSafety")){
+                isEnter = true;
+            }
+            
+            
+            
         }
        
     }
@@ -48,7 +58,11 @@ public class StartDialogue : MonoBehaviour
             if (continued)
             {
                 collisionplayer.UnPause();
-                open.Open();
+                if(open != null)
+                {
+                    open.Open();
+                }
+                
             }
             
         }

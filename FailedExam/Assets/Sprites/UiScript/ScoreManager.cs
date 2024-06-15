@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
         coinManager.UpdateCoin(gold);
     }
     // Update is called once per frame
-    private void Update()
+    /*private void Update()
     {
         if (kills == 5)
         {
@@ -43,8 +43,8 @@ public class ScoreManager : MonoBehaviour
                 Destroy(_temp, 4);
             }
         }
-    }
-    
+}*/
+
     public int addKill()
     {
 

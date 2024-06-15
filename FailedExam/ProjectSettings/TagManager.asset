@@ -16,6 +16,7 @@ TagManager:
   - ScoreManager
   - CoinManager
   - Dialog
+  - SceneChecker
   layers:
   - Default
   - TransparentFX

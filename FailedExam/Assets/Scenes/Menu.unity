@@ -550,7 +550,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: StartScene
+          m_StringArgument: ChillLocation
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 25193871}
@@ -1319,11 +1319,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 25193871}
+    - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 25193871}
     - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
@@ -1331,7 +1343,27 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SceneLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SceneLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ScenesChange, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: ChillLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: ChillLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006484496676047489, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5643177680929871758, guid: e964846c4e202b449a6bb4f5bef2713c, type: 3}

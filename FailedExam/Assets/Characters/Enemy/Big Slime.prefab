@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 2442571090019593936}
   - component: {fileID: 8160273688221977343}
   - component: {fileID: 3968123169736529379}
-  - component: {fileID: 4395289541605389855}
   m_Layer: 6
   m_Name: Big Slime
   m_TagString: Enemy
@@ -280,44 +279,8 @@ MonoBehaviour:
   canTurnInvincible: 0
   _invincible: 0
   slider: {fileID: 0}
-  scoreManager: {fileID: 0}
   panel: {fileID: 0}
   soundsHit: []
---- !u!70 &4395289541605389855
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2871611814242520201}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15334363, y: 0.049828935}
-  m_Size: {x: 0.06697266, y: 0.060348086}
-  m_Direction: 1
 --- !u!1 &3925270973449275846
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,8 +448,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   guntype: 1
-  damage: 1
-  knockBackForce: 15
   offset: 0
   bullet: {fileID: 2164276471717942447, guid: 30cdcdf23946dc6e0ac257a06b65fc44, type: 3}
   startTimeBtwShots: 1
@@ -496,8 +457,10 @@ MonoBehaviour:
   scoreManager: {fileID: 0}
   soundsShot:
   - {fileID: 4900271844854517822, guid: 79031955a6e700346bfabb765152916e, type: 3}
-  isEnemy: 1
   inPlayer: 0
+  swordAttack: {fileID: 0}
+  swordSwing: {fileID: 0}
+  randRacbros: 0
 --- !u!1 &6336245886592637669
 GameObject:
   m_ObjectHideFlags: 0

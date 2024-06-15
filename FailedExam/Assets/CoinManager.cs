@@ -17,7 +17,7 @@ public class CoinManager : MonoBehaviour
 
         }
         catch{
-            Debug.Log("out of dauns");
+            //Debug.Log("out of dauns");
         }
         //text.text = score.gold.ToString();
     }
